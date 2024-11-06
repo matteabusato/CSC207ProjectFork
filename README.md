@@ -13,4 +13,8 @@ his another card into the new one. Also before the travel, he wants to change th
 other currency to make the trip easier.
 
 Zeyu's Story: Bob can open the banking app and use it to find ATM around the city(fake). 
-Bob can take a loan from the bank, he chooses whether to pay periodically or automatically, with interests.
+Bob can take a loan from the, he chooses whether to pay periodically or automatically, with interests.
+
+Xing's Story: Joe wants to buy a house, he goes on the banking app and see a list of properties displayed on the map. Joe chooses a house he likes and makes the down payment and pays the mortgage rates every month. Joe also needs to buy insurance through the banking app to make sure he has all the insurance he needs covered, and will list the ones he requires for the property.
+
+
