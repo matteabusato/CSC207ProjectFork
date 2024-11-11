@@ -1,3 +1,5 @@
+package Launcher;
+
 import org.junit.Test;
 
 public class LauncherTest {
