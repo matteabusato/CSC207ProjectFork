@@ -36,7 +36,6 @@ public class Brokerage {
                 .key("QD1VO3QMDYPFCTIB") //security issue
                 .timeOut(10)
                 .build();
-
         AlphaVantage.api()
                 .init(cfg); // Replace with your Alpha Vantage API key
 
@@ -46,15 +45,24 @@ public class Brokerage {
         frame.setSize(800, 600);
         frame.setLayout(new BorderLayout());
 
-        // Input Panel
-        JPanel inputPanel = new JPanel(new GridLayout(3, 2, 10, 10));
+        // Create Input Panel with Search Button next to the text field
+        JPanel inputPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));  // Use FlowLayout for horizontal layout
+
+
+        // Components for input
         JLabel nameLabel = new JLabel("Stock Symbol:");
-        stockNameField = new JTextField();
+        stockNameField = new JTextField(10);  // Set preferred width for the text field
         JLabel priceLabel = new JLabel("Price $:");
         stockPriceLabel = new JLabel("N/A");
 
+        // Search Button
+        JButton searchButton = new JButton("Search");
+        searchButton.addActionListener(e -> searchStock());
+
+        // Add components to the input panel
         inputPanel.add(nameLabel);
         inputPanel.add(stockNameField);
+        inputPanel.add(searchButton);  // Add search button next to the text field
         inputPanel.add(priceLabel);
         inputPanel.add(stockPriceLabel);
 
@@ -72,15 +80,11 @@ public class Brokerage {
         graphPanel = new JPanel(new BorderLayout());
         graphPanel.setBorder(BorderFactory.createTitledBorder("Stock Price Trends"));
 
-        // Search Button
-        JButton searchButton = new JButton("Search");
-        searchButton.addActionListener(e -> searchStock());
-
         // Add components to frame
         frame.add(inputPanel, BorderLayout.NORTH);
         frame.add(graphPanel, BorderLayout.CENTER);
         frame.add(buttonsPanel, BorderLayout.SOUTH);
-        frame.add(searchButton, BorderLayout.WEST);
+
 
         frame.setVisible(true);
     }
@@ -101,8 +105,6 @@ public class Brokerage {
                 .outputSize(OutputSize.FULL)
                 .dataType(DataType.JSON)
                 .fetchSync();
-
-        System.out.println(response);
 
         // Fetch stock data from Alpha Vantage
         List<StockUnit> stockUnits = response.getStockUnits();
