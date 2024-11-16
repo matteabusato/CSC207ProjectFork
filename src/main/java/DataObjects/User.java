@@ -1,29 +1,26 @@
 package DataObjects;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class User {
-    String username;
-    String passwordHash;
+    int userID;
     String firstName;
     String lastName;
-    int accountID;
+    String passwordHash;
     double balance;
-    String fileName;
+    String fileDirectory;
 
-    public User(String username, String passwordHash, String firstName, String lastName, int accountID, double balance) {
-        this.username = username;
-        this.passwordHash = passwordHash;
+    public User(int userID, String firstName, String lastName, String passwordHash, double balance) {
+        this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.accountID = accountID;
+        this.passwordHash = passwordHash;
         this.balance = balance;
-        this.fileName = firstName + lastName + accountID + ".json";
+        this.fileDirectory = firstName + lastName + userID + "/";
     }
-
 }

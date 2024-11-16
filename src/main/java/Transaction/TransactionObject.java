@@ -1,28 +1,25 @@
 package Transaction;
 
-import DataAccess.DataAccessController;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @NoArgsConstructor
 @Getter
 @Setter
 public class TransactionObject {
     int transactionID;
-    String senderID;
-    String receiverID;
+    int senderID;
+    int receiverID;
     String cardUsed;
     double amount;
     LocalDateTime timeStamp;
 
-    public TransactionObject(int transactionID, String senderID, String receiverID,
+    public TransactionObject(int senderID, int receiverID,
                              String cardUsed, double amount, LocalDateTime timeStamp) {
-        this.transactionID = transactionID;
+        this.transactionID = 1;
         this.senderID = senderID;
         this.receiverID = receiverID;
         this.cardUsed = cardUsed;

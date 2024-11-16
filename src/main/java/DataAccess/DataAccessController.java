@@ -1,11 +1,8 @@
 package DataAccess;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,6 +28,7 @@ public class DataAccessController {
 
     public <T> List<T> readData(String fileName, Class<T> classA) {
         ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         mapper.registerModule(new JavaTimeModule());
         List<T> data = new ArrayList<>();
         try {

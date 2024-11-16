@@ -5,7 +5,6 @@ import DataObjects.User;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -14,15 +13,14 @@ public class TransactionController {
 
     DataAccessController controller = new DataAccessController();
 
-    public void addFirstTransaction(User user, TransactionObject transaction) {
-        List<TransactionObject> transactions = new ArrayList<>();
+    public void addTransaction(User user, TransactionObject transaction) {
+        List<TransactionObject> transactions = controller.readData(user.getFileDirectory() + "TransactionHistory.json", TransactionObject.class);
         transactions.add(transaction);
-        controller.saveData(user.getFileName(), transactions, TransactionObject.class);
+        controller.saveData(user.getFileDirectory() + "TransactionHistory.json", transactions, TransactionObject.class);
     }
 
-    public void addTransaction(User user, TransactionObject transaction) {
-        List<TransactionObject> transactions = controller.readData(user.getFileName(), TransactionObject.class);
-        transactions.add(transaction);
-        controller.saveData(user.getFileName(), transactions, TransactionObject.class);
+    public void showTransactionHistory(User user) {
+        List<TransactionObject> transactions = controller.readData(user.getFileDirectory() + "TransactionHistory.json", TransactionObject.class);
+        // display in view object the transactions
     }
 }
