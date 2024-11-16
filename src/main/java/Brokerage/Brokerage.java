@@ -8,11 +8,11 @@ import com.crazzyghost.alphavantage.parameters.Interval;
 import com.crazzyghost.alphavantage.parameters.OutputSize;
 import com.crazzyghost.alphavantage.timeseries.response.StockUnit;
 
-
 import com.crazzyghost.alphavantage.timeseries.response.TimeSeriesResponse;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.time.Second;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
@@ -29,23 +29,25 @@ public class Brokerage {
     private static JButton buyButton, sellButton;
     private static JPanel graphPanel;
 
-    public static void main(String[] args) {
-        // Initialize Alpha Vantage API
+    static ImageIcon customIcon = new ImageIcon("src/logo.png");
 
+    public static void main(String[] args) {
+
+        // Initialize Alpha Vantage API
         Config cfg = Config.builder()
-                .key("QD1VO3QMDYPFCTIB") //security issue
+                .key("OTC0BTKHGEJBYCL7") // Security issue
                 .timeOut(10)
                 .build();
         AlphaVantage.api()
-                .init(cfg); // Replace with your Alpha Vantage API key
+                .init(cfg);
 
         // Create Swing UI
-        JFrame frame = new JFrame("Brokerage App");
+        JFrame frame = new JFrame("Crazy Bank - Asset Managing");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
         frame.setLayout(new BorderLayout());
 
-        // Create Input Panel with Search Button next to the text field
+        // Create Input Panel
         JPanel inputPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));  // Use FlowLayout for horizontal layout
 
 
@@ -108,12 +110,18 @@ public class Brokerage {
 
         // Fetch stock data from Alpha Vantage
         List<StockUnit> stockUnits = response.getStockUnits();
+        System.out.println(stockUnits);
+        System.out.println(response);
+
+
         if (stockUnits != null && !stockUnits.isEmpty()) {
             // Display the latest price
             double latestPrice = stockUnits.get(0).getClose();
             stockPriceLabel.setText(String.format("$%.2f", latestPrice));
             buyButton.setEnabled(true);
+            buyButton.addActionListener(e -> buyAction(latestPrice, stockSymbol));
             sellButton.setEnabled(true);
+            sellButton.addActionListener(e -> sellAction(latestPrice, stockSymbol));
 
             // Draw the price graph
             drawGraph(stockSymbol, stockUnits);
@@ -122,6 +130,92 @@ public class Brokerage {
             JOptionPane.showMessageDialog(null, "No data found for this stock symbol.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    // Action Listener for Buy Button (using custom dialog)
+    public static void buyAction(double latestPrice, String stockSymbol) {
+        // Spinner with min 1, max Integer.MAX_VALUE, step size 1
+        JSpinner amountSpinner = new JSpinner(new SpinnerNumberModel(1, 1, Integer.MAX_VALUE, 1));
+        JLabel l = new JLabel("Total Bid Price: " + latestPrice);
+        amountSpinner.addChangeListener(e -> l.setText(String.format("Total Bid Price: %.2f", (Integer) amountSpinner.getValue() * latestPrice)));
+
+        final JPanel panel = new JPanel(new GridLayout(0, 1));
+        panel.add(new JLabel("Enter amount of security to buy:"));
+        panel.add(amountSpinner);
+        panel.add(l);
+
+        int option = JOptionPane.showConfirmDialog(
+                null,  // Parent component
+                panel,  // The panel with the spinner
+                "Buy Asset",  // Dialog title
+                JOptionPane.OK_CANCEL_OPTION,  // Options: OK and Cancel buttons
+                JOptionPane.PLAIN_MESSAGE,  // Message type
+                customIcon
+        );
+
+        // If the user clicks OK
+        if (option == JOptionPane.OK_OPTION) {
+            int amount = (int) amountSpinner.getValue();
+            if (amount > 0) {
+                JOptionPane.showMessageDialog(
+                        null,  // Parent component
+                        "You have bought " + amount + " shares of " + stockSymbol,  // Message to display
+                        "Success",  // Title
+                        JOptionPane.INFORMATION_MESSAGE  // Message type
+                );
+            } else {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Please enter a valid amount greater than zero.",
+                        "Invalid Amount",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
+        }
+    }
+
+    private static void sellAction(double latestPrice, String stockSymbol) {
+        int amountOwn = 10;
+
+        // Spinner with min 1, max Integer.MAX_VALUE, step size 1
+        JSpinner amountSpinner = new JSpinner(new SpinnerNumberModel(1, 1, amountOwn, 1));
+        JLabel l = new JLabel("Total Ask Price: " + latestPrice);
+        amountSpinner.addChangeListener(e -> l.setText(String.format("Total Ask Price: %.2f", (Integer) amountSpinner.getValue() * latestPrice)));
+
+        final JPanel panel = new JPanel(new GridLayout(0, 1));
+        panel.add(new JLabel("Enter amount of security to sell:"));
+        panel.add(amountSpinner);
+        panel.add(l);
+
+        int option = JOptionPane.showConfirmDialog(
+                null,  // Parent component
+                panel,  // The panel with the spinner
+                "Sell Asset",  // Dialog title
+                JOptionPane.OK_CANCEL_OPTION,  // Options: OK and Cancel buttons
+                JOptionPane.PLAIN_MESSAGE,  // Message type
+                customIcon
+        );
+
+        // If the user clicks OK
+        if (option == JOptionPane.OK_OPTION) {
+            int amount = (int) amountSpinner.getValue();
+            if (amount > 0) {
+                JOptionPane.showMessageDialog(
+                        null,  // Parent component
+                        "You have sold " + amount + " shares of " + stockSymbol,  // Message to display
+                        "Success",  // Title
+                        JOptionPane.INFORMATION_MESSAGE  // Message type
+                );
+            } else {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Please enter a valid amount greater than zero.",
+                        "Invalid Amount",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
+        }
+    }
+
 
     private static void drawGraph(String stockSymbol, List<StockUnit> stockUnits) {
         // Create a time series for stock prices
@@ -155,10 +249,21 @@ public class Brokerage {
                 false                                  // URLs
         );
 
+        // Get the plot from the chart
+        XYPlot plot = (XYPlot) chart.getPlot();
+
+        // Set the color of the first series (series 0)
+        plot.getRenderer().setSeriesPaint(0, Color.decode("#222d64")); // Change to desired color
+
+        // Optional: Set line thickness for better visibility
+        plot.getRenderer().setSeriesStroke(0, new BasicStroke(2.0f)); // Make the line thicker
+
         // Create a chart panel and replace the graph panel
         ChartPanel chartPanel = new ChartPanel(chart);
         graphPanel.removeAll();
         graphPanel.add(chartPanel, BorderLayout.CENTER);
         graphPanel.validate();
+
+
     }
 }
