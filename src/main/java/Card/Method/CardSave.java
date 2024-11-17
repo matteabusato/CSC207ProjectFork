@@ -1,37 +1,18 @@
 package Card.Method;
 
-import Card.View.CardManagerGUI;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 import Card.Entity.Card;
 
 public class CardSave {
     private static final String FILE_PATH = "cards.json";
 
-    public static List<Card> loadCards() {
-        List<Card> cards = new ArrayList<>();
-        File file = new File(FILE_PATH);
-        if (file.exists()) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-                StringBuilder sb = new StringBuilder();
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    sb.append(line);
-                }
-                JSONArray jsonArray = new JSONArray(sb.toString());
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    cards.add(fromJSONObject(jsonArray.getJSONObject(i)));
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return cards;
-    }
-
+    /**
+     * used to save the updated data in JSON file
+     * @param cards cards given in CardMethod CardList
+     */
     public static void saveCards(List<Card> cards) {
         JSONArray jsonArray = new JSONArray();
         for (Card card : cards) {
@@ -44,15 +25,10 @@ public class CardSave {
         }
     }
 
-    public static Card fromJSONObject(JSONObject json) {
-        return new Card(
-                json.getString("name"),
-                json.getString("id"),
-                json.getString("expiryDate"),
-                json.getString("securityCode")
-        );
-    }
-
+    /**
+     * used to transfer the card into the String to store
+     * @param card one single card with the parameters
+     */
     public static JSONObject toJSONObject(Card card) {
         JSONObject json = new JSONObject();
         json.put("name", card.getName());

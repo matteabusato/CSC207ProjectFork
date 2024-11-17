@@ -12,10 +12,10 @@ public class CardManagerGUI {
     public JFrame frame;
     public JTable table;
     public DefaultTableModel model;
-    public JTextField idField;
     public JTextField nameField;
-    public JTextField expiryDateField;
-    public JTextField securityCodeField;
+//    public JTextField idField;
+//    public JTextField expiryDateField;
+//    public JTextField securityCodeField;
 
     public CardManagerGUI() {
         // Main frame
@@ -34,26 +34,26 @@ public class CardManagerGUI {
 
         // input frame
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(5, 2, 10, 10));
+        inputPanel.setLayout(new GridLayout(2, 2, 10, 10));
 
         inputPanel.add(new JLabel("Name:"));
         nameField = new JTextField();
         inputPanel.add(nameField);
 
-        inputPanel.add(new JLabel("ID:"));
-        idField = new JTextField();
-        idField.setEnabled(false);
-        inputPanel.add(idField);
-
-        inputPanel.add(new JLabel("Expiry Date:"));
-        expiryDateField = new JTextField();
-        expiryDateField.setEnabled(false);
-        inputPanel.add(expiryDateField);
-
-        inputPanel.add(new JLabel("Security Code:"));
-        securityCodeField = new JTextField();
-        securityCodeField.setEnabled(false);
-        inputPanel.add(securityCodeField);
+//        inputPanel.add(new JLabel("ID:"));
+//        idField = new JTextField();
+//        idField.setEnabled(false);
+//        inputPanel.add(idField);
+//
+//        inputPanel.add(new JLabel("Expiry Date:"));
+//        expiryDateField = new JTextField();
+//        expiryDateField.setEnabled(false);
+//        inputPanel.add(expiryDateField);
+//
+//        inputPanel.add(new JLabel("Security Code:"));
+//        securityCodeField = new JTextField();
+//        securityCodeField.setEnabled(false);
+//        inputPanel.add(securityCodeField);
 
         // Button
         JButton addButton = new JButton("Add Card");
@@ -72,8 +72,13 @@ public class CardManagerGUI {
             }
         });
 
-        inputPanel.add(addButton);
-        inputPanel.add(deleteButton);
+        JPanel theButton = new JPanel();
+        theButton.setLayout(new FlowLayout(FlowLayout.LEADING));
+
+        theButton.add(addButton);
+        theButton.add(deleteButton);
+
+        inputPanel.add(theButton);
 
         // 将输入面板和表格添加到主框架
         frame.add(inputPanel, BorderLayout.NORTH);

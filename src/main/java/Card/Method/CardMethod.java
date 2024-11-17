@@ -2,8 +2,6 @@ package Card.Method;
 
 import Card.Entity.Card;
 import Card.View.CardManagerGUI;
-import com.fasterxml.jackson.core.exc.StreamWriteException;
-import com.fasterxml.jackson.databind.DatabindException;
 import org.jetbrains.annotations.NotNull;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,13 +19,17 @@ public class CardMethod {
     private static List<Card> cardList = new ArrayList<>();
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
+    /**
+     * used to add the card and renew the GUI
+     * @param cardManagerGUI the GUI need to renew
+     */
     public static void addCard(CardManagerGUI cardManagerGUI) {
         loadFromFile();
         String name = cardManagerGUI.nameField.getText();
-        String securityCode = newSecurityCode();
+        String securityCode = newCode();
         String id = newId(name);
         // 加入新的判断，例如不能出现同样id
-        String expiryDate = newExpirydate();
+        String expiryDate = newDate();
 
         try {
             // for loop used to show when the time login with the account number
@@ -48,6 +50,10 @@ public class CardMethod {
         refresh(cardManagerGUI);
     }
 
+    /**
+     * used to delete the card and renew the GUI
+     * @param cardManagerGUI the GUI need to renew
+     */
     public static void deleteCard(CardManagerGUI cardManagerGUI) {
         int selectedRow = cardManagerGUI.table.getSelectedRow();
         if (selectedRow == - 1) {
@@ -62,6 +68,10 @@ public class CardMethod {
        refresh(cardManagerGUI);
     }
 
+    /**
+     * used to renew the GUI as a help function to add/delete card
+     * @param cardManagerGUI the GUI need to renew
+     */
     public static void refresh(CardManagerGUI cardManagerGUI) {
         loadFromFile();
         cardManagerGUI.model.setRowCount(0);
@@ -89,16 +99,10 @@ public class CardMethod {
 //        return true;
 //    }
 
-    private static boolean checkId(String id) {
-        loadFromFile();
-        for (Card card : cardList) {
-            if (Objects.equals(card.getId(), id)) {
-                return false;
-            }
-        }
-        return true;
-    }
 
+    /**
+     * used to load the file of json
+     */
     private static void loadFromFile() {
         // load from the 不同的 account
         File file = new File(jsonFilePath);
@@ -118,8 +122,77 @@ public class CardMethod {
 //        }
 //    }
 
+
+
+    /**
+     * used to get the new if with no same id
+     */
     @NotNull
-    private static String newExpirydate() {
+    private static String newId(String name) {
+        String id = "";
+        for (int i = 0; i < Math.min(name.length(), 3); i++) {
+            char c = name.replaceAll("\\s", "").charAt(i);
+            int k = c;
+            id += String.valueOf(k);
+        }
+        // try , 让重复的id不能再出现 + 每个人啊account 不超过10张卡
+        String insideId = id + getDifferentnumber(id);
+        while (!checkId(insideId)) {
+            insideId = id + getDifferentnumber(id);
+        }
+        id = insideId;
+        return id;
+    }
+
+    /**
+     * used to check the repeating of id
+     * @param id random id that need to check if there is same id in file
+     */
+    private static boolean checkId(String id) {
+        loadFromFile();
+        for (Card card : cardList) {
+            if (Objects.equals(card.getId(), id)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * used to check the random part of id is with same index
+     * @param id random id given by the name
+     */
+    private static String getDifferentnumber(String id) {
+        long num = Math.round((Math.pow(10, (10 - id.length())) - 1) * Math.random());
+        switch (10 - id.length()) {
+            case 1:
+                return String.valueOf(num);
+            case 2:
+                if (num < 10) {
+                    return "0" + num;
+                }
+                else {
+                    return String.valueOf(num);
+                }
+            case 3:
+                if (num < 10) {
+                    return "00" + num;
+                }
+                else if (num < 100) {
+                    return "0" + num;
+                }
+                else {
+                    return String.valueOf(num);
+                }
+        }
+        return String.valueOf(num);
+    }
+
+    /**
+     * used to get the new update date for month and year
+     */
+    @NotNull
+    private static String newDate() {
         String expiryDate;
         LocalDate today = LocalDate.now();
         String month;
@@ -134,25 +207,11 @@ public class CardMethod {
         return expiryDate;
     }
 
+    /**
+     * used to get the new code which is random with same index
+     */
     @NotNull
-    private static String newId(String name) {
-        String id = "";
-        for (int i = 0; i < Math.min(name.length(), 3); i++) {
-            char c = name.replaceAll("\\s", "").charAt(i);
-            int k = c;
-            id += String.valueOf(k);
-        }
-        // try , 让重复的id不能再出现 + 每个人啊account 不超过10张卡
-        String insideId = id + Math.round((Math.pow(10, (10 - id.length())) - 1) * Math.random());
-        while (!checkId(insideId)) {
-            insideId = id + Math.round((Math.pow(10, (10 - id.length())) - 1) * Math.random());
-        }
-        id = insideId;
-        return id;
-    }
-
-    @NotNull
-    private static String newSecurityCode() {
+    private static String newCode() {
         String securityCode;
         long num = Math.round(1000 * Math.random());
         if (num >= 100) {
