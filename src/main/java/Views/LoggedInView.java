@@ -56,7 +56,10 @@ public class LoggedInView extends JFrame {
         });
 
         JButton transactionsButton = new JButton("Transactions");
-        transactionsButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "Transactions functionality"));
+        transactionsButton.addActionListener(e -> {
+            new TransactionHistoryView(user).setVisible(true);
+            dispose();
+        });
 
         JButton cardsButton = new JButton("Cards");
         cardsButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "Cards functionality"));

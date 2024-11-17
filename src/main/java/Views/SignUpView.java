@@ -2,6 +2,7 @@ package Views;
 
 import DataObjects.User;
 import DataObjects.UsersController;
+import LogInController.SignUpController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,16 +48,10 @@ public class SignUpView extends JFrame {
             if (firstName.isEmpty() || lastName.isEmpty() || password.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Please fill all the fields.", "Sign Up Failed", JOptionPane.ERROR_MESSAGE);
             } else {
-                // TODO: generate userID randomly
+                SignUpController signUpController = new SignUpController();
+                // TODO: User user = signUpController.signUp(firstName, lastName, password)
 
-                int userID = 124;
-                double balance = 0;
-                User newUser = new User(userID, firstName, lastName, password, balance);
-
-                UsersController usersController = new UsersController();
-                usersController.addUser(newUser);
-
-                new LoggedInView(newUser).setVisible(true);
+                //new LoggedInView(user).setVisible(true);
                 dispose();
             }
         });

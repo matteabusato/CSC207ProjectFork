@@ -77,7 +77,7 @@ public class MakeTransactionView extends JFrame {
 
                         TransactionObject transaction = new TransactionObject(user.getUserID(), receiver.getUserID(), cardNumber, amount, LocalDateTime.now());
                         transactionController.addTransaction(user, transaction);
-                        // TODO: SWITCH TO TRANSACTION HISTORY VIEW
+
                         JOptionPane.showMessageDialog(this, "Transaction Successful!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
                         new LoggedInView(user).setVisible(true);
                         dispose();

@@ -1,12 +1,12 @@
 package DataObjects;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Data
 @NoArgsConstructor
-@Setter
-@Getter
 public class User {
     int userID;
     String firstName;
@@ -22,5 +22,42 @@ public class User {
         this.passwordHash = passwordHash;
         this.balance = balance;
         this.fileDirectory = firstName + lastName + userID + "/";
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getLastName() {
+        return lastName;
+    }
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+    public double getBalance() {
+        return balance;
+    }
+    public String getFileDirectory() {
+        return fileDirectory;
+    }
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+    public void setFileDirectory(String fileDirectory) {
+        this.fileDirectory = fileDirectory;
     }
 }

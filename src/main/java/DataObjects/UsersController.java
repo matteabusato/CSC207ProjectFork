@@ -21,7 +21,7 @@ public class UsersController {
     public User getUser(int userID) {
         List<User> users = controller.readData("Users.json", User.class);
         for (User user : users) {
-            if (user.getUserID() == userID) {
+            if (user != null && user.getUserID() == userID) {
                 return user;
             }
         }
@@ -31,7 +31,7 @@ public class UsersController {
     public void changeUser(int userID, User user) {
         List<User> users = controller.readData("Users.json", User.class);
         for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getUserID() == userID) {
+            if (user != null && users.get(i).getUserID() == userID) {
                 users.set(i, user);
             }
         }

@@ -30,7 +30,7 @@ public class TransactionController {
         usersController.changeUser(receiverID, receiver);
     }
 
-    public List<TransactionObject> showTransactionHistory(User user) {
+    public List<TransactionObject> getTransactionHistory(User user) {
         List<TransactionObject> transactions = controller.readData(user.getFileDirectory() + "TransactionHistory.json", TransactionObject.class);
         return transactions;
     }
