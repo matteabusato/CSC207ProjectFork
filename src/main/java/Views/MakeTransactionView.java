@@ -10,7 +10,7 @@ import java.awt.*;
 import java.time.LocalDateTime;
 
 public class MakeTransactionView extends JFrame {
-    User user;
+    private User user;
     private JTextField cardField;
     private JTextField receiverIDField;
     private JTextField amountField;
@@ -23,6 +23,14 @@ public class MakeTransactionView extends JFrame {
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
+
+        setLayout(new BorderLayout());
+
+        JPanel logoutPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        JButton logoutButton = new JButton("Logout");
+        logoutButton.setPreferredSize(new Dimension(80, 25)); // Small size
+        logoutPanel.add(logoutButton);
+        add(logoutPanel, BorderLayout.NORTH);
 
         JPanel transactionPanel = new JPanel();
         transactionPanel.setLayout(new GridLayout(4, 2, 10, 10));
@@ -44,7 +52,7 @@ public class MakeTransactionView extends JFrame {
         transactionPanel.add(new JLabel());
         transactionPanel.add(processButton);
 
-        add(transactionPanel);
+        add(transactionPanel, BorderLayout.CENTER);
 
         processButton.addActionListener(e -> {
             String cardNumber = cardField.getText();
@@ -59,22 +67,30 @@ public class MakeTransactionView extends JFrame {
                     double amount = Double.parseDouble(amountString);
                     if (amount <= 0) {
                         JOptionPane.showMessageDialog(this, "Amount should be greater than zero.", "Transaction Failed", JOptionPane.ERROR_MESSAGE);
-                    } else if (amount >= user.getBalance()) {
+                    } else if (amount > user.getBalance()) {
                         JOptionPane.showMessageDialog(this, "Amount should be less or equal than the current balance", "Transaction Failed", JOptionPane.ERROR_MESSAGE);
                     } else {
+                        TransactionController transactionController = new TransactionController();
+
                         UsersController usersController = new UsersController();
                         User receiver = usersController.getUser(receiverID);
-                        TransactionController transactionController = new TransactionController();
+
                         TransactionObject transaction = new TransactionObject(user.getUserID(), receiver.getUserID(), cardNumber, amount, LocalDateTime.now());
                         transactionController.addTransaction(user, transaction);
                         // TODO: SWITCH TO TRANSACTION HISTORY VIEW
                         JOptionPane.showMessageDialog(this, "Transaction Successful!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
+                        new LoggedInView(user).setVisible(true);
                         dispose();
                     }
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(this, "Please enter a valid amount.", "Transaction Failed", JOptionPane.ERROR_MESSAGE);
                 }
             }
+        });
+
+        logoutButton.addActionListener(e -> {
+            new WelcomeView().setVisible(true);
+            dispose();
         });
     }
 }

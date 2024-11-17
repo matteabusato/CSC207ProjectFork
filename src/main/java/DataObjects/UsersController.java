@@ -27,4 +27,14 @@ public class UsersController {
         }
         return null;
     }
+
+    public void changeUser(int userID, User user) {
+        List<User> users = controller.readData("Users.json", User.class);
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getUserID() == userID) {
+                users.set(i, user);
+            }
+        }
+        controller.saveData("Users.json", users, User.class);
+    }
 }
