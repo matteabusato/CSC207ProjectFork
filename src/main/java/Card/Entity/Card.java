@@ -1,23 +1,31 @@
 package Card.Entity;
 
-public class Card implements CardInterface {
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-    private final String Id ;
-    private final String name;
-    private final String date;
-    private final int code;
-    private final float amount;
+public class Card {
 
-    public Card(String id, String name, String date, int code) {
-        this.Id = id;
+     private final String id ;
+     private final String name;
+     private final String date;
+     private final String code;
+     private float amount;
+
+    @JsonCreator
+    public Card(@JsonProperty("id") String id,
+                @JsonProperty("name")String name,
+                @JsonProperty("expiryDate")String date,
+                @JsonProperty("securityCode")String code) {
+        this.id = id;
         this.name = name;
         this.date = date;
         this.code = code;
         this.amount = 0;
     }
 
+    @JsonProperty
     public String getId() {
-        return this.Id;
+        return this.id;
     }
 
     public String getName() {
@@ -28,11 +36,15 @@ public class Card implements CardInterface {
         return this.date;
     }
 
-    public int getCode() {
+    public String getCode() {
         return this.code;
     }
 
     public float getAmount() {
         return this.amount;
+    }
+
+    public void updateAmount(float newAmount) {
+        this.amount = newAmount;
     }
 }
