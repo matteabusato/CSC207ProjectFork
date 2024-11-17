@@ -31,10 +31,6 @@ public class CardMethod {
 
         try {
             // for loop used to show when the time login with the account number
-            for (Card card : cardList) {
-                cardManagerGUI.model.addRow
-                        (new Object[]{card.getId(), card.getName(), card.getDate(), card.getCode(),card.getAmount() + "$"});
-            }
             //
             if (cardList.size() >= 10) {
                 JOptionPane.showMessageDialog(cardManagerGUI.frame, "Too much cards", "Error", JOptionPane.ERROR_MESSAGE);
@@ -44,18 +40,35 @@ public class CardMethod {
                 cardList.add(newCard);
                 cardManagerGUI.model.addRow(new Object[]{id, name, expiryDate, securityCode, newCard.getAmount()});
                 objectMapper.writeValue(new File(jsonFilePath), cardList);
-                cardManagerGUI.idField.setText("");
                 cardManagerGUI.nameField.setText("");
-                cardManagerGUI.expiryDateField.setText("");
-                cardManagerGUI.securityCodeField.setText("");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        refresh(cardManagerGUI);
     }
 
-    public void deleteCard() {
+    public static void deleteCard(CardManagerGUI cardManagerGUI) {
+        int selectedRow = cardManagerGUI.table.getSelectedRow();
+        if (selectedRow == - 1) {
+            JOptionPane.showMessageDialog(cardManagerGUI.frame, "Please select a row");
+        } else if (cardList.get(selectedRow).getAmount() != 0) {
+            JOptionPane.showMessageDialog(cardManagerGUI.frame, "Please make the balance to 0 first");
+        }
+       else {
+            cardList.remove(selectedRow);
+            CardSave.saveCards(cardList);
+       }
+       refresh(cardManagerGUI);
+    }
 
+    public static void refresh(CardManagerGUI cardManagerGUI) {
+        loadFromFile();
+        cardManagerGUI.model.setRowCount(0);
+        for (Card card : cardList) {
+            cardManagerGUI.model.addRow
+                    (new Object[]{card.getId(), card.getName(), card.getDate(), card.getCode(),card.getAmount() + "$"});
+        }
     }
 //    private static boolean checkId(String id) {
 //        File file = new File(jsonFilePath);

@@ -29,6 +29,7 @@ public class CardManagerGUI {
         String[] columns = {"ID", "Name", "Expiry Date", "Security Code", "Amount"};
         model = new DefaultTableModel(columns, 0);
         table = new JTable(model);
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         JScrollPane scrollPane = new JScrollPane(table);
 
         // input frame
@@ -67,7 +68,7 @@ public class CardManagerGUI {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                deleteCard();
+                CardMethod.deleteCard(CardManagerGUI.this);
             }
         });
 
@@ -79,10 +80,7 @@ public class CardManagerGUI {
         frame.add(scrollPane, BorderLayout.CENTER);
 
         frame.setVisible(true);
-    }
-
-    private void deleteCard() {
-
+        CardMethod.refresh(CardManagerGUI.this);
     }
 
     public static void main(String[] args) {
