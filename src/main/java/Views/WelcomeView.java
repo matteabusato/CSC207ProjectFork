@@ -55,5 +55,4 @@ public class WelcomeView extends JFrame {
             }
         });
     }
-
 }
