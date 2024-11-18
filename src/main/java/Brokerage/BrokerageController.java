@@ -1,6 +1,5 @@
 package Brokerage;
 
-import Views.BrokerageView;
 import com.crazzyghost.alphavantage.AlphaVantage;
 import com.crazzyghost.alphavantage.Config;
 import com.crazzyghost.alphavantage.parameters.DataType;
@@ -25,10 +24,10 @@ import java.util.List;
 
 public class BrokerageController {
 
-    private final BrokerageView view;
+    private final BrokeragePresenter view;
     static ImageIcon customIcon = new ImageIcon("src/logo.png");
 
-    public BrokerageController(BrokerageView view) {
+    public BrokerageController(BrokeragePresenter view) {
         this.view = view;
         initAlphaVantage();
 

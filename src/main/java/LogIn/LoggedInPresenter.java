@@ -1,6 +1,7 @@
 package LogIn;
 
 import Brokerage.BrokerageController;
+import Brokerage.BrokeragePresenter;
 import DataObjects.User;
 import Views.BrokerageView;
 import Transaction.MakeTransactionPresenter;
@@ -72,7 +73,7 @@ public class LoggedInPresenter extends JFrame {
 
         JButton assetsButton = new JButton("Assets");
         assetsButton.addActionListener(e -> {
-            BrokerageView view = new BrokerageView();
+            BrokeragePresenter view = new BrokeragePresenter();
             view.setVisible(true);
             new BrokerageController(view);
             dispose();

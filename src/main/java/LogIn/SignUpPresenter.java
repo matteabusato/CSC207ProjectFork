@@ -5,6 +5,7 @@ import LogIn.SignUpController;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
 
 public class SignUpPresenter extends JFrame {
 
