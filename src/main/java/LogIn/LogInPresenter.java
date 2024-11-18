@@ -1,12 +1,11 @@
-package Views;
+package LogIn;
 
 import javax.swing.*;
 import java.awt.*;
-import LogInController.LogInController;
 
-public class LogInView extends JFrame {
+public class LogInPresenter extends JFrame {
 
-    public LogInView() {
+    public LogInPresenter() {
         setTitle("Log In");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -49,7 +48,7 @@ public class LogInView extends JFrame {
             logInController.login(userID, firstName, lastName, password);
 
             if (logInController.getLoggedUser() != null) {
-                new LoggedInView(logInController.getLoggedUser()).setVisible(true);
+                new LoggedInPresenter(logInController.getLoggedUser()).setVisible(true);
                 dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Invalid username, first name, last name, or password.", "Login Failed", JOptionPane.ERROR_MESSAGE);

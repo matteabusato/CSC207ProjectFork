@@ -1,18 +1,16 @@
-package Views;
+package LogIn;
 
 import DataObjects.User;
-import DataObjects.UsersController;
-import LogInController.SignUpController;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class SignUpView extends JFrame {
+public class SignUpPresenter extends JFrame {
 
     private JTextField firstNameField, lastNameField;
     private JPasswordField passwordField;
 
-    public SignUpView() {
+    public SignUpPresenter() {
         setTitle("Sign Up");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -52,7 +50,7 @@ public class SignUpView extends JFrame {
                 // TODO: fix signUp
                 User user = signUpController.addUser(firstName, lastName, password);
 
-                new LoggedInView(user).setVisible(true);
+                new LoggedInPresenter(user).setVisible(true);
                 dispose();
             }
         });

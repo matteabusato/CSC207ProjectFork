@@ -1,13 +1,13 @@
-package Views;
+package LogIn;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class WelcomeView extends JFrame {
+public class WelcomePresenter extends JFrame {
 
-    public WelcomeView() {
+    public WelcomePresenter() {
         setTitle("Welcome to Crazy Bank");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,7 +33,7 @@ public class WelcomeView extends JFrame {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new LogInView().setVisible(true);
+                new LogInPresenter().setVisible(true);
                 dispose();
             }
         });
@@ -41,7 +41,7 @@ public class WelcomeView extends JFrame {
         signUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new SignUpView().setVisible(true);
+                new SignUpPresenter().setVisible(true);
                 dispose();
             }
         });
@@ -51,7 +51,7 @@ public class WelcomeView extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new WelcomeView().setVisible(true);
+                new WelcomePresenter().setVisible(true);
             }
         });
     }

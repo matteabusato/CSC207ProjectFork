@@ -1,22 +1,22 @@
-package Views;
+package Transaction;
 
 import DataObjects.User;
 import DataObjects.UsersController;
-import Transaction.TransactionController;
-import Transaction.TransactionObject;
+import LogIn.LoggedInPresenter;
+import LogIn.WelcomePresenter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDateTime;
 
-public class MakeTransactionView extends JFrame {
+public class MakeTransactionPresenter extends JFrame {
     private User user;
     private JTextField cardField;
     private JTextField receiverIDField;
     private JTextField amountField;
     private JButton processButton;
 
-    public MakeTransactionView(User user) {
+    public MakeTransactionPresenter(User user) {
         this.user = user;
 
         setTitle("Make Transaction");
@@ -79,7 +79,7 @@ public class MakeTransactionView extends JFrame {
                         transactionController.addTransaction(user, transaction);
 
                         JOptionPane.showMessageDialog(this, "Transaction Successful!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
-                        new LoggedInView(user).setVisible(true);
+                        new LoggedInPresenter(user).setVisible(true);
                         dispose();
                     }
                 } catch (NumberFormatException ex) {
@@ -89,7 +89,7 @@ public class MakeTransactionView extends JFrame {
         });
 
         logoutButton.addActionListener(e -> {
-            new WelcomeView().setVisible(true);
+            new WelcomePresenter().setVisible(true);
             dispose();
         });
     }
