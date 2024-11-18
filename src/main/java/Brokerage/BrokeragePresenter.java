@@ -1,10 +1,10 @@
-package Views;
+package Brokerage;
 
 import javax.swing.*;
 import java.awt.*;
 
 
-public class BrokerageView extends JFrame {
+public class BrokeragePresenter extends JFrame {
 
     private final JTextField stockNameField;
     private final JLabel stockPriceLabel;
@@ -13,7 +13,7 @@ public class BrokerageView extends JFrame {
     private final JFrame frame;
 
 
-    public BrokerageView() {
+    public BrokeragePresenter() {
         // Initialize Swing UI
         frame = new JFrame("Crazy Bank - Asset Managing");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -6,6 +6,7 @@ import LogInController.SignUpController;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
 
 public class SignUpView extends JFrame {
 
@@ -43,7 +44,7 @@ public class SignUpView extends JFrame {
         signUpButton.addActionListener(e -> {
             String firstName = firstNameField.getText();
             String lastName = lastNameField.getText();
-            String password = passwordField.getText();
+            String password = Arrays.toString(passwordField.getPassword());
 
             if (firstName.isEmpty() || lastName.isEmpty() || password.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Please fill all the fields.", "Sign Up Failed", JOptionPane.ERROR_MESSAGE);
