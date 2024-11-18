@@ -1,5 +1,6 @@
 package Views;
 
+import Brokerage.BrokerageController;
 import DataObjects.User;
 
 import javax.swing.*;
@@ -69,7 +70,9 @@ public class LoggedInView extends JFrame {
 
         JButton assetsButton = new JButton("Assets");
         assetsButton.addActionListener(e -> {
-            new BrokerageView().setVisible(true);
+            BrokerageView view = new BrokerageView();
+            view.setVisible(true);
+            new BrokerageController(view);
             dispose();
         });
 
