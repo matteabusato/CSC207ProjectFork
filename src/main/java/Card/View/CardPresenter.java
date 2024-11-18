@@ -1,6 +1,6 @@
 package Card.View;
 
-import Card.Method.CardMethod;
+import Card.Method.CardController;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -8,16 +8,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CardManagerGUI {
+public class CardPresenter {
     public JFrame frame;
     public JTable table;
     public DefaultTableModel model;
     public JTextField nameField;
-//    public JTextField idField;
-//    public JTextField expiryDateField;
-//    public JTextField securityCodeField;
 
-    public CardManagerGUI() {
+    public CardPresenter() {
         // Main frame
         frame = new JFrame("Card Manager");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,33 +31,18 @@ public class CardManagerGUI {
 
         // input frame
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(2, 2, 10, 10));
+        inputPanel.setLayout(new GridLayout(3, 2, 10, 10));
 
         inputPanel.add(new JLabel("Name:"));
         nameField = new JTextField();
         inputPanel.add(nameField);
 
-//        inputPanel.add(new JLabel("ID:"));
-//        idField = new JTextField();
-//        idField.setEnabled(false);
-//        inputPanel.add(idField);
-//
-//        inputPanel.add(new JLabel("Expiry Date:"));
-//        expiryDateField = new JTextField();
-//        expiryDateField.setEnabled(false);
-//        inputPanel.add(expiryDateField);
-//
-//        inputPanel.add(new JLabel("Security Code:"));
-//        securityCodeField = new JTextField();
-//        securityCodeField.setEnabled(false);
-//        inputPanel.add(securityCodeField);
-
-        // Button
+        //Button
         JButton addButton = new JButton("Add Card");
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CardMethod.addCard(CardManagerGUI.this);
+                CardController.addCard(CardPresenter.this);
             }
         });
 
@@ -68,27 +50,31 @@ public class CardManagerGUI {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CardMethod.deleteCard(CardManagerGUI.this);
+                CardController.deleteCard(CardPresenter.this);
             }
         });
 
+        JButton backButton = new JButton("BACK TO MAIN");
+        backButton.addActionListener(e -> System.exit(0));
+
         JPanel theButton = new JPanel();
-        theButton.setLayout(new FlowLayout(FlowLayout.LEADING));
+        theButton.setLayout(new GridLayout(1,3));
 
         theButton.add(addButton);
         theButton.add(deleteButton);
+        theButton.add(backButton);
 
         inputPanel.add(theButton);
 
-        // 将输入面板和表格添加到主框架
+        // final frame
         frame.add(inputPanel, BorderLayout.NORTH);
         frame.add(scrollPane, BorderLayout.CENTER);
 
         frame.setVisible(true);
-        CardMethod.refresh(CardManagerGUI.this);
+        CardController.refresh(CardPresenter.this);
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new CardManagerGUI());
+        SwingUtilities.invokeLater(() -> new CardPresenter());
     }
 }

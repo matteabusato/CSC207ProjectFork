@@ -1,104 +1,87 @@
 package Card.Method;
 
 import Card.Entity.Card;
-import Card.View.CardManagerGUI;
+import Card.View.CardPresenter;
 import org.jetbrains.annotations.NotNull;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class CardMethod {
+public class CardController {
+    private static final String FILE_PATH = "cards.json";
     private static final String jsonFilePath = "cards.json";
     private static List<Card> cardList = new ArrayList<>();
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
     /**
      * used to add the card and renew the GUI
-     * @param cardManagerGUI the GUI need to renew
+     * @param cardPresenter the GUI need to renew
      */
-    public static void addCard(CardManagerGUI cardManagerGUI) {
+    public static void addCard(CardPresenter cardPresenter) {
         loadFromFile();
-        String name = cardManagerGUI.nameField.getText();
+        String name = cardPresenter.nameField.getText();
         String securityCode = newCode();
         String id = newId(name);
-        // 加入新的判断，例如不能出现同样id
         String expiryDate = newDate();
 
         try {
-            // for loop used to show when the time login with the account number
-            //
             if (cardList.size() >= 10) {
-                JOptionPane.showMessageDialog(cardManagerGUI.frame, "Too much cards", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog
+                        (cardPresenter.frame, "Too much cards", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 // 创建新的card
                 Card newCard = new Card(id, name, expiryDate, securityCode);
                 cardList.add(newCard);
-                cardManagerGUI.model.addRow(new Object[]{id, name, expiryDate, securityCode, newCard.getAmount()});
+                cardPresenter.model.addRow(new Object[]{id, name, expiryDate, securityCode, newCard.getAmount()});
                 objectMapper.writeValue(new File(jsonFilePath), cardList);
-                cardManagerGUI.nameField.setText("");
+                cardPresenter.nameField.setText("");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        refresh(cardManagerGUI);
+        refresh(cardPresenter);
     }
 
     /**
      * used to delete the card and renew the GUI
-     * @param cardManagerGUI the GUI need to renew
+     * @param cardPresenter the GUI need to renew
      */
-    public static void deleteCard(CardManagerGUI cardManagerGUI) {
-        int selectedRow = cardManagerGUI.table.getSelectedRow();
+    public static void deleteCard(CardPresenter cardPresenter) {
+        int selectedRow = cardPresenter.table.getSelectedRow();
         if (selectedRow == - 1) {
-            JOptionPane.showMessageDialog(cardManagerGUI.frame, "Please select a row");
+            JOptionPane.showMessageDialog(cardPresenter.frame, "Please select a row");
         } else if (cardList.get(selectedRow).getAmount() != 0) {
-            JOptionPane.showMessageDialog(cardManagerGUI.frame, "Please make the balance to 0 first");
+            JOptionPane.showMessageDialog(cardPresenter.frame, "Please make the balance to 0 first");
         }
        else {
             cardList.remove(selectedRow);
-            CardSave.saveCards(cardList);
+            saveCards(cardList);
        }
-       refresh(cardManagerGUI);
+       refresh(cardPresenter);
     }
 
     /**
      * used to renew the GUI as a help function to add/delete card
-     * @param cardManagerGUI the GUI need to renew
+     * @param cardPresenter the GUI need to renew
      */
-    public static void refresh(CardManagerGUI cardManagerGUI) {
+    public static void refresh(CardPresenter cardPresenter) {
         loadFromFile();
-        cardManagerGUI.model.setRowCount(0);
+        cardPresenter.model.setRowCount(0);
         for (Card card : cardList) {
-            cardManagerGUI.model.addRow
+            cardPresenter.model.addRow
                     (new Object[]{card.getId(), card.getName(), card.getDate(), card.getCode(),card.getAmount() + "$"});
         }
     }
-//    private static boolean checkId(String id) {
-//        File file = new File(jsonFilePath);
-//        if (file.exists()) {
-//            try {
-//                List<Card> checkList = objectMapper.readValue(file, new TypeReference<>() {
-//                });
-//                for (Card card : checkList) {
-//                    if (Objects.equals(card.getId(), id)) {
-//                        return false;
-//                    }
-//                }
-//            } catch (IOException e) {
-//                System.out.println("Error get new id: " + e.getMessage());
-//                return true;
-//            }
-//        }
-//        return true;
-//    }
-
 
     /**
      * used to load the file of json
@@ -115,15 +98,6 @@ public class CardMethod {
         }
     }
 
-//    private void saveToFile() {
-//        try {
-//            objectMapper.writeValue(new File(jsonFilePath), cardList);
-//        } catch (IOException e) {
-//        }
-//    }
-
-
-
     /**
      * used to get the new if with no same id
      */
@@ -135,7 +109,6 @@ public class CardMethod {
             int k = c;
             id += String.valueOf(k);
         }
-        // try , 让重复的id不能再出现 + 每个人啊account 不超过10张卡
         String insideId = id + getDifferentnumber(id);
         while (!checkId(insideId)) {
             insideId = id + getDifferentnumber(id);
@@ -163,7 +136,7 @@ public class CardMethod {
      * @param id random id given by the name
      */
     private static String getDifferentnumber(String id) {
-        long num = Math.round((Math.pow(10, (10 - id.length())) - 1) * Math.random());
+        long num = Math.round((Math.pow(10, (10 - id.length()))) * Math.random());
         switch (10 - id.length()) {
             case 1:
                 return String.valueOf(num);
@@ -222,5 +195,35 @@ public class CardMethod {
             securityCode = "00" + num;
         }
         return securityCode;
+    }
+
+    /**
+     * used to save the updated data in JSON file
+     * @param cards cards given in CardMethod CardList
+     */
+    public static void saveCards(List<Card> cards) {
+        JSONArray jsonArray = new JSONArray();
+        for (Card card : cards) {
+            jsonArray.put(toJSONObject(card));
+        }
+        try (FileWriter writer = new FileWriter(FILE_PATH)) {
+            writer.write(jsonArray.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * used to transfer the card into the String to store
+     * @param card one single card with the parameters
+     */
+    public static JSONObject toJSONObject(Card card) {
+        JSONObject json = new JSONObject();
+        json.put("name", card.getName());
+        json.put("id", card.getId());
+        json.put("expiryDate", card.getDate());
+        json.put("securityCode", card.getCode());
+        json.put("amount", card.getAmount());
+        return json;
     }
 }
