@@ -1,4 +1,4 @@
-package LogIn;
+package Views;
 
 import DataObjects.User;
 
@@ -47,10 +47,9 @@ public class SignUpPresenter extends JFrame {
                 JOptionPane.showMessageDialog(this, "Please fill all the fields.", "Sign Up Failed", JOptionPane.ERROR_MESSAGE);
             } else {
                 SignUpController signUpController = new SignUpController();
-                // TODO: fix signUp
-                User user = signUpController.addUser(firstName, lastName, password);
+                // TODO: User user = signUpController.signUp(firstName, lastName, password)
 
-                new LoggedInPresenter(user).setVisible(true);
+                //new LoggedInView(user).setVisible(true);
                 dispose();
             }
         });
