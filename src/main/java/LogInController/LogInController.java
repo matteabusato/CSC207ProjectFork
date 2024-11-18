@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 public class LogInController {
     UsersController usersController = new UsersController();
     User loggedUser = null;
@@ -26,5 +25,21 @@ public class LogInController {
     }
     public void logout() {
         loggedUser = null;
+    }
+
+    public void setUsersController(UsersController usersController) {
+        this.usersController = usersController;
+    }
+
+    public void setLoggedUser(User loggedUser) {
+        this.loggedUser = loggedUser;
+    }
+
+    public UsersController getUsersController() {
+        return usersController;
+    }
+
+    public User getLoggedUser() {
+        return loggedUser;
     }
 }
