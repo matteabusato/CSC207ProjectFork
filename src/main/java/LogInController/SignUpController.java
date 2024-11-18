@@ -10,14 +10,16 @@ public class SignUpController {
     public SignUpController() {
     }
     
-    private void addUser(String firstName, String lastName, String password){
+    public User addUser(String firstName, String lastName, String password){
         int userID = generateUserID();
-        String passwordHash = generatePassword();
+        String passwordHash = password;
         double balance = 0;
         String fileDirectory = createFileDirectory(firstName, lastName, userID);
 
         User user = new User(userID, firstName, lastName, passwordHash, balance); 
         usersController.addUser(user);
+
+        return user;
     }
 
     private String generatePassword() {
