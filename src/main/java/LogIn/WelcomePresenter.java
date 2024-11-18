@@ -1,5 +1,7 @@
 package LogIn;
 
+import Views.SignUpPresenter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
