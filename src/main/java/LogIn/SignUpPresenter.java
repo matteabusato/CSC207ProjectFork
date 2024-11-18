@@ -1,6 +1,7 @@
 package Views;
 
 import DataObjects.User;
+import LogIn.SignUpController;
 
 import javax.swing.*;
 import java.awt.*;
