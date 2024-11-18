@@ -1,5 +1,6 @@
 package Views;
 
+import Brokerage.BrokerageController;
 import DataObjects.User;
 
 import javax.swing.*;
@@ -68,7 +69,12 @@ public class LoggedInView extends JFrame {
         atmsButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "Find ATMs near you functionality"));
 
         JButton assetsButton = new JButton("Assets");
-        assetsButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "Assets functionality"));
+        assetsButton.addActionListener(e -> {
+            BrokerageView view = new BrokerageView();
+            view.setVisible(true);
+            new BrokerageController(view);
+            dispose();
+        });
 
         JButton loansButton = new JButton("Loans");
         loansButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "Loans functionality"));
