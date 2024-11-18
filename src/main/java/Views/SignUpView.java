@@ -49,7 +49,7 @@ public class SignUpView extends JFrame {
                 JOptionPane.showMessageDialog(this, "Please fill all the fields.", "Sign Up Failed", JOptionPane.ERROR_MESSAGE);
             } else {
                 SignUpController signUpController = new SignUpController();
-                // TODO:
+                // TODO: fix signUp
                 User user = signUpController.addUser(firstName, lastName, password);
 
                 new LoggedInView(user).setVisible(true);
