@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class BrokerageView {
+public class BrokerageView extends JFrame {
 
     private final JTextField stockNameField;
     private final JLabel stockPriceLabel;
