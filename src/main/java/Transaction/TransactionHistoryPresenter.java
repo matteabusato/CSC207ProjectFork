@@ -1,8 +1,7 @@
-package Views;
+package Transaction;
 
 import DataObjects.User;
-import Transaction.TransactionController;
-import Transaction.TransactionObject;
+import LogIn.WelcomePresenter;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -10,10 +9,10 @@ import java.awt.*;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class TransactionHistoryView extends JFrame {
+public class TransactionHistoryPresenter extends JFrame {
     private User user;
 
-    public TransactionHistoryView(User user) {
+    public TransactionHistoryPresenter(User user) {
         this.user = user;
 
         setTitle("Transaction History");
@@ -52,7 +51,7 @@ public class TransactionHistoryView extends JFrame {
         JButton logoutButton = new JButton("Logout");
         logoutButton.setPreferredSize(new Dimension(80, 25));
         logoutButton.addActionListener(e -> {
-            new WelcomeView().setVisible(true);
+            new WelcomePresenter().setVisible(true);
             dispose();
         });
         logoutPanel.add(logoutButton);

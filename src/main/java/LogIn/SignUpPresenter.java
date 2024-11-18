@@ -1,19 +1,18 @@
 package Views;
 
 import DataObjects.User;
-import DataObjects.UsersController;
-import LogInController.SignUpController;
+import LogIn.SignUpController;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
 
-public class SignUpView extends JFrame {
+public class SignUpPresenter extends JFrame {
 
     private JTextField firstNameField, lastNameField;
     private JPasswordField passwordField;
 
-    public SignUpView() {
+    public SignUpPresenter() {
         setTitle("Sign Up");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -50,10 +49,9 @@ public class SignUpView extends JFrame {
                 JOptionPane.showMessageDialog(this, "Please fill all the fields.", "Sign Up Failed", JOptionPane.ERROR_MESSAGE);
             } else {
                 SignUpController signUpController = new SignUpController();
-                // TODO:
-                User user = signUpController.addUser(firstName, lastName, password);
+                // TODO: User user = signUpController.signUp(firstName, lastName, password)
 
-                new LoggedInView(user).setVisible(true);
+                //new LoggedInView(user).setVisible(true);
                 dispose();
             }
         });

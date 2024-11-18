@@ -1,9 +1,8 @@
-package LogInController;
+package LogIn;
 
 import DataObjects.User;
 import DataObjects.UsersController;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor

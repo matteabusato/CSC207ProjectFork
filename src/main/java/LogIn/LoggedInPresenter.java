@@ -1,16 +1,19 @@
-package Views;
+package LogIn;
 
 import Brokerage.BrokerageController;
 import Brokerage.BrokeragePresenter;
 import DataObjects.User;
+import Views.BrokerageView;
+import Transaction.MakeTransactionPresenter;
+import Transaction.TransactionHistoryPresenter;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class LoggedInView extends JFrame {
+public class LoggedInPresenter extends JFrame {
     private User user;
 
-    public LoggedInView(User user) {
+    public LoggedInPresenter(User user) {
         this.user = user;
 
         setTitle("Logged In View");
@@ -52,13 +55,13 @@ public class LoggedInView extends JFrame {
 
         JButton sendMoneyButton = new JButton("Send Money");
         sendMoneyButton.addActionListener(e -> {
-            new MakeTransactionView(user).setVisible(true);
+            new MakeTransactionPresenter(user).setVisible(true);
             dispose();
         });
 
         JButton transactionsButton = new JButton("Transactions");
         transactionsButton.addActionListener(e -> {
-            new TransactionHistoryView(user).setVisible(true);
+            new TransactionHistoryPresenter(user).setVisible(true);
             dispose();
         });
 
@@ -89,7 +92,7 @@ public class LoggedInView extends JFrame {
         add(buttonPanel, BorderLayout.CENTER);
 
         logoutButton.addActionListener(e -> {
-            new WelcomeView().setVisible(true);
+            new WelcomePresenter().setVisible(true);
             dispose();
         });
     }

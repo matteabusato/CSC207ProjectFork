@@ -1,4 +1,4 @@
-package LogInController;
+package LogIn;
 
 import DataObjects.User;
 import DataObjects.UsersController;
