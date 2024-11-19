@@ -1,6 +1,7 @@
 package Transaction;
 
 import DataAccess.DataAccessController;
+import DataAccess.DataAccessInterface;
 import DataObjects.User;
 import DataObjects.UsersController;
 import lombok.AllArgsConstructor;
@@ -10,12 +11,13 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class TransactionController {
+public class TransactionController implements DataAccessInterface<TransactionObject> {
 
     DataAccessController controller = new DataAccessController();
     UsersController usersController = new UsersController();
 
-    public void addTransaction(User user, TransactionObject transaction) {
+    @Override
+    public void saveData(User user, TransactionObject transaction) {
         List<TransactionObject> transactions = controller.readData(user.getFileDirectory() + "TransactionHistory.json", TransactionObject.class);
         transactions.add(transaction);
         controller.saveData(user.getFileDirectory() + "TransactionHistory.json", transactions, TransactionObject.class);
@@ -30,7 +32,8 @@ public class TransactionController {
         usersController.changeUser(receiverID, receiver);
     }
 
-    public List<TransactionObject> getTransactionHistory(User user) {
+    @Override
+    public List<TransactionObject> readData(User user) {
         List<TransactionObject> transactions = controller.readData(user.getFileDirectory() + "TransactionHistory.json", TransactionObject.class);
         return transactions;
     }

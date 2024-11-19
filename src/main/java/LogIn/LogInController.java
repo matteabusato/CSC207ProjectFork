@@ -2,43 +2,30 @@ package LogIn;
 
 import DataObjects.User;
 import DataObjects.UsersController;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
 @NoArgsConstructor
 public class LogInController {
+    private LogInPresenter logInPresenter = new LogInPresenter(this);
+    private LoggedInController loggedInController = new LoggedInController();
     UsersController usersController = new UsersController();
     User loggedUser = null;
 
-    public void login(int userID, String firstName, String lastName, String password) {
-        // TODO: add call to api for hashing password
-        if (usersController.getUser(userID) != null){
-            User user = usersController.getUser(userID);
-            if (user.getPasswordHash().equals(password)){
-                loggedUser = user;
-            }
-            else {
-            }
+    public void launch(){
+        logInPresenter.showView();
+    }
+
+    public boolean logInTriggered(int userID, String password){
+        User user = usersController.getUser(userID);
+        if (user != null && user.getPasswordHash().equals(password)){
+            loggedUser = user;
+            return true;
         }
-    }
-    public void logout() {
-        loggedUser = null;
+        return false;
     }
 
-    public void setUsersController(UsersController usersController) {
-        this.usersController = usersController;
-    }
-
-    public void setLoggedUser(User loggedUser) {
-        this.loggedUser = loggedUser;
-    }
-
-    public UsersController getUsersController() {
-        return usersController;
-    }
-
-    public User getLoggedUser() {
-        return loggedUser;
+    public void onLoginSuccess() {
+        logInPresenter.disposeView();
+        loggedInController.launch();
     }
 }

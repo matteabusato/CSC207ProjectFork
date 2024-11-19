@@ -33,7 +33,7 @@ public class TransactionHistoryPresenter extends JFrame {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
         TransactionController transactionController = new TransactionController();
-        List<TransactionObject> transactions = transactionController.getTransactionHistory(user);
+        List<TransactionObject> transactions = transactionController.readData(user);
         for (TransactionObject transaction : transactions) {
             String[] rowData = {
                     String.valueOf(transaction.getTransactionID()),

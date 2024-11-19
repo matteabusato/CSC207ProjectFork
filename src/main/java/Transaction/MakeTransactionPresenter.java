@@ -76,7 +76,7 @@ public class MakeTransactionPresenter extends JFrame {
                         User receiver = usersController.getUser(receiverID);
 
                         TransactionObject transaction = new TransactionObject(user.getUserID(), receiver.getUserID(), cardNumber, amount, LocalDateTime.now());
-                        transactionController.addTransaction(user, transaction);
+                        transactionController.saveData(user, transaction);
 
                         JOptionPane.showMessageDialog(this, "Transaction Successful!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
                         new LoggedInPresenter(user).setVisible(true);
