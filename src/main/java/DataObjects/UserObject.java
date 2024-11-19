@@ -1,13 +1,11 @@
 package DataObjects;
 
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Data
 @NoArgsConstructor
-public class User {
+public class UserObject {
     int userID;
     String firstName;
     String lastName;
@@ -15,7 +13,7 @@ public class User {
     double balance;
     String fileDirectory;
 
-    public User(int userID, String firstName, String lastName, String passwordHash, double balance) {
+    public UserObject(int userID, String firstName, String lastName, String passwordHash, double balance) {
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;

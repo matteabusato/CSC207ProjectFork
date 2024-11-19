@@ -1,22 +1,22 @@
 package Transaction;
 
-import DataObjects.User;
+import DataObjects.UserObject;
 import DataObjects.UsersController;
-import LogIn.LoggedInPresenter;
-import LogIn.WelcomePresenter;
+import LogIn.LoggedIn.LoggedInPresenter;
+import LogIn.Welcome.WelcomePresenter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDateTime;
 
 public class MakeTransactionPresenter extends JFrame {
-    private User user;
+    private UserObject user;
     private JTextField cardField;
     private JTextField receiverIDField;
     private JTextField amountField;
     private JButton processButton;
 
-    public MakeTransactionPresenter(User user) {
+    public MakeTransactionPresenter(UserObject user) {
         this.user = user;
 
         setTitle("Make Transaction");
@@ -73,7 +73,7 @@ public class MakeTransactionPresenter extends JFrame {
                         TransactionController transactionController = new TransactionController();
 
                         UsersController usersController = new UsersController();
-                        User receiver = usersController.getUser(receiverID);
+                        UserObject receiver = usersController.getUser(receiverID);
 
                         TransactionObject transaction = new TransactionObject(user.getUserID(), receiver.getUserID(), cardNumber, amount, LocalDateTime.now());
                         transactionController.saveData(user, transaction);

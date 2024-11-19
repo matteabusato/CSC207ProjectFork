@@ -1,7 +1,6 @@
 package App;
 
-import LogIn.WelcomeController;
-import LogIn.WelcomePresenter;
+import LogIn.Welcome.WelcomeController;
 
 public class MainLauncher {
     public static void main(String[] args) {

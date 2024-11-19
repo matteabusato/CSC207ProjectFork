@@ -9,18 +9,17 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UsersController {
-
     DataAccessController controller = new DataAccessController();
 
-    public void addUser(User user) {
-        List<User> users = controller.readData("Users.json", User.class);
+    public void addUser(UserObject user) {
+        List<UserObject> users = controller.readData("Users.json", UserObject.class);
         users.add(user);
-        controller.saveData("Users.json", users, User.class);
+        controller.saveData("Users.json", users, UserObject.class);
     }
 
-    public User getUser(int userID) {
-        List<User> users = controller.readData("Users.json", User.class);
-        for (User user : users) {
+    public UserObject getUser(int userID) {
+        List<UserObject> users = controller.readData("Users.json", UserObject.class);
+        for (UserObject user : users) {
             if (user != null && user.getUserID() == userID) {
                 return user;
             }
@@ -28,24 +27,24 @@ public class UsersController {
         return null;
     }
 
-    public void changeUser(int userID, User user) {
-        List<User> users = controller.readData("Users.json", User.class);
+    public void changeUser(int userID, UserObject user) {
+        List<UserObject> users = controller.readData("Users.json", UserObject.class);
         for (int i = 0; i < users.size(); i++) {
             if (user != null && users.get(i).getUserID() == userID) {
                 users.set(i, user);
             }
         }
-        controller.saveData("Users.json", users, User.class);
+        controller.saveData("Users.json", users, UserObject.class);
     }
 
     // fix the rest:
-    public User addUser(String firstName, String lastName, String password){
+    public UserObject addUser(String firstName, String lastName, String password){
         int userID = generateUserID();
         String passwordHash = password;
         double balance = 0;
         String fileDirectory = createFileDirectory(firstName, lastName, userID);
 
-        User user = new User(userID, firstName, lastName, passwordHash, balance);
+        UserObject user = new UserObject(userID, firstName, lastName, passwordHash, balance);
         usersController.addUser(user);
 
         return user;

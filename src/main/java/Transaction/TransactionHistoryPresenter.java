@@ -1,7 +1,7 @@
 package Transaction;
 
-import DataObjects.User;
-import LogIn.WelcomePresenter;
+import DataObjects.UserObject;
+import LogIn.Welcome.WelcomePresenter;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -10,9 +10,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class TransactionHistoryPresenter extends JFrame {
-    private User user;
+    private UserObject user;
 
-    public TransactionHistoryPresenter(User user) {
+    public TransactionHistoryPresenter(UserObject user) {
         this.user = user;
 
         setTitle("Transaction History");
