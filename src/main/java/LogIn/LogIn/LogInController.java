@@ -1,7 +1,8 @@
-package LogIn;
+package LogIn.LogIn;
 
-import DataObjects.User;
+import DataObjects.UserObject;
 import DataObjects.UsersController;
+import LogIn.LoggedIn.LoggedInController;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
@@ -9,14 +10,14 @@ public class LogInController {
     private LogInPresenter logInPresenter = new LogInPresenter(this);
     private LoggedInController loggedInController = new LoggedInController();
     UsersController usersController = new UsersController();
-    User loggedUser = null;
+    UserObject loggedUser = null;
 
     public void launch(){
         logInPresenter.showView();
     }
 
     public boolean logInTriggered(int userID, String password){
-        User user = usersController.getUser(userID);
+        UserObject user = usersController.getUser(userID);
         if (user != null && user.getPasswordHash().equals(password)){
             loggedUser = user;
             return true;

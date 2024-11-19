@@ -1,4 +1,4 @@
-package LogIn;
+package LogIn.Welcome;
 
 public class WelcomePresenter {
     private final WelcomeView welcomeView;

@@ -1,15 +1,14 @@
-package LogIn;
+package LogIn.SignUp;
 
 import DataObjects.UsersController;
+import LogIn.LoggedIn.LoggedInController
 
 
 public class SignUpController {
-    private SignUpPresenter signUpPresenter = new SignUpPresenter();
-    private LoggedInPresenter loggedInPresenter = new LoggedInPresenter()
+    private SignUpPresenter signUpPresenter = new SignUpPresenter(this);
+    private LoggedInController loggedInController = new LoggedInController();
     UsersController usersController = new UsersController();
-    
-    public SignUpController() {
-    }
+
 
     public void launch(){
         signUpPresenter.showView();
@@ -25,6 +24,6 @@ public class SignUpController {
 
     public void onSignUpSuccess(){
         signUpPresenter.disposeView();
-        loggedInPresenter.launch();
+        loggedInController.launch();
     }
 }

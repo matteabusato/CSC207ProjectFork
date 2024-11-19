@@ -1,5 +1,7 @@
-package LogIn;
+package LogIn.Welcome;
 
+import LogIn.LogIn.LogInController;
+import LogIn.SignUp.SignUpController;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor

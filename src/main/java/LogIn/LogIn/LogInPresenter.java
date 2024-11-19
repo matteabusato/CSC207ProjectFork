@@ -1,4 +1,4 @@
-package LogIn;
+package LogIn.LogIn;
 
 public class LogInPresenter{
     private final LogInView logInView;

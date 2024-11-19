@@ -1,8 +1,9 @@
-package LogIn;
+package LogIn.LoggedIn;
 
 import Brokerage.BrokerageController;
 import Brokerage.BrokeragePresenter;
 import DataObjects.User;
+import LogIn.Welcome.WelcomePresenter;
 import Transaction.MakeTransactionPresenter;
 import Transaction.TransactionHistoryPresenter;
 
