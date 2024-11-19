@@ -45,7 +45,7 @@ public class SignUpView extends JFrame {
 
                 boolean success = controller.signUpTriggered(firstName, lastName, password);
                 if (success) {
-                    controller.onSignUpSuccess();
+                    controller.onSignUpSuccess(firstName, lastName, password);
                 } else {
                     displayMessage("Please fill all the fields.", false);
                 }

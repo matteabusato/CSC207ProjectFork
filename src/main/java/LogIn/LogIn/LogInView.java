@@ -41,7 +41,7 @@ public class LogInView extends JFrame {
 
                     boolean success = controller.logInTriggered(userID, password);
                     if (success) {
-                        controller.onLoginSuccess();
+                        controller.onLoginSuccess(userID);
                     } else {
                         displayMessage("Invalid User ID or Password.", false);
                     }

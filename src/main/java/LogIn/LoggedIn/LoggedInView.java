@@ -11,7 +11,8 @@ public class LoggedInView extends JFrame {
     UserObject user;
 
     public LoggedInView(LoggedInController controller) {
-        this.user = user;
+        //this.user = controller.loggedInUser;
+        System.out.println(user);
 
         setTitle("Logged In View");
         setSize(400, 400);

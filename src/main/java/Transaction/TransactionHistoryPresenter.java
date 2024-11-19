@@ -51,7 +51,7 @@ public class TransactionHistoryPresenter extends JFrame {
         JButton logoutButton = new JButton("Logout");
         logoutButton.setPreferredSize(new Dimension(80, 25));
         logoutButton.addActionListener(e -> {
-            new WelcomePresenter().setVisible(true);
+            //new WelcomePresenter().setVisible(true);
             dispose();
         });
         logoutPanel.add(logoutButton);

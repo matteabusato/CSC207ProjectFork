@@ -13,13 +13,13 @@ public class UserObject {
     double balance;
     String fileDirectory;
 
-    public UserObject(int userID, String firstName, String lastName, String passwordHash, double balance) {
+    public UserObject(int userID, String firstName, String lastName, String passwordHash, double balance, String fileDirectory) {
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.passwordHash = passwordHash;
         this.balance = balance;
-        this.fileDirectory = firstName + lastName + userID + "/";
+        this.fileDirectory = fileDirectory;
     }
 
     public int getUserID() {
@@ -39,23 +39,5 @@ public class UserObject {
     }
     public String getFileDirectory() {
         return fileDirectory;
-    }
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
-    }
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-    public void setFileDirectory(String fileDirectory) {
-        this.fileDirectory = fileDirectory;
     }
 }

@@ -79,7 +79,7 @@ public class MakeTransactionPresenter extends JFrame {
                         transactionController.saveData(user, transaction);
 
                         JOptionPane.showMessageDialog(this, "Transaction Successful!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
-                        new LoggedInPresenter(user).setVisible(true);
+                        //new LoggedInPresenter(user).setVisible(true);
                         dispose();
                     }
                 } catch (NumberFormatException ex) {
@@ -89,7 +89,7 @@ public class MakeTransactionPresenter extends JFrame {
         });
 
         logoutButton.addActionListener(e -> {
-            new WelcomePresenter().setVisible(true);
+            //new WelcomePresenter().setVisible(true);
             dispose();
         });
     }

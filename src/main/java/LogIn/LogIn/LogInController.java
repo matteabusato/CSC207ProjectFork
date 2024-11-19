@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LogInController {
     private LogInPresenter logInPresenter = new LogInPresenter(this);
-    private LoggedInController loggedInController = new LoggedInController();
+    private LoggedInController loggedInController;
     UsersController usersController = new UsersController();
-    UserObject loggedUser = null;
+
 
     public void launch(){
         logInPresenter.showView();
@@ -19,14 +19,15 @@ public class LogInController {
     public boolean logInTriggered(int userID, String password){
         UserObject user = usersController.getUser(userID);
         if (user != null && user.getPasswordHash().equals(password)){
-            loggedUser = user;
             return true;
         }
         return false;
     }
 
-    public void onLoginSuccess() {
+    public void onLoginSuccess(int userID) {
+        UserObject user = usersController.getUser(userID);
         logInPresenter.disposeView();
+        loggedInController = new LoggedInController(user);
         loggedInController.launch();
     }
 }
