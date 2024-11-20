@@ -31,7 +31,11 @@ public class CurrencyExchangeController {
         rate = response.getExchangeRate();
     }
 
-    public static void exchangeCurrency(CurrencyExchangePresenter currencyExchangePresenter, JComboBox<String> fromCurrencyBox, JTextField inputAmountField, JTextField outputAmountField, JComboBox<String> toCurrencyBox) {
+    public void exchangeCurrency(CurrencyExchangeView currencyExchangeView,
+                                 JComboBox<String> fromCurrencyBox,
+                                 JTextField inputAmountField,
+                                 JTextField outputAmountField,
+                                 JComboBox<String> toCurrencyBox) {
         try {
             double inputAmount = Double.parseDouble(inputAmountField.getText());
             String fromCurrency = (String) fromCurrencyBox.getSelectedItem();
@@ -39,9 +43,9 @@ public class CurrencyExchangeController {
 
             changeInto(fromCurrency, toCurrency);
             double outputAmount = inputAmount * rate;
-            CurrencyExchangePresenter.outputAmountField.setText(String.format("%.2f", outputAmount));
+            CurrencyExchangeView.outputAmountField.setText(String.format("%.2f", outputAmount));
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(currencyExchangePresenter, "Invalid Input Amount", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(currencyExchangeView, "Invalid Input Amount", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

@@ -1,7 +1,7 @@
 package Card.Method;
 
 import Card.Entity.Card;
-import Card.View.CardPresenter;
+import Card.View.CardView;
 import org.jetbrains.annotations.NotNull;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,11 +25,11 @@ public class CardController {
 
     /**
      * used to add the card and renew the GUI
-     * @param cardPresenter the GUI need to renew
+     * @param cardView the GUI need to renew
      */
-    public static void addCard(CardPresenter cardPresenter) {
+    public void addCard(CardView cardView) {
         loadFromFile();
-        String name = cardPresenter.nameField.getText();
+        String name = cardView.nameField.getText();
         String securityCode = newCode();
         String id = newId(name);
         String expiryDate = newDate();
@@ -37,48 +37,48 @@ public class CardController {
         try {
             if (cardList.size() >= 10) {
                 JOptionPane.showMessageDialog
-                        (cardPresenter.frame, "Too much cards", "Error", JOptionPane.ERROR_MESSAGE);
+                        (cardView.frame, "Too much cards", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 // 创建新的card
                 Card newCard = new Card(id, name, expiryDate, securityCode);
                 cardList.add(newCard);
-                cardPresenter.model.addRow(new Object[]{id, name, expiryDate, securityCode, newCard.getAmount()});
+                cardView.model.addRow(new Object[]{id, name, expiryDate, securityCode, newCard.getAmount()});
                 objectMapper.writeValue(new File(jsonFilePath), cardList);
-                cardPresenter.nameField.setText("");
+                cardView.nameField.setText("");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        refresh(cardPresenter);
+        refresh(cardView);
     }
 
     /**
      * used to delete the card and renew the GUI
-     * @param cardPresenter the GUI need to renew
+     * @param cardView the GUI need to renew
      */
-    public static void deleteCard(CardPresenter cardPresenter) {
-        int selectedRow = cardPresenter.table.getSelectedRow();
+    public void deleteCard(CardView cardView) {
+        int selectedRow = cardView.table.getSelectedRow();
         if (selectedRow == - 1) {
-            JOptionPane.showMessageDialog(cardPresenter.frame, "Please select a row");
+            JOptionPane.showMessageDialog(cardView.frame, "Please select a row");
         } else if (cardList.get(selectedRow).getAmount() != 0) {
-            JOptionPane.showMessageDialog(cardPresenter.frame, "Please make the balance to 0 first");
+            JOptionPane.showMessageDialog(cardView.frame, "Please make the balance to 0 first");
         }
        else {
             cardList.remove(selectedRow);
             saveCards(cardList);
        }
-       refresh(cardPresenter);
+       refresh(cardView);
     }
 
     /**
      * used to renew the GUI as a help function to add/delete card
-     * @param cardPresenter the GUI need to renew
+     * @param cardView the GUI need to renew
      */
-    public static void refresh(CardPresenter cardPresenter) {
+    public static void refresh(CardView cardView) {
         loadFromFile();
-        cardPresenter.model.setRowCount(0);
+        cardView.model.setRowCount(0);
         for (Card card : cardList) {
-            cardPresenter.model.addRow
+            cardView.model.addRow
                     (new Object[]{card.getId(), card.getName(), card.getDate(), card.getCode(),card.getAmount() + "$"});
         }
     }
