@@ -3,9 +3,9 @@ package main.java.Views;
 import javax.swing.*;
 import java.awt.*;
 
-public abstract class FrameMaker extends JFrame {
+public abstract class ViewMaker extends JFrame {
 
-    public FrameMaker(String name, int width, int height) {
+    public ViewMaker(String name, int width, int height) {
         super(name);
 
         // Calculate the total frame size needed for the desired content size
