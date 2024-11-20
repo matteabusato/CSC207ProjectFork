@@ -1,10 +1,9 @@
 package DataObjects;
 
 public class NewUserController {
-    static int lastUserID = 0;
 
-    public UserObject createNewUser(String firstName,String lastName,String password){
-        int newUserID = generateUserID();
+    public UserObject createNewUser(int userID, String firstName,String lastName,String password){
+        int newUserID = userID;
         String newFirstName = firstName;
         String newLastName = lastName;
         String passwordHash = generatePasswordHash(password);
@@ -14,11 +13,6 @@ public class NewUserController {
         UserObject newUser = new UserObject(newUserID, newFirstName, newLastName, passwordHash, newBalance, fileDirectory);
 
         return newUser;
-    }
-
-    private int generateUserID() {
-        lastUserID += 1;
-        return lastUserID;
     }
 
     private String generatePasswordHash(String password) {

@@ -22,10 +22,8 @@ public class SignUpController {
 
     public void onSignUpSuccess(String firstName, String lastName, String password){
         UserObject newUser = usersController.addUser(firstName, lastName, password);
-        System.out.println(newUser);
         signUpPresenter.disposeView();
         LoggedInController controller = new LoggedInController(newUser);
-        System.out.println(controller);
         controller.launch();
     }
 }

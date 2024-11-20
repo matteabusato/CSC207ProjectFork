@@ -35,4 +35,8 @@ public class UsersDBAccess{
         }
         controller.saveData("Users.json", users, UserObject.class);
     }
+    public int numberOfUsers(){
+        List<UserObject> users = readData();
+        return users.size();
+    }
 }

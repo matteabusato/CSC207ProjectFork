@@ -7,14 +7,18 @@ import lombok.NoArgsConstructor;
 import java.net.PasswordAuthentication;
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
 public class UsersController {
+    static int lastUserID;
     UsersDBAccess usersDBAccess = new UsersDBAccess();
     NewUserController newUserController = new NewUserController();
 
+    public UsersController(){
+        this.lastUserID = 10000 + usersDBAccess.numberOfUsers();
+    }
+
     public UserObject addUser(String firstName,String lastName,String password) {
-        UserObject newUser = newUserController.createNewUser(firstName, lastName, password);
+        lastUserID += 1;
+        UserObject newUser = newUserController.createNewUser(lastUserID, firstName, lastName, password);
         usersDBAccess.saveData(newUser);
         return newUser;
     }
