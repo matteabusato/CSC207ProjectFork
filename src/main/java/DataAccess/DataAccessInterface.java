@@ -9,15 +9,15 @@ public interface DataAccessInterface<T> {
     /**
      * Save an object to the specified file.
      *
-     * @param user  the user using the service
+     * @param userID  the user using the service
      * @param dataPoint the object to save
      */
-    void saveData(UserObject user, T dataPoint);
+    UserObject saveData(int userID, T dataPoint);
     /**
      * Read a list of objects from the specified file.
      *
-     * @param user  the user using the service
+     * @param userID  the user using the service
      * @return a list of objects read from the file
      */
-    List<T> readData(UserObject user);
+    List<T> readData(int userID);
 }

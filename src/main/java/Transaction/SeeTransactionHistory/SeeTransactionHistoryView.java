@@ -1,19 +1,22 @@
-package Transaction;
+package Transaction.SeeTransactionHistory;
 
 import DataObjects.UserObject;
-import LogIn.Welcome.WelcomePresenter;
+import Transaction.DataObject.TransactionObject;
+import Transaction.MakeTransaction.MakeTransactionController;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class TransactionHistoryPresenter extends JFrame {
-    private UserObject user;
+public class SeeTransactionHistoryView extends JFrame {
+    UserObject user;
 
-    public TransactionHistoryPresenter(UserObject user) {
-        this.user = user;
+    public SeeTransactionHistoryView(SeeTransactionHistoryController controller) {
+        this.user = controller.loggedInUser;
 
         setTitle("Transaction History");
         setSize(600, 400);
@@ -32,8 +35,7 @@ public class TransactionHistoryPresenter extends JFrame {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
-        TransactionController transactionController = new TransactionController();
-        List<TransactionObject> transactions = transactionController.readData(user);
+        List<TransactionObject> transactions = controller.transactions;
         for (TransactionObject transaction : transactions) {
             String[] rowData = {
                     String.valueOf(transaction.getTransactionID()),
@@ -50,9 +52,11 @@ public class TransactionHistoryPresenter extends JFrame {
         JPanel logoutPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JButton logoutButton = new JButton("Logout");
         logoutButton.setPreferredSize(new Dimension(80, 25));
-        logoutButton.addActionListener(e -> {
-            //new WelcomePresenter().setVisible(true);
-            dispose();
+        logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.logOutTriggered();
+            }
         });
         logoutPanel.add(logoutButton);
         add(logoutPanel, BorderLayout.SOUTH);

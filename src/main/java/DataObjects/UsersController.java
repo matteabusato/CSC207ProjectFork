@@ -1,12 +1,5 @@
 package DataObjects;
 
-import DataAccess.DataAccessController;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-import java.net.PasswordAuthentication;
-import java.util.List;
-
 public class UsersController {
     static int lastUserID;
     UsersDBAccess usersDBAccess = new UsersDBAccess();

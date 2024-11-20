@@ -1,8 +1,6 @@
 package LogIn.SignUp;
 
-import javax.swing.*;
-
-public class SignUpPresenter extends JFrame {
+public class SignUpPresenter{
     private final SignUpView signUpView;
 
     public SignUpPresenter(SignUpController controller) {

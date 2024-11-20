@@ -1,8 +1,6 @@
 package LogIn.LoggedIn;
 
-import javax.swing.*;
-
-public class LoggedInPresenter extends JFrame {
+public class LoggedInPresenter{
     private final LoggedInView loggedInView;
 
     public LoggedInPresenter(LoggedInController controller){
