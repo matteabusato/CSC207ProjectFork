@@ -5,33 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b98df37-13f9-4d47-990e-6a1c0dfae90b" name="Changes" comment="1">
-      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Card/View/CardView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Exchange/CurrencyExchangeView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Card/Method/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card/Method/CardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Card/View/CardPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card/View/CardPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Exchange/CurrencyExchangeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Exchange/CurrencyExchangeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Exchange/CurrencyExchangePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Exchange/CurrencyExchangePresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Brokerage/BrokeragePresenter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Card/Method/CardController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Card/Method/CardController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Card/View/CardPresenter$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Card/View/CardPresenter$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Card/View/CardPresenter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LogIn/LogInController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LogIn/LogInPresenter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LogIn/LoggedInPresenter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LogIn/SignUpController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LogIn/WelcomePresenter$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LogIn/WelcomePresenter$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LogIn/WelcomePresenter$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/LogIn/WelcomePresenter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Transaction/MakeTransactionPresenter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Transaction/TransactionHistoryPresenter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Views/SignUpPresenter.class" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Card/Entity/CardDBAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
