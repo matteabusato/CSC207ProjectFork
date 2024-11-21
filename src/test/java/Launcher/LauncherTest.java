@@ -1,4 +1,4 @@
-package Launcher;
+package test.java.Launcher;
 
 import org.junit.Test;
 
