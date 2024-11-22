@@ -1,14 +1,16 @@
 package LogIn.SignUp;
 
+import App.ControllerInterface;
 import DataObjects.UserObject;
 import DataObjects.UsersController;
 import LogIn.LoggedIn.LoggedInController;
 
-public class SignUpController {
+public class SignUpController implements ControllerInterface {
     private SignUpPresenter signUpPresenter = new SignUpPresenter(this);
     private LoggedInController loggedInController;
     UsersController usersController = new UsersController();
 
+    @Override
     public void launch(){
         signUpPresenter.showView();
     }
