@@ -1,4 +1,4 @@
-package Card.Entity;
+package Card;
 
 import DataAccess.DataAccessController;
 import DataAccess.DataAccessInterface;

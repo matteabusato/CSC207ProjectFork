@@ -1,6 +1,4 @@
-package Card.View;
-
-import Card.Method.CardController;
+package Card;
 
 public class CardPresenter {
     private final CardView cardView;

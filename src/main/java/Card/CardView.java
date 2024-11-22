@@ -1,7 +1,4 @@
-package Card.View;
-
-import Card.Entity.Card;
-import Card.Method.CardController;
+package Card;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

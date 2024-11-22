@@ -1,6 +1,6 @@
 package LogIn.LoggedIn;
 
-import Card.Method.CardController;
+import Card.CardController;
 import DataObjects.UserObject;
 import Exchange.CurrencyExchangeController;
 import LogIn.Welcome.WelcomeController;

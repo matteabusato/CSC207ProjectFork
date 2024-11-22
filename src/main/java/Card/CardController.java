@@ -1,8 +1,5 @@
-package Card.Method;
+package Card;
 
-import Card.Entity.Card;
-import Card.Entity.CardDBAccess;
-import Card.View.CardPresenter;
 import DataObjects.UserObject;
 import LogIn.Welcome.WelcomeController;
 import org.jetbrains.annotations.NotNull;

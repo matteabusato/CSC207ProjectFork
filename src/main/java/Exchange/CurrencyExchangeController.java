@@ -1,6 +1,5 @@
 package Exchange;
 
-import Card.View.CardPresenter;
 import DataObjects.UserObject;
 import LogIn.Welcome.WelcomeController;
 import com.crazzyghost.alphavantage.AlphaVantage;

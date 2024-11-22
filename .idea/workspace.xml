@@ -5,15 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b98df37-13f9-4d47-990e-6a1c0dfae90b" name="Changes" comment="1">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Card/Method/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card/Method/CardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Card/View/CardPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card/View/CardPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Card/View/CardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card/View/CardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Card/Entity/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Card/Entity/CardCreate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Card/Entity/CardCreateInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Card/Entity/CardDBAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card/CardDBAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Card/Method/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card/CardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Card/View/CardPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card/CardPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Card/View/CardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card/CardView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Exchange/CurrencyExchangeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Exchange/CurrencyExchangeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Exchange/CurrencyExchangeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Exchange/CurrencyExchangeView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/LoggedIn/LoggedInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/LoggedIn/LoggedInController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/LoggedIn/LoggedInView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/LoggedIn/LoggedInView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/CardTest/CardAPI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Card/Entity/Card.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Card/Entity/CardCreate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Card/Entity/CardCreateInterface.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Exchange/CurrencyExchangeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Exchange/CurrencyExchangeController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,11 +90,11 @@
   </component>
   <component name="RunManager" selected="Application.MainLauncher">
     <configuration name="CardView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Card.View.CardView" />
+      <option name="MAIN_CLASS_NAME" value="Card.Entity.CardView" />
       <module name="homework-5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Card.View.*" />
+          <option name="PATTERN" value="Card.Entity.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -175,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732303253028</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="1">
+      <option name="closed" value="true" />
+      <created>1732307017465</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1732307017465</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
