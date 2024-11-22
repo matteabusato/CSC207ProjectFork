@@ -5,25 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b98df37-13f9-4d47-990e-6a1c0dfae90b" name="Changes" comment="1">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/CardTest/CardAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/homework-5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/homework-5.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Card/Entity/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card/Entity/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Card/Entity/CardDBAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card/Entity/CardDBAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Card/Method/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card/Method/CardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Card/View/CardPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card/View/CardPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Card/View/CardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card/View/CardView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/LoggedIn/LoggedInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/LoggedIn/LoggedInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/LoggedIn/LoggedInView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/LoggedIn/LoggedInView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Transaction/TransactionFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Brokerage/BrokerageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Brokerage/BrokerageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Card/Entity/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Card/Entity/Card.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/DataAccessController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/DataAccessController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataObjects/UsersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataObjects/UsersController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Exchange/CurrencyExchangeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Exchange/CurrencyExchangeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Exchange/CurrencyExchangePresenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Exchange/CurrencyExchangePresenter.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732151551432</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="1">
+      <option name="closed" value="true" />
+      <created>1732302926668</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1732302926668</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

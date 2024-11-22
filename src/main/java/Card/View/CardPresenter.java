@@ -15,7 +15,7 @@ public class CardPresenter {
     }
 
     public void disposeView() {
-        cardView.setVisible(false);
+        cardView.frame.setVisible(false);
         cardView.dispose();
     }
 }
