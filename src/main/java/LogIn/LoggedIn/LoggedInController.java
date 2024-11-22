@@ -1,5 +1,6 @@
 package LogIn.LoggedIn;
 
+import Brokerage.BrokerageController;
 import App.ControllerInterface;
 import DataObjects.UserObject;
 import LogIn.Welcome.WelcomeController;
@@ -12,12 +13,14 @@ public class LoggedInController implements ControllerInterface {
     private WelcomeController welcomeController;
     private MakeTransactionController makeTransactionController;
     private SeeTransactionHistoryController seeTransactionHistoryController;
+    private BrokerageController brokerageController;
 
     public LoggedInController(UserObject user) {
         this.loggedInUser = user;
         this.welcomeController = new WelcomeController();
         this.makeTransactionController = new MakeTransactionController(loggedInUser);
         this.seeTransactionHistoryController = new SeeTransactionHistoryController(loggedInUser);
+        this.brokerageController = new BrokerageController(loggedInUser);
 
         // at last
         this.loggedInPresenter = new LoggedInPresenter(this);
@@ -45,7 +48,7 @@ public class LoggedInController implements ControllerInterface {
 
     public void buyAssetsTriggered() {
         loggedInPresenter.disposeView();
-        //buyAssetsController.launch();
+        brokerageController.launch();
     }
 }
 
