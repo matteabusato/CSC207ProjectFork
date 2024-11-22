@@ -1,5 +1,8 @@
 package Exchange;
 
+import Card.View.CardPresenter;
+import DataObjects.UserObject;
+import LogIn.Welcome.WelcomeController;
 import com.crazzyghost.alphavantage.AlphaVantage;
 import com.crazzyghost.alphavantage.Config;
 import com.crazzyghost.alphavantage.exchangerate.ExchangeRateResponse;
@@ -8,6 +11,9 @@ import javax.swing.*;
 
 public class CurrencyExchangeController {
     private static double rate;
+    static UserObject loggedInUser;
+    private CurrencyExchangePresenter currencyExchangePresenter;
+    private WelcomeController welcomeController;
 
     public static void changeInto(String input, String output) {
         // OMY21EWV5Y9FEBUJ
@@ -25,6 +31,21 @@ public class CurrencyExchangeController {
                 .toCurrency(output)
                 .onSuccess((e) -> onData(e))
                 .fetch();
+    }
+
+    public CurrencyExchangeController(UserObject user) {
+        this.loggedInUser = user;
+        this.currencyExchangePresenter = new CurrencyExchangePresenter(this);
+        this.welcomeController = new WelcomeController();
+    }
+
+    public void launch() {
+        currencyExchangePresenter.showView();
+    }
+
+    public void logOutTriggered(){
+        currencyExchangePresenter.disposeView();
+        welcomeController.launch();
     }
 
     public static void onData(ExchangeRateResponse response){

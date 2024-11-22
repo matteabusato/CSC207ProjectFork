@@ -83,7 +83,12 @@ public class CurrencyExchangeView extends JFrame {
         backButton = new JButton("BACK TO MAIN");
         backButton.setBounds(400, 300, 150, 30);
         add(backButton);
-        backButton.addActionListener(e -> System.exit(0));
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currencyExchangeController.logOutTriggered();
+            }
+        });
 
 //        setVisible(true);
     }

@@ -11,7 +11,7 @@ public class CardPresenter {
 
     public void showView() {
         cardView.frame.setVisible(true);
-        CardController.refresh(cardView);
+        CardView.refresh(cardView);
     }
 
     public void disposeView() {

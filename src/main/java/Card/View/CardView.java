@@ -81,6 +81,19 @@ public class CardView extends JFrame{
     }
 
     /**
+     * used to renew the GUI as a help function to add/delete card
+     * @param cardView the GUI need to renew
+     */
+    public static void refresh(CardView cardView) {
+        CardController.loadFromFile();
+        cardView.model.setRowCount(0);
+        for (Card card : CardController.cardList) {
+            cardView.model.addRow
+                    (new Object[]{card.getId(), card.getName(), card.getDate(), card.getCode(),card.getAmount() + "$"});
+        }
+    }
+
+    /**
      * used to add the card and renew the GUI
      */
     public void addCard() {
@@ -99,7 +112,7 @@ public class CardView extends JFrame{
             CardController.saveCards(newCard);
             nameField.setText("");
         }
-        CardController.refresh(this);
+        refresh(this);
     }
 
     /**
@@ -116,7 +129,7 @@ public class CardView extends JFrame{
             CardController.cardList.remove(selectedRow);
             CardController.saveDeleteCard(selectedRow);
        }
-       CardController.refresh(this);
+       refresh(this);
     }
 //    public static void main(String[] args) {
 //

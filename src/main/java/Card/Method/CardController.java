@@ -3,21 +3,10 @@ package Card.Method;
 import Card.Entity.Card;
 import Card.Entity.CardDBAccess;
 import Card.View.CardPresenter;
-import Card.View.CardView;
 import DataObjects.UserObject;
 import LogIn.Welcome.WelcomeController;
-import Transaction.DataObject.TransactionController;
-import Transaction.MakeTransaction.MakeTransactionPresenter;
 import org.jetbrains.annotations.NotNull;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-import javax.swing.*;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,36 +33,6 @@ public class CardController {
         cardPresenter.disposeView();
         welcomeController.launch();
     }
-
-    /**
-     * used to renew the GUI as a help function to add/delete card
-     * @param cardView the GUI need to renew
-     */
-    public static void refresh(CardView cardView) {
-        loadFromFile();
-        cardView.model.setRowCount(0);
-        for (Card card : cardList) {
-            cardView.model.addRow
-                    (new Object[]{card.getId(), card.getName(), card.getDate(), card.getCode(),card.getAmount() + "$"});
-        }
-    }
-
-//    /**
-//     * used to load the file of json
-//     */
-//    public static void loadFromFile() {
-//        // load from the 不同的 account
-//        File file = new File(jsonFilePath);
-//        if (file.exists()) {
-//            try {
-//                cardList = objectMapper.readValue(file, new TypeReference<List<Card>>() {});
-//            } catch (IOException e) {
-//                System.out.println("Error loading from JSON file: " + e.getMessage());
-//            }
-//        }
-//    }
-//    // cardList =readData (userID)
-//    // File file = new File(jsonFilePath); "\\CardInformation.json"
 
     /**
      * used to load the file of json
@@ -256,4 +215,35 @@ public class CardController {
 //        }
 //        refresh(cardView);
 //    }
+
+    //    /**
+//     * used to renew the GUI as a help function to add/delete card
+//     * @param cardView the GUI need to renew
+//     */
+//    public static void refresh(CardView cardView) {
+//        loadFromFile();
+//        cardView.model.setRowCount(0);
+//        for (Card card : cardList) {
+//            cardView.model.addRow
+//                    (new Object[]{card.getId(), card.getName(), card.getDate(), card.getCode(),card.getAmount() + "$"});
+//        }
+//    }
+
+//    /**
+//     * used to load the file of json
+//     */
+//    public static void loadFromFile() {
+//        // load from the 不同的 account
+//        File file = new File(jsonFilePath);
+//        if (file.exists()) {
+//            try {
+//                cardList = objectMapper.readValue(file, new TypeReference<List<Card>>() {});
+//            } catch (IOException e) {
+//                System.out.println("Error loading from JSON file: " + e.getMessage());
+//            }
+//        }
+//    }
+//    // cardList =readData (userID)
+//    // File file = new File(jsonFilePath); "\\CardInformation.json"
+
 }

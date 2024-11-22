@@ -80,8 +80,18 @@ public class LoggedInView extends JFrame {
             }
         });
 
-        JButton loansButton = new JButton("Loans");
-        loansButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "Loans functionality"));
+        JButton loansButton = new JButton("loans");
+        atmsButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "Find ATMs near you functionality"));
+
+        // Button of exchange button, find if we need that button in the main flame
+        JButton exchangeButton = new JButton("Currency exchange");
+        loansButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.exchangeTriggered();
+            }
+        });
+        // e -> JOptionPane.showMessageDialog(null, "Loans functionality")
 
         buttonPanel.add(sendMoneyButton);
         buttonPanel.add(transactionsButton);
