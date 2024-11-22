@@ -1,17 +1,18 @@
 package LogIn.LogIn;
 
+import App.ControllerInterface;
 import DataObjects.UserObject;
 import DataObjects.UsersController;
 import LogIn.LoggedIn.LoggedInController;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-public class LogInController {
+public class LogInController implements ControllerInterface {
     private LogInPresenter logInPresenter = new LogInPresenter(this);
     private LoggedInController loggedInController;
     UsersController usersController = new UsersController();
 
-
+    @Override
     public void launch(){
         logInPresenter.showView();
     }
