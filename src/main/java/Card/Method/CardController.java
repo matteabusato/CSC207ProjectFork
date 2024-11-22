@@ -1,7 +1,13 @@
 package Card.Method;
 
 import Card.Entity.Card;
+import Card.Entity.CardDBAccess;
+import Card.View.CardPresenter;
 import Card.View.CardView;
+import DataObjects.UserObject;
+import LogIn.Welcome.WelcomeController;
+import Transaction.DataObject.TransactionController;
+import Transaction.MakeTransaction.MakeTransactionPresenter;
 import org.jetbrains.annotations.NotNull;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,56 +24,25 @@ import java.util.List;
 import java.util.Objects;
 
 public class CardController {
-    private static final String FILE_PATH = "cards.json";
-    private static final String jsonFilePath = "cards.json";
-    private static List<Card> cardList = new ArrayList<>();
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+    public static List<Card> cardList = new ArrayList<>();
+    static UserObject loggedInUser;
+    private CardPresenter cardPresenter;
+    private WelcomeController welcomeController;
+    static CardDBAccess cardDBAccess = new CardDBAccess();
 
-    /**
-     * used to add the card and renew the GUI
-     * @param cardView the GUI need to renew
-     */
-    public void addCard(CardView cardView) {
-        loadFromFile();
-        String name = cardView.nameField.getText();
-        String securityCode = newCode();
-        String id = newId(name);
-        String expiryDate = newDate();
-
-        try {
-            if (cardList.size() >= 10) {
-                JOptionPane.showMessageDialog
-                        (cardView.frame, "Too much cards", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                // 创建新的card
-                Card newCard = new Card(id, name, expiryDate, securityCode);
-                cardList.add(newCard);
-                cardView.model.addRow(new Object[]{id, name, expiryDate, securityCode, newCard.getAmount()});
-                objectMapper.writeValue(new File(jsonFilePath), cardList);
-                cardView.nameField.setText("");
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        refresh(cardView);
+    public CardController(UserObject user) {
+        this.loggedInUser = user;
+        this.cardPresenter = new CardPresenter(this);
+        this.welcomeController = new WelcomeController();
     }
 
-    /**
-     * used to delete the card and renew the GUI
-     * @param cardView the GUI need to renew
-     */
-    public void deleteCard(CardView cardView) {
-        int selectedRow = cardView.table.getSelectedRow();
-        if (selectedRow == - 1) {
-            JOptionPane.showMessageDialog(cardView.frame, "Please select a row");
-        } else if (cardList.get(selectedRow).getAmount() != 0) {
-            JOptionPane.showMessageDialog(cardView.frame, "Please make the balance to 0 first");
-        }
-       else {
-            cardList.remove(selectedRow);
-            saveCards(cardList);
-       }
-       refresh(cardView);
+    public void launch() {
+        cardPresenter.showView();
+    }
+
+    public void logOutTriggered(){
+        cardPresenter.disposeView();
+        welcomeController.launch();
     }
 
     /**
@@ -83,26 +58,35 @@ public class CardController {
         }
     }
 
+//    /**
+//     * used to load the file of json
+//     */
+//    public static void loadFromFile() {
+//        // load from the 不同的 account
+//        File file = new File(jsonFilePath);
+//        if (file.exists()) {
+//            try {
+//                cardList = objectMapper.readValue(file, new TypeReference<List<Card>>() {});
+//            } catch (IOException e) {
+//                System.out.println("Error loading from JSON file: " + e.getMessage());
+//            }
+//        }
+//    }
+//    // cardList =readData (userID)
+//    // File file = new File(jsonFilePath); "\\CardInformation.json"
+
     /**
      * used to load the file of json
      */
-    private static void loadFromFile() {
-        // load from the 不同的 account
-        File file = new File(jsonFilePath);
-        if (file.exists()) {
-            try {
-                cardList = objectMapper.readValue(file, new TypeReference<List<Card>>() {});
-            } catch (IOException e) {
-                System.out.println("Error loading from JSON file: " + e.getMessage());
-            }
-        }
+    public static void loadFromFile() {
+        cardList = cardDBAccess.readData(loggedInUser.getUserID());
     }
 
     /**
      * used to get the new if with no same id
      */
     @NotNull
-    private static String newId(String name) {
+    public static String newId(String name) {
         String id = "";
         for (int i = 0; i < Math.min(name.length(), 3); i++) {
             char c = name.replaceAll("\\s", "").charAt(i);
@@ -165,7 +149,7 @@ public class CardController {
      * used to get the new update date for month and year
      */
     @NotNull
-    private static String newDate() {
+    public static String newDate() {
         String expiryDate;
         LocalDate today = LocalDate.now();
         String month;
@@ -184,7 +168,7 @@ public class CardController {
      * used to get the new code which is random with same index
      */
     @NotNull
-    private static String newCode() {
+    public static String newCode() {
         String securityCode;
         long num = Math.round(1000 * Math.random());
         if (num >= 100) {
@@ -199,31 +183,77 @@ public class CardController {
 
     /**
      * used to save the updated data in JSON file
-     * @param cards cards given in CardMethod CardList
+     * @param card cards given in CardMethod CardList
      */
-    public static void saveCards(List<Card> cards) {
-        JSONArray jsonArray = new JSONArray();
-        for (Card card : cards) {
-            jsonArray.put(toJSONObject(card));
-        }
-        try (FileWriter writer = new FileWriter(FILE_PATH)) {
-            writer.write(jsonArray.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static void saveCards(Card card) {
+        cardDBAccess.saveData(loggedInUser.getUserID(), card);
     }
 
-    /**
-     * used to transfer the card into the String to store
-     * @param card one single card with the parameters
-     */
-    public static JSONObject toJSONObject(Card card) {
-        JSONObject json = new JSONObject();
-        json.put("name", card.getName());
-        json.put("id", card.getId());
-        json.put("expiryDate", card.getDate());
-        json.put("securityCode", card.getCode());
-        json.put("amount", card.getAmount());
-        return json;
+    public static void saveDeleteCard(int index) {
+        cardDBAccess.saveDeleteData(loggedInUser.getUserID(), index);
     }
+
+//    /**
+//     * used to save the updated data in JSON file
+//     * @param cards cards given in CardMethod CardList
+//     */
+//    public static void saveCards(List<Card> cards) {
+//        JSONArray jsonArray = new JSONArray();
+//        for (Card card : cards) {
+//            jsonArray.put(toJSONObject(card));
+//        }
+//        try (FileWriter writer = new FileWriter(FILE_PATH)) {
+//            writer.write(jsonArray.toString());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        //saveData(userID )
+//    }
+
+//    /**
+//     * used to add the card and renew the GUI
+//     * @param cardView the GUI need to renew
+//     */
+//    public void addCard(CardView cardView) {
+//        loadFromFile();
+//        String name = cardView.nameField.getText();
+//        String securityCode = newCode();
+//        String id = newId(name);
+//        String expiryDate = newDate();
+//
+//        try {
+//            if (cardList.size() >= 10) {
+//                JOptionPane.showMessageDialog
+//                        (cardView.frame, "Too much cards", "Error", JOptionPane.ERROR_MESSAGE);
+//            } else {
+//                // 创建新的card
+//                Card newCard = new Card(id, name, expiryDate, securityCode);
+//                cardList.add(newCard);
+//                cardView.model.addRow(new Object[]{id, name, expiryDate, securityCode, newCard.getAmount()});
+//                objectMapper.writeValue(new File(jsonFilePath), cardList);
+//                cardView.nameField.setText("");
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//        refresh(cardView);
+//    }
+
+//    /**
+//     * used to delete the card and renew the GUI
+//     * @param cardView the GUI need to renew
+//     */
+//    public void deleteCard(CardView cardView) {
+//        int selectedRow = cardView.table.getSelectedRow();
+//        if (selectedRow == - 1) {
+//            JOptionPane.showMessageDialog(cardView.frame, "Please select a row");
+//        } else if (cardList.get(selectedRow).getAmount() != 0) {
+//            JOptionPane.showMessageDialog(cardView.frame, "Please make the balance to 0 first");
+//        }
+//        else {
+//            cardList.remove(selectedRow);
+//            saveCards(cardList);
+//        }
+//        refresh(cardView);
+//    }
 }

@@ -16,6 +16,16 @@ public class CardDBAccess implements DataAccessInterface<Card> {
     public UserObject saveData(int userID, Card card) {
         UserObject user = usersController.getUser(userID);
         List<Card> cards = controller.readData(user.getFileDirectory() + "\\CardInformation.json", Card.class);
+        cards.add(card);
+        controller.saveData(user.getFileDirectory() + "\\CardInformation.json", cards, Card.class);
+
+        return user;
+    }
+
+    public UserObject saveDeleteData(int userID, int index) {
+        UserObject user = usersController.getUser(userID);
+        List<Card> cards = controller.readData(user.getFileDirectory() + "\\CardInformation.json", Card.class);
+        cards.remove(index);
         controller.saveData(user.getFileDirectory() + "\\CardInformation.json", cards, Card.class);
 
         return user;

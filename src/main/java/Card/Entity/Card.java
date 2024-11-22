@@ -10,6 +10,7 @@ public class Card {
      private final String date;
      private final String code;
      private float amount;
+     private int userID;
 
     @JsonCreator
     public Card(@JsonProperty("id") String id,

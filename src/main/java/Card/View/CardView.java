@@ -1,5 +1,6 @@
 package Card.View;
 
+import Card.Entity.Card;
 import Card.Method.CardController;
 
 import javax.swing.*;
@@ -42,7 +43,7 @@ public class CardView extends JFrame{
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.addCard(CardView.this);
+                addCard();
             }
         });
 
@@ -50,12 +51,17 @@ public class CardView extends JFrame{
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.deleteCard(CardView.this);
+                deleteCard();
             }
         });
 
         JButton backButton = new JButton("BACK TO MAIN");
-        backButton.addActionListener(e -> System.exit(0));
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.logOutTriggered();
+            }
+        });
 
         JPanel theButton = new JPanel();
         theButton.setLayout(new GridLayout(1, 3));
@@ -72,6 +78,45 @@ public class CardView extends JFrame{
 
 //        frame.setVisible(true);
 //        CardController.refresh(CardView.this);
+    }
+
+    /**
+     * used to add the card and renew the GUI
+     */
+    public void addCard() {
+        CardController.loadFromFile();
+        String name = nameField.getText();
+        String securityCode = CardController.newCode();
+        String id = CardController.newId(name);
+        String expiryDate = CardController.newDate();
+
+        if (CardController.cardList.size() >= 10) {
+            JOptionPane.showMessageDialog
+                    (frame, "Too much cards", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            Card newCard = new Card(id, name, expiryDate, securityCode);
+            model.addRow(new Object[]{id, name, expiryDate, securityCode, newCard.getAmount()});
+            CardController.saveCards(newCard);
+            nameField.setText("");
+        }
+        CardController.refresh(this);
+    }
+
+    /**
+     * used to delete the card and renew the GUI
+     */
+    public void deleteCard() {
+        int selectedRow = table.getSelectedRow();
+        if (selectedRow == - 1) {
+            JOptionPane.showMessageDialog(frame, "Please select a row");
+        } else if (CardController.cardList.get(selectedRow).getAmount() != 0) {
+            JOptionPane.showMessageDialog(frame, "Please make the balance to 0 first");
+        }
+       else {
+            CardController.cardList.remove(selectedRow);
+            CardController.saveDeleteCard(selectedRow);
+       }
+       CardController.refresh(this);
     }
 //    public static void main(String[] args) {
 //

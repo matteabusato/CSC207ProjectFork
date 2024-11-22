@@ -62,7 +62,12 @@ public class LoggedInView extends JFrame {
         });
 
         JButton cardsButton = new JButton("Cards");
-        cardsButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "Cards functionality"));
+        cardsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.cardTriggered();
+            }
+        });
 
         JButton atmsButton = new JButton("ATMs near me");
         atmsButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "Find ATMs near you functionality"));
