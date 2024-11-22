@@ -1,4 +1,4 @@
-package Brokerage.Frameworks;
+package Brokerage;
 
 import com.crazzyghost.alphavantage.AlphaVantage;
 import com.crazzyghost.alphavantage.Config;

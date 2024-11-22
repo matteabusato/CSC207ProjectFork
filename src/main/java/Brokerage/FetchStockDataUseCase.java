@@ -1,6 +1,5 @@
-package Brokerage.UseCases;
+package Brokerage;
 
-import Brokerage.Entities.Stock;
 import com.crazzyghost.alphavantage.AlphaVantage;
 import com.crazzyghost.alphavantage.parameters.Interval;
 import com.crazzyghost.alphavantage.parameters.OutputSize;
@@ -8,12 +7,14 @@ import com.crazzyghost.alphavantage.parameters.DataType;
 import com.crazzyghost.alphavantage.timeseries.response.StockUnit;
 import com.crazzyghost.alphavantage.timeseries.response.TimeSeriesResponse;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FetchStockDataUseCase {
 
-    public List<Stock> execute(String stockSymbol) {
+    public static List<StockUnit> execute(String stockSymbol) {
+
+        StockAPIConfig.initialize();
+
         TimeSeriesResponse response = AlphaVantage.api()
                 .timeSeries()
                 .intraday()
@@ -23,12 +24,15 @@ public class FetchStockDataUseCase {
                 .dataType(DataType.JSON)
                 .fetchSync();
 
-        List<Stock> stockData = new ArrayList<>();
-        if (response.getStockUnits() != null) {
-            for (StockUnit unit : response.getStockUnits()) {
-                stockData.add(new Stock(unit.getDate(), unit.getClose()));
-            }
-        }
-        return stockData;
+
+        //List<StockUnit> stockData = new ArrayList<>();
+
+        //if (stockUnits != null) {
+        //    for (StockUnit unit : response.getStockUnits()) {
+        //        stockData.add(new StockUnit(unit.getDate(), unit.getClose()));
+        //    }
+        //}
+        //return stockData;
+        return response.getStockUnits();
     }
 }
