@@ -199,9 +199,9 @@ public class BrokerageController {
         graphPanel.validate();
     }
 
-//    public static void main(String[] args) {
- //       BrokerageView view = new BrokerageView();
-  //      new BrokerageController(view);
-//        view.show();
-//    }
+ //   public static void main(String[] args) {
+  //      BrokeragePresenter view = new BrokeragePresenter();
+   //     new BrokerageController(view);
+    //    view.show();
+   // }
 }
