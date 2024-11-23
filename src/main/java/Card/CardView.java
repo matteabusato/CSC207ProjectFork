@@ -10,7 +10,7 @@ public class CardView extends JFrame{
     public JFrame frame;
     public JTable table;
     public DefaultTableModel model;
-    public JTextField nameField;
+    public JTextField usageField;
 
     public CardView(CardController controller) {
         // Main frame
@@ -21,7 +21,7 @@ public class CardView extends JFrame{
 
         // Table of form
 
-        String[] columns = {"ID", "Name", "Expiry Date", "Security Code", "Amount"};
+        String[] columns = {"ID", "Usage", "Expiry Date", "Security Code", "Expenses"};
         model = new DefaultTableModel(columns, 0);
         table = new JTable(model);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -32,8 +32,8 @@ public class CardView extends JFrame{
         inputPanel.setLayout(new GridLayout(3, 2, 10, 10));
 
         inputPanel.add(new JLabel("Name:"));
-        nameField = new JTextField();
-        inputPanel.add(nameField);
+        usageField = new JTextField();
+        inputPanel.add(usageField);
 
         //Button
         JButton addButton = new JButton("Add Card");
@@ -72,9 +72,6 @@ public class CardView extends JFrame{
         // final frame
         frame.add(inputPanel, BorderLayout.NORTH);
         frame.add(scrollPane, BorderLayout.CENTER);
-
-//        frame.setVisible(true);
-//        CardController.refresh(CardView.this);
     }
 
     /**
@@ -86,7 +83,7 @@ public class CardView extends JFrame{
         cardView.model.setRowCount(0);
         for (Card card : CardController.cardList) {
             cardView.model.addRow
-                    (new Object[]{card.getId(), card.getName(), card.getDate(), card.getCode(),card.getAmount() + "$"});
+                    (new Object[]{card.getId(), card.getUsage(), card.getDate(), card.getCode(),card.getExpenses() + "$"});
         }
     }
 
@@ -95,7 +92,7 @@ public class CardView extends JFrame{
      */
     public void addCard() {
         CardController.loadFromFile();
-        String name = nameField.getText();
+        String name = usageField.getText();
         String securityCode = CardController.newCode();
         String id = CardController.newId(name);
         String expiryDate = CardController.newDate();
@@ -105,9 +102,9 @@ public class CardView extends JFrame{
                     (frame, "Too much cards", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             Card newCard = new Card(id, name, expiryDate, securityCode);
-            model.addRow(new Object[]{id, name, expiryDate, securityCode, newCard.getAmount()});
+            model.addRow(new Object[]{id, name, expiryDate, securityCode, newCard.getExpenses()});
             CardController.saveCards(newCard);
-            nameField.setText("");
+            usageField.setText("");
         }
         refresh(this);
     }
@@ -119,17 +116,11 @@ public class CardView extends JFrame{
         int selectedRow = table.getSelectedRow();
         if (selectedRow == - 1) {
             JOptionPane.showMessageDialog(frame, "Please select a row");
-        } else if (CardController.cardList.get(selectedRow).getAmount() != 0) {
-            JOptionPane.showMessageDialog(frame, "Please make the balance to 0 first");
         }
-       else {
+        else {
             CardController.cardList.remove(selectedRow);
             CardController.saveDeleteCard(selectedRow);
-       }
-       refresh(this);
+        }
+        refresh(this);
     }
-//    public static void main(String[] args) {
-//
-//        SwingUtilities.invokeLater(() -> new CardView());
-//    }
 }
