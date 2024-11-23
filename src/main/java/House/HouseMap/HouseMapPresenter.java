@@ -11,9 +11,9 @@ public class HouseMapPresenter {
 
     private final JFrame houseMapView;
 
-    public HouseMapPresenter(HouseMapController controller, LoggedInController loggedInController) {
+    public HouseMapPresenter(HouseMapController controller) {
         HouseMapView houseView = new HouseMapView(controller);
-        this.houseMapView = new FunctionalityView(houseView, loggedInController);
+        this.houseMapView = new FunctionalityView(houseView, controller);
     }
 
     public void showView(){

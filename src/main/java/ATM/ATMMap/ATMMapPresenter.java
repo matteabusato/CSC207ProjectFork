@@ -1,12 +1,18 @@
 package ATM.ATMMap;
 
 
+import Functionality.FunctionalityController;
+import Functionality.FunctionalityView;
+
+import javax.swing.*;
+
 public class ATMMapPresenter {
 
-    private final ATMMapView atmMapView;
+    private final JFrame atmMapView;
 
-    public ATMMapPresenter(ATMMapController controller) throws Exception {
-        this.atmMapView = new ATMMapView(controller);
+    public ATMMapPresenter(ATMMapController controller){
+        ATMMapView view = new ATMMapView(controller);
+        this.atmMapView = new FunctionalityView(view, controller);
     }
 
     public void showView(){

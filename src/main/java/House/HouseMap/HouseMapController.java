@@ -2,32 +2,29 @@ package House.HouseMap;
 
 import ATM.ATMMap.ATMMapPresenter;
 import DataObjects.UserObject;
+import Functionality.FunctionalityController;
 import LogIn.LoggedIn.LoggedInController;
 import LogIn.Welcome.WelcomeController;
 
-public class HouseMapController {
+public class HouseMapController extends FunctionalityController {
 
     UserObject loggedInUser;
-    private WelcomeController welcomeController;
     private final HouseMapPresenter houseMapPresenter;
+    private final LoggedInController loggedInController;
 
     public HouseMapController(UserObject user, LoggedInController loggedInController) {
         this.loggedInUser = user;
-        this.welcomeController = new WelcomeController();
-        this.houseMapPresenter = new HouseMapPresenter(this, loggedInController);
+        this.houseMapPresenter = new HouseMapPresenter(this);
+        this.loggedInController = loggedInController;
     }
 
     public void launch(){
         houseMapPresenter.showView();
     }
 
-    public void logOutTriggered(){
+    @Override
+    public void back() {
         houseMapPresenter.disposeView();
-        welcomeController.launch();
-    }
-
-    public void logInTriggered() {
-        houseMapPresenter.disposeView();
-
+        loggedInController.launch();
     }
 }

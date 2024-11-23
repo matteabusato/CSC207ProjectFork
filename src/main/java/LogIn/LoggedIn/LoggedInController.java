@@ -1,5 +1,6 @@
 package LogIn.LoggedIn;
 
+import ATM.ATMMap.ATMMapController;
 import App.ControllerInterface;
 import DataObjects.UserObject;
 import House.HouseMap.HouseMapController;
@@ -14,6 +15,7 @@ public class LoggedInController implements ControllerInterface {
     private MakeTransactionController makeTransactionController;
     private SeeTransactionHistoryController seeTransactionHistoryController;
     private HouseMapController houseMapController;
+    private ATMMapController atmMapController;
 
     public LoggedInController(UserObject user) {
         this.loggedInUser = user;
@@ -21,6 +23,7 @@ public class LoggedInController implements ControllerInterface {
         this.makeTransactionController = new MakeTransactionController(loggedInUser);
         this.seeTransactionHistoryController = new SeeTransactionHistoryController(loggedInUser);
         this.houseMapController = new HouseMapController(loggedInUser,  this);
+        this.atmMapController = new ATMMapController(loggedInUser, this);
 
         // at last
         this.loggedInPresenter = new LoggedInPresenter(this);
@@ -54,6 +57,16 @@ public class LoggedInController implements ControllerInterface {
     public void houseMapTriggered() {
         loggedInPresenter.disposeView();
         houseMapController.launch();
+    }
+
+    public void atmMapTriggered() {
+        loggedInPresenter.disposeView();
+        atmMapController.launch();
+    }
+
+    public void exchangesTriggered() {
+        loggedInPresenter.disposeView();
+        //exchangesController.launch();
     }
 }
 

@@ -11,21 +11,21 @@ import java.awt.event.ActionEvent;
 public class FunctionalityView extends JFrame {
 
 
-    public FunctionalityView(JPanel panel, LoggedInController controller) {
+    public FunctionalityView(JPanel panel, FunctionalityController controller) {
         super();
         pack();
         Insets insets = getInsets();
         int frameWidth = panel.getWidth()+ insets.left + insets.right;
         int frameHeight = panel.getHeight() + insets.top + insets.bottom;
-        setSize(frameWidth, frameHeight + 100); // Set the size of the frame
+        setSize(frameWidth, frameHeight + 50); // Set the size of the frame
         add(panel);
 
-        JPanel buttonPanel = new PanelMaker(0, 600, 600, 100, null);
-        JButton backButton = new ButtonMaker("Back", 250, 625, 100, 50) {
+        JPanel buttonPanel = new PanelMaker(0, frameHeight, frameWidth, 50, null);
+        JButton backButton = new ButtonMaker("Back",
+                frameWidth - 120, frameHeight - 25, 85, 25) {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                controller.launch();
+                controller.back();
             }
         };
         buttonPanel.add(backButton);
