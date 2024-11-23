@@ -43,7 +43,7 @@ public class LoggedInView extends JFrame {
         add(topPanel, BorderLayout.NORTH);
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(3, 2, 10, 10));
+        buttonPanel.setLayout(new GridLayout(4, 2, 10, 10));
 
         JButton sendMoneyButton = new JButton("Send Money");
         sendMoneyButton.addActionListener(new ActionListener() {
@@ -62,7 +62,12 @@ public class LoggedInView extends JFrame {
         });
 
         JButton cardsButton = new JButton("Cards");
-        cardsButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "Cards functionality"));
+        cardsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.cardTriggered();
+            }
+        });
 
         JButton atmsButton = new JButton("ATMs near me");
         atmsButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "Find ATMs near you functionality"));
@@ -75,8 +80,17 @@ public class LoggedInView extends JFrame {
             }
         });
 
-        JButton loansButton = new JButton("Loans");
-        loansButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "Loans functionality"));
+        JButton loansButton = new JButton("loans");
+        loansButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "Find ATMs near you functionality"));
+
+        // Button of exchange button, find if we need that button in the main flame
+        JButton exchangeButton = new JButton("Currency exchange");
+        exchangeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.exchangeTriggered();
+            }
+        });
 
         buttonPanel.add(sendMoneyButton);
         buttonPanel.add(transactionsButton);
@@ -84,6 +98,7 @@ public class LoggedInView extends JFrame {
         buttonPanel.add(atmsButton);
         buttonPanel.add(assetsButton);
         buttonPanel.add(loansButton);
+        buttonPanel.add(exchangeButton);
 
         add(buttonPanel, BorderLayout.CENTER);
 
