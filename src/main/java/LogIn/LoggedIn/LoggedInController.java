@@ -1,13 +1,14 @@
 package LogIn.LoggedIn;
 
 import Card.CardController;
+import App.ControllerInterface;
 import DataObjects.UserObject;
 import Exchange.CurrencyExchangeController;
 import LogIn.Welcome.WelcomeController;
 import Transaction.MakeTransaction.MakeTransactionController;
 import Transaction.SeeTransactionHistory.SeeTransactionHistoryController;
 
-public class LoggedInController {
+public class LoggedInController implements ControllerInterface {
     UserObject loggedInUser;
     private LoggedInPresenter loggedInPresenter;
     private WelcomeController welcomeController;
@@ -28,6 +29,7 @@ public class LoggedInController {
         this.loggedInPresenter = new LoggedInPresenter(this);
     }
 
+    @Override
     public void launch(){
         loggedInPresenter.showView();
     }
