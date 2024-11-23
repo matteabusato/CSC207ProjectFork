@@ -64,8 +64,13 @@ public class LoggedInView extends JFrame {
         JButton cardsButton = new JButton("Cards");
         cardsButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "Cards functionality"));
 
-        JButton atmsButton = new JButton("ATMs near me");
-        atmsButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "Find ATMs near you functionality"));
+        JButton housesButton = new JButton("Houses near me");
+        housesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.houseMapTriggered();
+            }
+        });
 
         JButton assetsButton = new JButton("Assets");
         assetsButton.addActionListener(new ActionListener() {
@@ -81,7 +86,7 @@ public class LoggedInView extends JFrame {
         buttonPanel.add(sendMoneyButton);
         buttonPanel.add(transactionsButton);
         buttonPanel.add(cardsButton);
-        buttonPanel.add(atmsButton);
+        buttonPanel.add(housesButton);
         buttonPanel.add(assetsButton);
         buttonPanel.add(loansButton);
 
