@@ -45,7 +45,7 @@ public class Card {
         return this.amount;
     }
 
-    public void updateAmount(float newAmount) {
+    public void updateAmount(double newAmount) {
         this.amount = newAmount;
     }
 }
