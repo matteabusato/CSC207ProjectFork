@@ -6,22 +6,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Card {
 
      private final String id ;
-     private final String name;
+     private final String usage;
      private final String date;
      private final String code;
-     private double amount;
-     private int userID;
+     private double expenses;
 
     @JsonCreator
     public Card(@JsonProperty("id") String id,
-                @JsonProperty("name")String name,
+                @JsonProperty("name")String usage,
                 @JsonProperty("expiryDate")String date,
                 @JsonProperty("securityCode")String code) {
         this.id = id;
-        this.name = name;
+        this.usage = usage;
         this.date = date;
         this.code = code;
-        this.amount = 0;
+        this.expenses = 0;
     }
 
     @JsonProperty
@@ -29,8 +28,8 @@ public class Card {
         return this.id;
     }
 
-    public String getName() {
-        return this.name;
+    public String getUsage() {
+        return this.usage;
     }
 
     public String getDate() {
@@ -41,11 +40,11 @@ public class Card {
         return this.code;
     }
 
-    public double getAmount() {
-        return this.amount;
+    public double getExpenses() {
+        return this.expenses;
     }
 
     public void updateAmount(double newAmount) {
-        this.amount = newAmount;
+        this.expenses = newAmount;
     }
 }

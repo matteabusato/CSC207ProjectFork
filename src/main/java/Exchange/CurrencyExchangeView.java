@@ -86,14 +86,8 @@ public class CurrencyExchangeView extends JFrame {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                currencyExchangeController.logOutTriggered();
+                currencyExchangeController.goBackToBaseView();
             }
         });
-
-//        setVisible(true);
     }
-
-//    public static void main(String[] args) {
-//        SwingUtilities.invokeLater(CurrencyExchangeView::new);
-//    }
 }

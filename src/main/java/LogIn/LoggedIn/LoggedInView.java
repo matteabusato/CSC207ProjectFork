@@ -43,7 +43,7 @@ public class LoggedInView extends JFrame {
         add(topPanel, BorderLayout.NORTH);
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(3, 2, 10, 10));
+        buttonPanel.setLayout(new GridLayout(4, 2, 10, 10));
 
         JButton sendMoneyButton = new JButton("Send Money");
         sendMoneyButton.addActionListener(new ActionListener() {
@@ -91,7 +91,6 @@ public class LoggedInView extends JFrame {
                 controller.exchangeTriggered();
             }
         });
-        // e -> JOptionPane.showMessageDialog(null, "Loans functionality")
 
         buttonPanel.add(sendMoneyButton);
         buttonPanel.add(transactionsButton);
@@ -99,6 +98,7 @@ public class LoggedInView extends JFrame {
         buttonPanel.add(atmsButton);
         buttonPanel.add(assetsButton);
         buttonPanel.add(loansButton);
+        buttonPanel.add(exchangeButton);
 
         add(buttonPanel, BorderLayout.CENTER);
 
