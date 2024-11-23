@@ -1,4 +1,4 @@
-package ATM;
+package ATM.ATMMap;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -7,6 +7,7 @@ import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+import ATM.DataObject.ATMObject;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -34,13 +35,7 @@ public class NominatimAPI {
     }
 
     public static String getATMCoordinates(double lon, double lat, double radius) throws Exception {
-        String query = """
-        [out:json];
-        (
-          node["amenity"="atm"](around:%f,%f,%f);
-        );
-        out body;
-    """.formatted(radius, lat, lon);
+        String query = "[out:json];(node[\"amenity\"=\"atm\"](around:%f,%f,%f););out body;".formatted(radius, lat, lon);
 
         String url = "https://overpass-api.de/api/interpreter";
 
@@ -68,9 +63,9 @@ public class NominatimAPI {
         }
     }
 
-    public static List<ATM> createATMS(String json, double centerLongitude, double centerLatitude, JPanel panel)
+    public static List<ATMObject> createATMS(String json, double centerLongitude, double centerLatitude, JPanel panel)
             throws Exception {
-        List<ATM> ATMs = new ArrayList<ATM>();
+        List<ATMObject> ATMObjects = new ArrayList<ATMObject>();
         ObjectMapper mapper = new ObjectMapper();
         JsonNode rootNode = mapper.readTree(json);
 
@@ -80,14 +75,14 @@ public class NominatimAPI {
             String name = node.path("tags").path("name").asText("Unknown ATM");
 
             int[] atmCoordinate = PixelConverter.calculateRelativePosition(centerLongitude, centerLatitude,
-                    lon, lat, ATM.ZOOM);
+                    lon, lat, ATMObject.ZOOM);
 
-            ATM atm = new ATM(name, ATM.CASHRESERVE, ATM.FEE,
-                    ATM.centerX + atmCoordinate[0], ATM.centerY - atmCoordinate[1], panel);
-            ATMs.add(atm);
+            ATMObject atmObject = new ATMObject(name, ATMObject.CASHRESERVE, ATMObject.FEE,
+                    ATMObject.centerX + atmCoordinate[0], ATMObject.centerY - atmCoordinate[1], panel);
+            ATMObjects.add(atmObject);
         }
 
-        return ATMs;
+        return ATMObjects;
     }
 
     public static void main(String[] args) {

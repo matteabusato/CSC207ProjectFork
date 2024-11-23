@@ -1,4 +1,4 @@
-package ATM;
+package ATM.ATMMap;
 
 import java.util.Arrays;
 
