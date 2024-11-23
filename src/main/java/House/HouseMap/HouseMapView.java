@@ -26,7 +26,7 @@ public class HouseMapView extends JFrame {
 
         //JPanel panel = new PanelMaker(0, 0, width, height, null);
 
-        Image map = Toolkit.getDefaultToolkit().getImage("src/main/java/House/map.png");
+        Image map = Toolkit.getDefaultToolkit().getImage("src/main/java/House/HouseMap.png");
         JPanel panel = new PanelMaker(0, 0, WIDTH, HEIGHT, null) {
             @Override
             protected void paintComponent(Graphics g) {
