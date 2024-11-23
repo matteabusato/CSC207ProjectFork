@@ -1,10 +1,8 @@
 package DataObjects;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 public class UserObject {
     int userID;
     String firstName;
