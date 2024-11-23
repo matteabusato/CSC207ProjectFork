@@ -56,7 +56,7 @@ public class CardView extends JFrame{
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.logOutTriggered();
+                controller.goBackToBaseView();
             }
         });
 

@@ -1,6 +1,7 @@
 package Exchange;
 
 import DataObjects.UserObject;
+import LogIn.LoggedIn.LoggedInController;
 import LogIn.Welcome.WelcomeController;
 import com.crazzyghost.alphavantage.AlphaVantage;
 import com.crazzyghost.alphavantage.Config;
@@ -45,6 +46,12 @@ public class CurrencyExchangeController {
     public void logOutTriggered(){
         currencyExchangePresenter.disposeView();
         welcomeController.launch();
+    }
+
+    public void goBackToBaseView() {
+        currencyExchangePresenter.disposeView();
+        LoggedInController controller = new LoggedInController(loggedInUser);
+        controller.launch();
     }
 
     public static void onData(ExchangeRateResponse response){

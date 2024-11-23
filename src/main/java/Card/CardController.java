@@ -1,6 +1,7 @@
 package Card;
 
 import DataObjects.UserObject;
+import LogIn.LoggedIn.LoggedInController;
 import LogIn.Welcome.WelcomeController;
 import org.jetbrains.annotations.NotNull;
 
@@ -29,6 +30,12 @@ public class CardController {
     public void logOutTriggered(){
         cardPresenter.disposeView();
         welcomeController.launch();
+    }
+
+    public void goBackToBaseView() {
+        cardPresenter.disposeView();
+        LoggedInController controller = new LoggedInController(loggedInUser);
+        controller.launch();
     }
 
     /**
