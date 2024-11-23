@@ -9,7 +9,7 @@ public class Card {
      private final String name;
      private final String date;
      private final String code;
-     private float amount;
+     private double amount;
      private int userID;
 
     @JsonCreator
@@ -41,7 +41,7 @@ public class Card {
         return this.code;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return this.amount;
     }
 
