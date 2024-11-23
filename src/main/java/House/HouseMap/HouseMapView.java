@@ -1,17 +1,23 @@
-package House;
-import main.java.Views.PanelMaker;
+package House.HouseMap;
+import DataObjects.UserObject;
+import House.DataObject.HouseController;
+import House.DataObject.HouseObject;
+import Views.PanelMaker;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Map;
+import java.util.List;
 
-public class HousePresenter extends JFrame {
+public class HouseMapView extends JFrame {
 
     public static final int WIDTH = 600;
     public static final int HEIGHT = 600;
+    private UserObject user;
 
-    public HousePresenter() {
+    public HouseMapView(HouseMapController controller) {
         super("House Map");
+        HouseController houseController = new HouseController(user);
+        this.user = controller.loggedInUser;
         pack();
         Insets insets = getInsets();
         int frameWidth = WIDTH + insets.left + insets.right;
@@ -29,9 +35,9 @@ public class HousePresenter extends JFrame {
             }
         };
 
-        Map<String,House> houses = HouseReader.getHouses();
-        for(House house: houses.values()) {
-            house.createButton(panel);
+        List<HouseObject> houses = houseController.getHouses();
+        for(HouseObject houseObject : houses) {
+            houseObject.createButton(panel, houseController);
         }
 
         this.add(panel);

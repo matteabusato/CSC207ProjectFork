@@ -1,17 +1,17 @@
-package House;
+package House.DataObject;
 
 import javax.swing.*;
 
-public class House {
+public class HouseObject {
 
-    private String name;
-    private String address;
-    private int x;
-    private int y;
-    private double price;
+    private final String name;
+    private final String address;
+    private final int x;
+    private final int y;
+    private final double price;
     private String owner;
 
-    public House(String name, String address, int x, int y, double price, String owner) {
+    public HouseObject(String name, String address, int x, int y, double price, String owner) {
         this.name = name;
         this.address = address;
         this.x = x;
@@ -20,7 +20,7 @@ public class House {
         this.owner = owner;
     }
 
-    public House() {
+    public HouseObject() {
         name = "";
         address = "";
         x = 0;
@@ -29,8 +29,8 @@ public class House {
         owner = "";
     }
 
-    public void createButton(JPanel panel) {
-        new HouseButton(this, x, y, 20, 20, panel);
+    public void createButton(JPanel panel, HouseController controller) {
+        new HouseButton(this, x, y, 20, 20, panel,controller);
     }
 
     public String getName() {

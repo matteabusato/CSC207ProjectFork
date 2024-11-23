@@ -1,8 +1,4 @@
-package ATM;
-
-import main.java.Views.ButtonMaker;
-import main.java.Views.LabelMaker;
-import main.java.Views.PanelMaker;
+package House.DataObject;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,38 +6,45 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ATMPopUp extends PanelMaker {
+import Views.LabelMaker;
+import Views.PanelMaker;
+import Views.ButtonMaker;
 
-    private boolean visible;
+public class HousePopUp extends PanelMaker {
 
-    public ATMPopUp(ATM atm, int x, int y, int width, int height) {
+
+    public HousePopUp(HouseObject houseObject, int x, int y, int width, int height, HouseController controller) {
         super(x, y, width, height, new GridLayout(2, 1));
-        JPanel labels = new PanelMaker(x, y, width, height / 2, new GridLayout(3, 1));
-        JLabel name = new LabelMaker(atm.getName(), null);
-        JLabel cash = new LabelMaker("Remaining Cash :" + atm.getRemainingCash(), null);
-        JLabel fee = new LabelMaker("TransactionFee: " + atm.getTransactionFee(), null);
+        JPanel labels = new PanelMaker(x, y, width, height / 2, new GridLayout(4, 1));
+        JLabel name = new LabelMaker(houseObject.getName(), null);
+        JLabel address = new LabelMaker("Address: " + houseObject.getAddress(), null);
+        JLabel price = new LabelMaker("Price :" + houseObject.getPrice(), null);
+        JLabel owner = new LabelMaker("Owner: " + houseObject.getOwner(), null);
         labels.add(name);
-        labels.add(cash);
-        labels.add(fee);
+        labels.add(address);
+        labels.add(price);
+        labels.add(owner);
 
         this.add(labels);
 
         JPanel buttons = new PanelMaker(0, 0, width, height / 2, new GridLayout(1, 2));
-        JButton withdraw = new ButtonMaker("Withdraw") {
+        JButton purchase = new ButtonMaker("Purchase") {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("withdrawing");
+                controller.buyHouse(houseObject.getAddress());
+                owner.setText("Owner: " + controller.getUser().getFirstName());
             }
         };
-        JButton deposit = new ButtonMaker("Deposit") {
+        JButton deposit = new ButtonMaker("Sell") {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("depositing");
+                controller.sellHouse(houseObject.getAddress());
+                owner.setText("Owner: ");
             }
         };
 
+        buttons.add(purchase);
         buttons.add(deposit);
-        buttons.add(withdraw);
         this.add(buttons);
 
         this.addMouseListener(new MouseAdapter() {
@@ -70,5 +73,4 @@ public class ATMPopUp extends PanelMaker {
         this.setVisible(false);
 
     }
-
 }

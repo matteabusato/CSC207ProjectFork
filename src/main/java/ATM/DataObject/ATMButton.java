@@ -1,24 +1,25 @@
-package House;
-import main.java.Views.PanelMaker;
+package ATM.DataObject;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class HouseButton extends PanelMaker {
+import ATM.ATMMap.ATMMapView;
+import Views.PanelMaker;
+
+public class ATMButton extends PanelMaker {
+
 
     public static final int POPUPWIDTH = 200;
     public static final int POPUPHEIGHT = 150;
-    private final HousePopUp popUp;
+    private final ATMPopUp popUp;
 
-    public HouseButton(House house, int x, int y, int width, int height, JPanel panel) {
+    public ATMButton(ATMObject atmObject, int x, int y, int width, int height, JPanel panel) {
         super(x, y, width, height, null);
-        if (HousePresenter.WIDTH - x < POPUPWIDTH) x -= POPUPWIDTH - width;
-        if (HousePresenter.HEIGHT - y < POPUPHEIGHT) y -= POPUPHEIGHT - height;
+        if (ATMMapView.WIDTH - x < POPUPWIDTH) x -= POPUPWIDTH - width;
+        if (ATMMapView.HEIGHT - y < POPUPHEIGHT) y -= POPUPHEIGHT - height;
 
-
-        this.popUp = new HousePopUp(house, x, y , POPUPWIDTH, POPUPHEIGHT);
+        this.popUp = new ATMPopUp(atmObject, x, y , POPUPWIDTH, POPUPHEIGHT);
         panel.add(popUp);
         panel.add(this);
 
@@ -33,5 +34,7 @@ public class HouseButton extends PanelMaker {
                 popUp.setVisible(false); // Hide popup when mouse exits
             }
         });
+
     }
+
 }
