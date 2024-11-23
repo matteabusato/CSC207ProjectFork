@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public abstract class git pull origin mainButtonMaker extends JButton implements ActionListener {
+public abstract class ButtonMaker extends JButton implements ActionListener {
 
     /**
      * Creates a JButton Object with the specified parameters.
