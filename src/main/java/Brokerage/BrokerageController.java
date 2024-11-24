@@ -1,21 +1,22 @@
 package Brokerage;
 
+import App.ControllerInterface;
 import DataObjects.UserObject;
 import com.crazzyghost.alphavantage.timeseries.response.StockUnit;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.List;
 
-public class BrokerageController {
+public class BrokerageController implements ControllerInterface {
     UserObject loggedInUser;
     private final BrokeragePresenter brokeragePresenter;
+    private final BrokerageDBAccess brokerageDBAccess = new BrokerageDBAccess();
 
     public BrokerageController(UserObject loggedInUser) {
         this.loggedInUser = loggedInUser;
         this.brokeragePresenter = new BrokeragePresenter(this);
     }
 
+    @Override
     public void launch(){
         brokeragePresenter.showView();
     }
@@ -43,88 +44,21 @@ public class BrokerageController {
         return latestStock.getClose();
     }
 
-
-    private void buyAction(double latestPrice, String stockSymbol) {
-        // Spinner with min 1, max Integer.MAX_VALUE, step size 1
-        JSpinner amountSpinner = new JSpinner(new SpinnerNumberModel(1, 1, Integer.MAX_VALUE, 1));
-        JLabel l = new JLabel("Total Bid Price: " + latestPrice);
-        amountSpinner.addChangeListener(e -> l.setText(String.format("Total Bid Price: %.2f", (Integer) amountSpinner.getValue() * latestPrice)));
-
-        final JPanel panel = new JPanel(new GridLayout(0, 1));
-        panel.add(new JLabel("Enter amount of security to buy:"));
-        panel.add(amountSpinner);
-        panel.add(l);
-
-        int option = JOptionPane.showConfirmDialog(
-                null,  // Parent component
-                panel,  // The panel with the spinner
-                "Buy Asset",  // Dialog title
-                JOptionPane.OK_CANCEL_OPTION,  // Options: OK and Cancel buttons
-                JOptionPane.PLAIN_MESSAGE  // Message type
-        );
-
-        // If the user clicks OK
-        if (option == JOptionPane.OK_OPTION) {
-            int amount = (int) amountSpinner.getValue();
-            if (amount > 0) {
-                JOptionPane.showMessageDialog(
-                        null,  // Parent component
-                        "You have bought " + amount + " shares of " + stockSymbol,  // Message to display
-                        "Success",  // Title
-                        JOptionPane.INFORMATION_MESSAGE  // Message type
-                );
-            } else {
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Please enter a valid amount greater than zero.",
-                        "Invalid Amount",
-                        JOptionPane.ERROR_MESSAGE
-                );
-            }
-        }
+    public int getQuantity(String stockSymbol) {
+        return brokerageDBAccess.getQuantity(loggedInUser.getUserID(), stockSymbol);
     }
 
-    private void sellAction(double latestPrice, String stockSymbol) {
-        // (Reuse your existing sell logic here)
-        int amountOwn = 10;
+    public boolean onBuyTriggered(int quantity, double price) {
+        return quantity * price <= loggedInUser.getBalance();
+    }
 
-        // Spinner with min 1, max Integer.MAX_VALUE, step size 1
-        JSpinner amountSpinner = new JSpinner(new SpinnerNumberModel(1, 1, amountOwn, 1));
-        JLabel l = new JLabel("Total Ask Price: " + latestPrice);
-        amountSpinner.addChangeListener(e -> l.setText(String.format("Total Ask Price: %.2f", (Integer) amountSpinner.getValue() * latestPrice)));
+    public void addStock(String stockID, int quantity, double price) {
+        StockObject boughtStock = new StockObject(stockID, price, quantity);
+        loggedInUser = brokerageDBAccess.saveData(loggedInUser.getUserID(), boughtStock);
+    }
 
-        final JPanel panel = new JPanel(new GridLayout(0, 1));
-        panel.add(new JLabel("Enter amount of security to sell:"));
-        panel.add(amountSpinner);
-        panel.add(l);
-
-        int option = JOptionPane.showConfirmDialog(
-                null,  // Parent component
-                panel,  // The panel with the spinner
-                "Sell Asset",  // Dialog title
-                JOptionPane.OK_CANCEL_OPTION,  // Options: OK and Cancel buttons
-                JOptionPane.PLAIN_MESSAGE  // Message type
-        );
-
-        // If the user clicks OK
-        if (option == JOptionPane.OK_OPTION) {
-            int amount = (int) amountSpinner.getValue();
-            if (amount > 0) {
-                JOptionPane.showMessageDialog(
-                        null,  // Parent component
-                        "You have sold " + amount + " shares of " + stockSymbol,  // Message to display
-                        "Success",  // Title
-                        JOptionPane.INFORMATION_MESSAGE  // Message type
-                );
-            } else {
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Please enter a valid amount greater than zero.",
-                        "Invalid Amount",
-                        JOptionPane.ERROR_MESSAGE
-                );
-            }
-        }
+    public boolean onSellTriggered(String stockID, int quantity) {
+        return quantity <= brokerageDBAccess.getQuantity(loggedInUser.getUserID(), stockID);
     }
 
 }

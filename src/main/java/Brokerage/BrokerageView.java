@@ -16,7 +16,7 @@ import java.util.List;
 
 public class BrokerageView extends JFrame {
 
-    private JPanel graphPanel;
+    private final JPanel graphPanel;
 
     public BrokerageView(BrokerageController controller) {
         // Initialize Swing UI
@@ -65,7 +65,7 @@ public class BrokerageView extends JFrame {
         add(buttonsPanel, BorderLayout.SOUTH);
 
         searchButton.addActionListener(e -> {
-            String stockSymbol = stockNameField.getText().trim();;
+            String stockSymbol = stockNameField.getText().trim();
             boolean success1 = controller.onSearchStockTriggered(stockSymbol);
 
             if (success1) {
@@ -113,12 +113,16 @@ public class BrokerageView extends JFrame {
             if (option == JOptionPane.OK_OPTION) {
                 int amount = (int) amountSpinner.getValue();
                 if (amount > 0) {
-                    JOptionPane.showMessageDialog(
-                            null,  // Parent component
-                            "You have bought " + amount + " shares of " + stockSymbol,  // Message to display
-                            "Success",  // Title
-                            JOptionPane.INFORMATION_MESSAGE  // Message type
-                    );
+                    boolean success = controller.onBuyTriggered(amount, latestPrice);
+                    if (success) {
+                        controller.addStock(stockSymbol, amount, latestPrice);
+                        JOptionPane.showMessageDialog(
+                                null,  // Parent component
+                                "You have bought " + amount + " shares of " + stockSymbol,  // Message to display
+                                "Success",  // Title
+                                JOptionPane.INFORMATION_MESSAGE  // Message type
+                        );
+                    }
                 } else {
                     JOptionPane.showMessageDialog(
                             null,
@@ -134,10 +138,10 @@ public class BrokerageView extends JFrame {
             String stockSymbol = stockNameField.getText().trim();
             double latestPrice = controller.onSearchStockSuccess(stockSymbol);
 
-            int amountOwn = 10;
+            int amountOwn = controller.getQuantity(stockSymbol);
 
             // Spinner with min 1, max Integer.MAX_VALUE, step size 1
-            JSpinner amountSpinner = new JSpinner(new SpinnerNumberModel(1, 1, amountOwn, 1));
+            JSpinner amountSpinner = new JSpinner(new SpinnerNumberModel(0, 0, amountOwn, 1));
             JLabel l = new JLabel("Total Ask Price: " + latestPrice);
             amountSpinner.addChangeListener(f -> l.setText(String.format("Total Ask Price: %.2f", (Integer) amountSpinner.getValue() * latestPrice)));
 
@@ -158,16 +162,20 @@ public class BrokerageView extends JFrame {
             if (option == JOptionPane.OK_OPTION) {
                 int amount = (int) amountSpinner.getValue();
                 if (amount > 0) {
-                    JOptionPane.showMessageDialog(
-                            null,  // Parent component
-                            "You have sold " + amount + " shares of " + stockSymbol,  // Message to display
-                            "Success",  // Title
-                            JOptionPane.INFORMATION_MESSAGE  // Message type
-                    );
+                    boolean success = controller.onSellTriggered(stockSymbol, amount);
+                    if (success) {
+                        controller.addStock(stockSymbol, -1*amount, latestPrice);
+                        JOptionPane.showMessageDialog(
+                                null,  // Parent component
+                                "You have sold " + amount + " shares of " + stockSymbol,  // Message to display
+                                "Success",  // Title
+                                JOptionPane.INFORMATION_MESSAGE  // Message type
+                        );
+                    }
                 } else {
                     JOptionPane.showMessageDialog(
                             null,
-                            "Please enter a valid amount greater than zero.",
+                            "Please enter a valid amount.",
                             "Invalid Amount",
                             JOptionPane.ERROR_MESSAGE
                     );
