@@ -2,9 +2,10 @@ package Transaction.DataObject;
 
 import DataAccess.DataAccessController;
 import DataAccess.DataAccessInterface;
-import DataObjects.UserObject;
-import DataObjects.UsersController;
+import UserDataObject.UserObject;
+import UserDataObject.UsersController;
 
+import java.nio.file.FileSystems;
 import java.util.List;
 
 public class TransactionDBAccess implements DataAccessInterface<TransactionObject> {
@@ -16,15 +17,14 @@ public class TransactionDBAccess implements DataAccessInterface<TransactionObjec
         int senderID = userID;
         int receiverID = transaction.receiverID;
         UserObject sender = usersController.getUser(senderID);
-        UserObject receiver = usersController.getUser(receiverID);
         double amount = transaction.amount;
 
-        List<TransactionObject> transactions = controller.readData(sender.getFileDirectory() + "\\TransactionHistory.json", TransactionObject.class);
+        List<TransactionObject> transactions = controller.readData(sender.getFileDirectory() + FileSystems.getDefault().getSeparator() + "TransactionHistory.json", TransactionObject.class);
         transactions.add(transaction);
-        controller.saveData(sender.getFileDirectory() + "\\TransactionHistory.json", transactions, TransactionObject.class);
+        controller.saveData(sender.getFileDirectory() + FileSystems.getDefault().getSeparator() + "TransactionHistory.json", transactions, TransactionObject.class);
 
-        sender = updateSenderBalance(sender, amount);
-        receiver = updateReceiverBalance(receiver, amount);
+        sender = updateSenderBalance(senderID, amount);
+        updateReceiverBalance(receiverID, amount);
 
         return sender;
     }
@@ -32,19 +32,21 @@ public class TransactionDBAccess implements DataAccessInterface<TransactionObjec
     @Override
     public List<TransactionObject> readData(int userID) {
         UserObject user = usersController.getUser(userID);
-        List<TransactionObject> transactions = controller.readData(user.getFileDirectory() + "\\TransactionHistory.json", TransactionObject.class);
-        return transactions;
+        return controller.readData(user.getFileDirectory() + FileSystems.getDefault().getSeparator() + "TransactionHistory.json", TransactionObject.class);
     }
 
-    private UserObject updateSenderBalance(UserObject user, double amount){
+    private UserObject updateSenderBalance(int userID, double amount){
+        UserObject user = usersController.getUser(userID);
         user.setBalance(user.getBalance() - amount);
         usersController.changeUser(user.getUserID(), user);
         return user;
     }
 
-    private UserObject updateReceiverBalance(UserObject user, double amount){
-        user.setBalance(user.getBalance() + amount);
-        usersController.changeUser(user.getUserID(), user);
-        return user;
+    private void updateReceiverBalance(int userID, double amount){
+        if (usersController.checkUserExistance(userID)){
+            UserObject user = usersController.getUser(userID);
+            user.setBalance(user.getBalance() + amount);
+            usersController.changeUser(user.getUserID(), user);
+        }
     }
 }

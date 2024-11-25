@@ -1,6 +1,6 @@
 package LogIn.LoggedIn;
 
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 
 import javax.swing.*;
 import java.awt.*;

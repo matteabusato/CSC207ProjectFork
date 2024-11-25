@@ -13,6 +13,8 @@ Lorem Ipsum ...
 ## Usage Instructions
 Version of Java - Swing - Packages
 
+Run MainLauncher.java to use the software!
+
 ## User Stories
 
 Stefano’s Story: Alex wants to purchase a stock. First, he wants to check the price. 

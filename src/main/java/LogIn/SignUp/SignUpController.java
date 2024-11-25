@@ -1,8 +1,8 @@
 package LogIn.SignUp;
 
 import App.ControllerInterface;
-import DataObjects.UserObject;
-import DataObjects.UsersController;
+import UserDataObject.UserObject;
+import UserDataObject.UsersController;
 import LogIn.LoggedIn.LoggedInController;
 
 public class SignUpController implements ControllerInterface {

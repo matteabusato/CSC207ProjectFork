@@ -1,6 +1,6 @@
 package DataAccess;
 
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 
 import java.util.List;
 

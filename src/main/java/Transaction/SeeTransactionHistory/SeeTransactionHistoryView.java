@@ -1,8 +1,7 @@
 package Transaction.SeeTransactionHistory;
 
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 import Transaction.DataObject.TransactionObject;
-import Transaction.MakeTransaction.MakeTransactionController;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

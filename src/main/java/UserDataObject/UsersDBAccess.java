@@ -1,4 +1,4 @@
-package DataObjects;
+package UserDataObject;
 
 import DataAccess.DataAccessController;
 

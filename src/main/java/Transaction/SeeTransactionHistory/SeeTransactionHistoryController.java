@@ -1,12 +1,11 @@
 package Transaction.SeeTransactionHistory;
 
 import App.ControllerInterface;
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 import LogIn.Welcome.WelcomeController;
 import Transaction.DataObject.TransactionController;
 import Transaction.DataObject.TransactionObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SeeTransactionHistoryController implements ControllerInterface {

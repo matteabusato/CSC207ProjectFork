@@ -1,4 +1,4 @@
-package DataObjects;
+package UserDataObject;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
