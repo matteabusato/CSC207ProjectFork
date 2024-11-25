@@ -1,18 +1,27 @@
 package ATM.ATMMap;
 
 
-public class ATMMapPresenter {
+import App.PresenterInterface;
+import Functionality.FunctionalityController;
+import Functionality.FunctionalityView;
 
-    private final ATMMapView atmMapView;
+import javax.swing.*;
 
-    public ATMMapPresenter(ATMMapController controller) throws Exception {
-        this.atmMapView = new ATMMapView(controller);
+public class ATMMapPresenter implements PresenterInterface<ATMMapController> {
+
+    private final JFrame atmMapView;
+
+    public ATMMapPresenter(ATMMapController controller){
+        ATMMapView view = new ATMMapView(controller);
+        this.atmMapView = new FunctionalityView(view, controller);
     }
 
+    @Override
     public void showView(){
         atmMapView.setVisible(true);
     }
 
+    @Override
     public void disposeView(){
         atmMapView.setVisible(false);
         atmMapView.dispose();

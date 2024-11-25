@@ -21,10 +21,7 @@ public class LogInController implements ControllerInterface {
 
     public boolean logInTriggered(int userID, String password){
         UserObject user = usersController.getUser(userID);
-        if (user != null && user.getPasswordHash().equals(password)){
-            return true;
-        }
-        return false;
+        return (user != null && user.getPasswordHash().equals(password));
     }
 
     public void onLoginSuccess(int userID) {

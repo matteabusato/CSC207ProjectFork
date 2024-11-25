@@ -1,7 +1,5 @@
 package LogIn.LogIn;
 
-import LogIn.Welcome.WelcomeController;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -31,9 +29,12 @@ public class LogInView extends JFrame {
         loginPanel.add(passwordLabel);
         loginPanel.add(passwordField);
         loginPanel.add(backButton);
+        //loginPanel.add(new JLabel());
         loginPanel.add(logInButton);
 
         add(loginPanel);
+
+        JFrame view = this;
 
         backButton.addActionListener(new ActionListener() {
             @Override
@@ -41,6 +42,7 @@ public class LogInView extends JFrame {
                 controller.goBackToWelcomeView();
             }
         });
+
         logInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -52,10 +54,22 @@ public class LogInView extends JFrame {
                     if (success) {
                         controller.onLoginSuccess(userID);
                     } else {
-                        displayMessage("Invalid User ID or Password.", false);
+                        JOptionPane.showMessageDialog(
+                                view,
+                                "Incorrect UserID or Password",
+                                "Warning",
+                                JOptionPane.WARNING_MESSAGE
+                        );
+                        //displayMessage("Invalid User ID or Password.", false);
                     }
                 } catch (NumberFormatException ex) {
-                    displayMessage("User ID must be a number.", false);
+                    JOptionPane.showMessageDialog(
+                            view,
+                            "User ID must be a number.",
+                            "Warning",
+                            JOptionPane.WARNING_MESSAGE
+                    );
+                    //displayMessage("User ID must be a number.", false);
                 }
             }
         });
