@@ -27,5 +27,4 @@ public class UsersController {
     public boolean checkUserExistance(int userID) {
         return usersDBAccess.readDataPoint(userID) != null;
     }
-
 }
