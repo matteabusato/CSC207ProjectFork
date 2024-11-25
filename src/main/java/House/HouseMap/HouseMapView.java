@@ -15,9 +15,9 @@ public class HouseMapView extends PanelMaker {
     private static final Image map = Toolkit.getDefaultToolkit().getImage("src/main/java/House/HouseMap.png");
     private UserObject user;
 
-    public HouseMapView(HouseMapController controller) {
+    public HouseMapView(UserObject user, HouseMapController  controller) {
         super(0, 0, WIDTH, HEIGHT, null);
-        HouseController houseController = new HouseController(user);
+        HouseController houseController = new HouseController(user, controller);
         this.user = controller.loggedInUser;
         JPanel panel = new PanelMaker(0, 0, WIDTH, HEIGHT, null) {
             @Override
