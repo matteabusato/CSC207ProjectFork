@@ -1,8 +1,7 @@
 package Transaction.SeeTransactionHistory;
 
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 import Transaction.DataObject.TransactionObject;
-import Transaction.MakeTransaction.MakeTransactionController;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -25,7 +24,7 @@ public class SeeTransactionHistoryView extends JFrame {
 
         setLayout(new BorderLayout());
 
-        JLabel titleLabel = new JLabel("Transaction History:", SwingConstants.CENTER);
+        JLabel titleLabel = new JLabel("Transaction History", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
         add(titleLabel, BorderLayout.NORTH);
 

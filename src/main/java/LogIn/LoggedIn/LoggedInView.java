@@ -1,6 +1,6 @@
 package LogIn.LoggedIn;
 
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,6 +21,12 @@ public class LoggedInView extends JFrame {
         setLayout(new BorderLayout());
 
         JPanel topPanel = new JPanel(new BorderLayout());
+
+        JPanel refreshPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        JButton refreshButton = new JButton("Refresh");
+        refreshButton.setPreferredSize(new Dimension(80, 25));
+        refreshPanel.add(refreshButton);
+        topPanel.add(refreshPanel, BorderLayout.CENTER);
 
         JPanel logoutPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JButton logoutButton = new JButton("Logout");
@@ -70,7 +76,12 @@ public class LoggedInView extends JFrame {
         });
 
         JButton atmsButton = new JButton("ATMs near me");
-        atmsButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "Find ATMs near you functionality"));
+        atmsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.atmMapTriggered();
+            }
+        });
 
         JButton assetsButton = new JButton("Assets");
         assetsButton.addActionListener(new ActionListener() {
@@ -80,8 +91,25 @@ public class LoggedInView extends JFrame {
             }
         });
 
-        JButton loansButton = new JButton("loans");
-        loansButton.addActionListener(e -> JOptionPane.showMessageDialog(null, "Find ATMs near you functionality"));
+        JButton loansButton = new JButton("Apply Loans");
+        loansButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) { controller.applyLoansTriggered(); }
+        });
+
+        JButton loansHistoryButton = new JButton("Loans History");
+        loansHistoryButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) { controller.seeLoansHistoryTriggered(); }
+        });
+
+        JButton housesButton = new JButton("Houses near me");
+        housesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.houseMapTriggered();
+            }
+        });
 
         // Button of exchange button, find if we need that button in the main flame
         JButton exchangeButton = new JButton("Currency exchange");
@@ -96,11 +124,19 @@ public class LoggedInView extends JFrame {
         buttonPanel.add(transactionsButton);
         buttonPanel.add(cardsButton);
         buttonPanel.add(atmsButton);
+        buttonPanel.add(housesButton);
         buttonPanel.add(assetsButton);
-        buttonPanel.add(loansButton);
+        buttonPanel.add(loansHistoryButton);
         buttonPanel.add(exchangeButton);
 
         add(buttonPanel, BorderLayout.CENTER);
+
+        refreshButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.refreshTriggered();
+            }
+        });
 
         logoutButton.addActionListener(new ActionListener() {
             @Override

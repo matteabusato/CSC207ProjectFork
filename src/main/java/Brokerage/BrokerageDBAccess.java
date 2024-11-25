@@ -2,8 +2,8 @@ package Brokerage;
 
 import DataAccess.DataAccessController;
 import DataAccess.DataAccessInterface;
-import DataObjects.UserObject;
-import DataObjects.UsersController;
+import UserDataObject.UserObject;
+import UserDataObject.UsersController;
 
 import java.nio.file.FileSystems;
 import java.util.List;

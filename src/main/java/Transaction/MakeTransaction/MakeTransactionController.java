@@ -1,7 +1,7 @@
 package Transaction.MakeTransaction;
 
 import App.ControllerInterface;
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 import LogIn.LoggedIn.LoggedInController;
 import LogIn.Welcome.WelcomeController;
 import Transaction.DataObject.TransactionController;

@@ -1,9 +1,10 @@
 package LogIn.LogIn;
 
 import App.ControllerInterface;
-import DataObjects.UserObject;
-import DataObjects.UsersController;
+import UserDataObject.UserObject;
+import UserDataObject.UsersController;
 import LogIn.LoggedIn.LoggedInController;
+import LogIn.Welcome.WelcomeController;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
@@ -19,10 +20,7 @@ public class LogInController implements ControllerInterface {
 
     public boolean logInTriggered(int userID, String password){
         UserObject user = usersController.getUser(userID);
-        if (user != null && user.getPasswordHash().equals(password)){
-            return true;
-        }
-        return false;
+        return (user != null && user.getPasswordHash().equals(password));
     }
 
     public void onLoginSuccess(int userID) {
@@ -30,5 +28,11 @@ public class LogInController implements ControllerInterface {
         logInPresenter.disposeView();
         loggedInController = new LoggedInController(user);
         loggedInController.launch();
+    }
+
+    public void goBackToWelcomeView() {
+        logInPresenter.disposeView();
+        WelcomeController controller = new WelcomeController();
+        controller.launch();
     }
 }

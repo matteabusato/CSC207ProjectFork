@@ -1,6 +1,6 @@
 package Card;
 
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 import LogIn.LoggedIn.LoggedInController;
 import LogIn.Welcome.WelcomeController;
 import org.jetbrains.annotations.NotNull;
@@ -21,6 +21,7 @@ public class CardController {
         this.loggedInUser = user;
         this.cardPresenter = new CardPresenter(this);
         this.welcomeController = new WelcomeController();
+        loadFromFile();
     }
 
     public void launch() {
@@ -158,5 +159,9 @@ public class CardController {
      */
     public static void saveDeleteCard(int index) {
         cardDBAccess.saveDeleteData(loggedInUser.getUserID(), index);
+    }
+
+    public Card getCard(String cardID) {
+        return cardDBAccess.readDataPoint(loggedInUser.getUserID(), cardID);
     }
 }

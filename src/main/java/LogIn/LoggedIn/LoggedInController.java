@@ -1,12 +1,17 @@
 package LogIn.LoggedIn;
 
-import Brokerage.BrokerageController;
+import ATM.ATMMap.ATMMapController;
 import Card.CardController;
+import Brokerage.BrokerageController;
 import App.ControllerInterface;
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 import Exchange.CurrencyExchangeController;
+import House.HouseMap.HouseMapController;
+import Loans.ApplyLoans.ApplyLoansController;
+import Loans.SeeLoansHistory.SeeLoansHistoryController;
 import LogIn.Welcome.WelcomeController;
 import Transaction.MakeTransaction.MakeTransactionController;
+import Transaction.PopUpTransaction.PopUpTransactionController;
 import Transaction.SeeTransactionHistory.SeeTransactionHistoryController;
 
 public class LoggedInController implements ControllerInterface {
@@ -15,15 +20,25 @@ public class LoggedInController implements ControllerInterface {
     private WelcomeController welcomeController;
     private MakeTransactionController makeTransactionController;
     private SeeTransactionHistoryController seeTransactionHistoryController;
-    private BrokerageController brokerageController;
     private CardController cardController;
     private CurrencyExchangeController exchangeController;
+    private BrokerageController brokerageController;
+    private ApplyLoansController applyLoansController;
+    private SeeLoansHistoryController seeLoansHistoryController;
+    private HouseMapController houseMapController;
+    private ATMMapController atmMapController;
+    private PopUpTransactionController popUpTransactionController;
 
     public LoggedInController(UserObject user) {
         this.loggedInUser = user;
         this.welcomeController = new WelcomeController();
         this.makeTransactionController = new MakeTransactionController(loggedInUser);
         this.seeTransactionHistoryController = new SeeTransactionHistoryController(loggedInUser);
+        this.houseMapController = new HouseMapController(user, this);
+        this.atmMapController = new ATMMapController(user, this);
+        this.popUpTransactionController = new PopUpTransactionController(user, this);
+        this.applyLoansController = new ApplyLoansController(loggedInUser);
+        this.seeLoansHistoryController = new SeeLoansHistoryController(loggedInUser);
         this.brokerageController = new BrokerageController(loggedInUser);
         this.cardController = new CardController(user);
         this.exchangeController = new CurrencyExchangeController(user);
@@ -34,6 +49,7 @@ public class LoggedInController implements ControllerInterface {
 
     @Override
     public void launch(){
+        seeLoansHistoryController.update();
         loggedInPresenter.showView();
     }
 
@@ -45,6 +61,11 @@ public class LoggedInController implements ControllerInterface {
     public void sendMoneyTriggered() {
         loggedInPresenter.disposeView();
         makeTransactionController.launch();
+    }
+    public void refreshTriggered() {
+        loggedInPresenter.disposeView();
+        seeLoansHistoryController.update();
+        loggedInPresenter.showView();
     }
 
     public void seeTransactionHistoryTriggered() {
@@ -65,6 +86,35 @@ public class LoggedInController implements ControllerInterface {
     public void buyAssetsTriggered() {
         loggedInPresenter.disposeView();
         brokerageController.launch();
+    }
+
+    public void applyLoansTriggered() {
+        loggedInPresenter.disposeView();
+        applyLoansController.launch();
+    }
+
+    public void seeLoansHistoryTriggered() {
+        loggedInPresenter.disposeView();
+        seeLoansHistoryController.launch();
+    }
+
+    public void atmMapTriggered() {
+        loggedInPresenter.disposeView();
+        atmMapController.launch();
+    }
+
+    public void houseMapTriggered() {
+        loggedInPresenter.disposeView();
+        houseMapController.launch();
+    }
+
+    public void popUpTransaction(double amount, String type) {
+        popUpTransactionController.launch();
+        popUpTransactionController.makeTransaction(amount, type);
+    }
+
+    public HouseMapController getHouseMapController() {
+        return houseMapController;
     }
 }
 

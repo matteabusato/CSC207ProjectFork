@@ -1,8 +1,8 @@
-package DataObjects;
+package UserDataObject;
 
 public class NewUserController {
 
-    public UserObject createNewUser(int userID, String firstName,String lastName,String password){
+    public UserObject createNewUser(int userID, String firstName, String lastName, String password){
         int newUserID = userID;
         String newFirstName = firstName;
         String newLastName = lastName;
