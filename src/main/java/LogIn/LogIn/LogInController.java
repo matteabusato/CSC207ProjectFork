@@ -4,6 +4,8 @@ import App.ControllerInterface;
 import DataObjects.UserObject;
 import DataObjects.UsersController;
 import LogIn.LoggedIn.LoggedInController;
+import LogIn.Welcome.WelcomeController;
+import LogIn.Welcome.WelcomePresenter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
@@ -27,5 +29,11 @@ public class LogInController implements ControllerInterface {
         logInPresenter.disposeView();
         loggedInController = new LoggedInController(user);
         loggedInController.launch();
+    }
+
+    public void goBackToWelcomeView() {
+        logInPresenter.disposeView();
+        WelcomeController controller = new WelcomeController();
+        controller.launch();
     }
 }

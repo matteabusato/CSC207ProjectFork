@@ -2,10 +2,13 @@ package LogIn.LoggedIn;
 
 import ATM.ATMMap.ATMMapController;
 import Card.CardController;
+import Brokerage.BrokerageController;
 import App.ControllerInterface;
 import DataObjects.UserObject;
 import Exchange.CurrencyExchangeController;
 import House.HouseMap.HouseMapController;
+import Loans.ApplyLoans.ApplyLoansController;
+import Loans.SeeLoansHistory.SeeLoansHistoryController;
 import LogIn.Welcome.WelcomeController;
 import Transaction.MakeTransaction.MakeTransactionController;
 import Transaction.PopUpTransaction.PopUpTransactionController;
@@ -19,6 +22,9 @@ public class LoggedInController implements ControllerInterface {
     private SeeTransactionHistoryController seeTransactionHistoryController;
     private CardController cardController;
     private CurrencyExchangeController exchangeController;
+    private BrokerageController brokerageController;
+    private ApplyLoansController applyLoansController;
+    private SeeLoansHistoryController seeLoansHistoryController;
     private HouseMapController houseMapController;
     private ATMMapController atmMapController;
     private PopUpTransactionController popUpTransactionController;
@@ -26,19 +32,24 @@ public class LoggedInController implements ControllerInterface {
     public LoggedInController(UserObject user) {
         this.loggedInUser = user;
         this.welcomeController = new WelcomeController();
-        this.makeTransactionController = new MakeTransactionController(user);
-        this.seeTransactionHistoryController = new SeeTransactionHistoryController(user);
-        this.cardController = new CardController(user);
-        this.exchangeController = new CurrencyExchangeController(user);
+        this.makeTransactionController = new MakeTransactionController(loggedInUser);
+        this.seeTransactionHistoryController = new SeeTransactionHistoryController(loggedInUser);
         this.houseMapController = new HouseMapController(user, this);
         this.atmMapController = new ATMMapController(user, this);
         this.popUpTransactionController = new PopUpTransactionController(user, this);
+        this.applyLoansController = new ApplyLoansController(loggedInUser);
+        this.seeLoansHistoryController = new SeeLoansHistoryController(loggedInUser);
+        this.brokerageController = new BrokerageController(loggedInUser);
+        this.cardController = new CardController(user);
+        this.exchangeController = new CurrencyExchangeController(user);
+
         // at last
         this.loggedInPresenter = new LoggedInPresenter(this);
     }
 
     @Override
     public void launch(){
+        seeLoansHistoryController.update();
         loggedInPresenter.showView();
     }
 
@@ -51,15 +62,15 @@ public class LoggedInController implements ControllerInterface {
         loggedInPresenter.disposeView();
         makeTransactionController.launch();
     }
+    public void refreshTriggered() {
+        loggedInPresenter.disposeView();
+        seeLoansHistoryController.update();
+        loggedInPresenter.showView();
+    }
 
     public void seeTransactionHistoryTriggered() {
         loggedInPresenter.disposeView();
         seeTransactionHistoryController.launch();
-    }
-
-    public void buyAssetsTriggered() {
-        loggedInPresenter.disposeView();
-        //buyAssetsController.launch();
     }
 
     public void cardTriggered() {
@@ -70,6 +81,21 @@ public class LoggedInController implements ControllerInterface {
     public void exchangeTriggered() {
         loggedInPresenter.disposeView();
         exchangeController.launch();
+    }
+
+    public void buyAssetsTriggered() {
+        loggedInPresenter.disposeView();
+        brokerageController.launch();
+    }
+
+    public void applyLoansTriggered() {
+        loggedInPresenter.disposeView();
+        applyLoansController.launch();
+    }
+
+    public void seeLoansHistoryTriggered() {
+        loggedInPresenter.disposeView();
+        seeLoansHistoryController.launch();
     }
 
     public void atmMapTriggered() {

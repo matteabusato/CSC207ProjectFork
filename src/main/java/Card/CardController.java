@@ -160,4 +160,8 @@ public class CardController {
     public static void saveDeleteCard(int index) {
         cardDBAccess.saveDeleteData(loggedInUser.getUserID(), index);
     }
+
+    public Card getCard(String cardID) {
+        return cardDBAccess.readDataPoint(loggedInUser.getUserID(), cardID);
+    }
 }
