@@ -5,7 +5,6 @@ import UserDataObject.UserObject;
 import UserDataObject.UsersController;
 import LogIn.LoggedIn.LoggedInController;
 import LogIn.Welcome.WelcomeController;
-import LogIn.Welcome.WelcomePresenter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor

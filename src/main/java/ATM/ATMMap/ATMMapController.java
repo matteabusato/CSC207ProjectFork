@@ -1,7 +1,7 @@
 package ATM.ATMMap;
 
 import ATM.DataObject.ATMObject;
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 import LogIn.Welcome.WelcomeController;
 import Views.PanelMaker;
 

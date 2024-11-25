@@ -1,7 +1,7 @@
 package Loans.SeeLoansHistory;
 
 import App.ControllerInterface;
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 import Loans.DataObject.LoansController;
 import Loans.DataObject.LoansObject;
 import LogIn.LoggedIn.LoggedInController;

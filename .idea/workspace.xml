@@ -5,9 +5,95 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b98df37-13f9-4d47-990e-6a1c0dfae90b" name="Changes" comment="11.23 change amount is double">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Card/CardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Card/CardView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Exchange/CurrencyExchangeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Exchange/CurrencyExchangeView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_11_18_18_18_[Changes]/BrokerageController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_11_18_18_18_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_11_18_18_18_[Changes]1/BrokerageController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_11_18_18_18_[Changes]1/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_11_18_18_18__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_11_18_18_18__Changes_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Houses.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Users.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ATM/ATMMap/ATMMapController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ATM/ATMMap/ATMMapPresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ATM/ATMMap/ATMMapView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ATM/ATMMap/StaticMapAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Brokerage/BrokerageDBAccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Brokerage/BrokerageView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Brokerage/FetchStockDataUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Brokerage/StockAPIConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Brokerage/StockObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Card/Card.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Card/CardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Card/CardDBAccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Card/CardPresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Card/CardView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Exchange/APIget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Exchange/CurrencyExchangeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Exchange/CurrencyExchangePresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Exchange/CurrencyExchangeView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/House/DataObject/HouseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/House/DataObject/HouseDBAccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/House/HouseMap/HouseMapController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/House/HouseMap/HouseMapPresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Insurance/DataObject/InsuranceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Insurance/DataObject/InsuranceDBAccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Insurance/DataObject/InsuranceObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/ApplyLoans/ApplyLoansController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/ApplyLoans/ApplyLoansPresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/ApplyLoans/ApplyLoansView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/DataObject/LoansController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/DataObject/LoansDBAccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/DataObject/LoansObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/SeeLoansHistory/SeeLoansHistoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/SeeLoansHistory/SeeLoansHistoryPresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/SeeLoansHistory/SeeLoansHistoryView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Brokerage/BrokerageController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Brokerage/BrokeragePresenter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Exchange/APIget.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Exchange/CurrencyExchangeController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Exchange/CurrencyExchangePresenter$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Exchange/CurrencyExchangePresenter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework-5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/homework-5.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ATM/ATM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ATM/DataObject/ATMObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ATM/ATMButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ATM/DataObject/ATMButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ATM/ATMPopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ATM/DataObject/ATMPopUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ATM/ATMPresenter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ATM/NominatimAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ATM/ATMMap/NominatimAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ATM/PixelConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ATM/ATMMap/PixelConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ATM/StaticMapAPI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Brokerage/BrokerageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Brokerage/BrokerageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Brokerage/BrokeragePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Brokerage/BrokeragePresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/DataAccessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/DataAccessController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/House/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/House/DataObject/HouseObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/House/HouseButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/House/DataObject/HouseButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/House/HousePopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/House/DataObject/HousePopUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/House/HousePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/House/HouseMap/HouseMapView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/House/HouseReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/House/house.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/House/Houses.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/House/map.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/House/HouseMap.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/LogIn/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/LogIn/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/LogIn/LogInView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/LogIn/LogInView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/LoggedIn/LoggedInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/LoggedIn/LoggedInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/LoggedIn/LoggedInView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/LoggedIn/LoggedInView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/SignUp/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/SignUp/SignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/SignUp/SignUpView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/SignUp/SignUpView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/Welcome/WelcomeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/Welcome/WelcomeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Transaction/SeeTransactionHistory/SeeTransactionHistoryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transaction/SeeTransactionHistory/SeeTransactionHistoryView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserDataObject/NewUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserDataObject/NewUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserDataObject/UserObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserDataObject/UserObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Views/ButtonMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Views/ButtonMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Views/LabelMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Views/LabelMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Views/PanelMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Views/PanelMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Views/ViewMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Views/ViewMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/DataAccessController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/DataAccessController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataObjects/UsersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataObjects/UsersController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Transaction/Transaction.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,28 +136,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.CardPresenter.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CardView.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CurrencyExchangePresenter.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainLauncher.executor&quot;: &quot;Run&quot;,
-    &quot;Application.WelcomePresenter.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;sincer.xu&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/U of T/CSC207/CSC207Project/src/main/java/Loans/SeeLoansHistory&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.CardPresenter.executor": "Run",
+    "Application.CardView.executor": "Run",
+    "Application.CurrencyExchangePresenter.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MainLauncher.executor": "Run",
+    "Application.WelcomePresenter.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "git-widget-placeholder": "#38 on Merging mattea.busato",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/U of T/CSC207/CSC207Project/src/main/java/Loans/SeeLoansHistory",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\U of T\CSC207\CSC207Project\src\main\java\Loans\SeeLoansHistory" />

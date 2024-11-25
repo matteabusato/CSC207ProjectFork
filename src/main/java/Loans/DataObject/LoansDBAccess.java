@@ -4,8 +4,8 @@ import Card.Card;
 import Card.CardController;
 import DataAccess.DataAccessController;
 import DataAccess.DataAccessInterface;
-import DataObjects.UserObject;
-import DataObjects.UsersController;
+import UserDataObject.UserObject;
+import UserDataObject.UsersController;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

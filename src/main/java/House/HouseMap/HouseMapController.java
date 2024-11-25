@@ -1,7 +1,6 @@
 package House.HouseMap;
 
-import ATM.ATMMap.ATMMapPresenter;
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 import LogIn.Welcome.WelcomeController;
 
 public class HouseMapController {

@@ -1,6 +1,6 @@
 package Loans.ApplyLoans;
 
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 
 import javax.swing.*;
 import java.awt.*;

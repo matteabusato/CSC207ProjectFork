@@ -1,5 +1,5 @@
 package House.HouseMap;
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 import House.DataObject.HouseController;
 import House.DataObject.HouseObject;
 import Views.PanelMaker;
