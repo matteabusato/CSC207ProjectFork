@@ -1,10 +1,8 @@
 package UserDataObject;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 public class UserObject {
     int userID;
     String firstName;
@@ -20,6 +18,10 @@ public class UserObject {
         this.passwordHash = passwordHash;
         this.balance = balance;
         this.fileDirectory = fileDirectory;
+    }
+
+    public UserObject() {
+
     }
 
     public int getUserID() {

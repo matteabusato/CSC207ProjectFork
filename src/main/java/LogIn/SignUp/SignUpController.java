@@ -4,6 +4,7 @@ import App.ControllerInterface;
 import UserDataObject.UserObject;
 import UserDataObject.UsersController;
 import LogIn.LoggedIn.LoggedInController;
+import LogIn.Welcome.WelcomeController;
 
 public class SignUpController implements ControllerInterface {
     private SignUpPresenter signUpPresenter = new SignUpPresenter(this);
@@ -26,6 +27,12 @@ public class SignUpController implements ControllerInterface {
         UserObject newUser = usersController.addUser(firstName, lastName, password);
         signUpPresenter.disposeView();
         LoggedInController controller = new LoggedInController(newUser);
+        controller.launch();
+    }
+
+    public void goBackToWelcomeView() {
+        signUpPresenter.disposeView();
+        WelcomeController controller = new WelcomeController();
         controller.launch();
     }
 }
