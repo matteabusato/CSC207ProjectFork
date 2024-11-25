@@ -20,6 +20,10 @@ public class UserObject {
         this.fileDirectory = fileDirectory;
     }
 
+    public UserObject() {
+
+    }
+
     public int getUserID() {
         return userID;
     }
