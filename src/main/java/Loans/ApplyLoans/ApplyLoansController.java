@@ -2,7 +2,7 @@ package Loans.ApplyLoans;
 
 import App.ControllerInterface;
 import Card.CardController;
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 import Loans.DataObject.LoansController;
 import LogIn.LoggedIn.LoggedInController;
 import LogIn.Welcome.WelcomeController;

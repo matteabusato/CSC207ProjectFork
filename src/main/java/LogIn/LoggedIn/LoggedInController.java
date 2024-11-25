@@ -4,7 +4,7 @@ import ATM.ATMMap.ATMMapController;
 import Card.CardController;
 import Brokerage.BrokerageController;
 import App.ControllerInterface;
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 import Exchange.CurrencyExchangeController;
 import House.HouseMap.HouseMapController;
 import Loans.ApplyLoans.ApplyLoansController;

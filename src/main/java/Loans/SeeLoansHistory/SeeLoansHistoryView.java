@@ -1,6 +1,6 @@
 package Loans.SeeLoansHistory;
 
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 import Loans.DataObject.LoansObject;
 
 import javax.swing.*;

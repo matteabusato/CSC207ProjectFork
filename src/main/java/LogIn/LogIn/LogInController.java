@@ -1,11 +1,10 @@
 package LogIn.LogIn;
 
 import App.ControllerInterface;
-import DataObjects.UserObject;
-import DataObjects.UsersController;
+import UserDataObject.UserObject;
+import UserDataObject.UsersController;
 import LogIn.LoggedIn.LoggedInController;
 import LogIn.Welcome.WelcomeController;
-import LogIn.Welcome.WelcomePresenter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor

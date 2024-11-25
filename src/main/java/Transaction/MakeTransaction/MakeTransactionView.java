@@ -1,6 +1,6 @@
 package Transaction.MakeTransaction;
 
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 
 import javax.swing.*;
 import java.awt.*;

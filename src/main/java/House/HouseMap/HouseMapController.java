@@ -1,12 +1,10 @@
 package House.HouseMap;
 
-import ATM.ATMMap.ATMMapPresenter;
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 import Functionality.FunctionalityController;
 import House.DataObject.HouseDBAccess;
 import House.DataObject.HouseObject;
 import LogIn.LoggedIn.LoggedInController;
-import LogIn.Welcome.WelcomeController;
 
 public class HouseMapController extends FunctionalityController {
 

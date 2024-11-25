@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9b98df37-13f9-4d47-990e-6a1c0dfae90b" name="Changes" comment="11.23 change amount is double">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_11_18_18_18_[Changes]/BrokerageController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_11_18_18_18_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_11_18_18_18_[Changes]1/BrokerageController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_11_18_18_18_[Changes]1/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_11_18_18_18__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024_11_18_18_18__Changes_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Houses.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Users.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ATM/ATMMap/ATMMapController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ATM/ATMMap/ATMMapPresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ATM/ATMMap/ATMMapView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ATM/ATMMap/StaticMapAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Brokerage/BrokerageDBAccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Brokerage/BrokerageView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Brokerage/FetchStockDataUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Brokerage/StockAPIConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Brokerage/StockObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Card/Card.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Card/CardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Card/CardDBAccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Card/CardPresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Card/CardView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Exchange/APIget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Exchange/CurrencyExchangeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Exchange/CurrencyExchangePresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Exchange/CurrencyExchangeView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/House/DataObject/HouseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/House/DataObject/HouseDBAccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/House/HouseMap/HouseMapController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/House/HouseMap/HouseMapPresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Insurance/DataObject/InsuranceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Insurance/DataObject/InsuranceDBAccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Insurance/DataObject/InsuranceObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/ApplyLoans/ApplyLoansController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/ApplyLoans/ApplyLoansPresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/ApplyLoans/ApplyLoansView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/DataObject/LoansController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/DataObject/LoansDBAccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/DataObject/LoansObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/SeeLoansHistory/SeeLoansHistoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/SeeLoansHistory/SeeLoansHistoryPresenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Loans/SeeLoansHistory/SeeLoansHistoryView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Brokerage/BrokerageController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Brokerage/BrokeragePresenter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Exchange/APIget.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Exchange/CurrencyExchangeController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Exchange/CurrencyExchangePresenter$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Exchange/CurrencyExchangePresenter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework-5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/homework-5.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ATM/ATM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ATM/DataObject/ATMObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ATM/ATMButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ATM/DataObject/ATMButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ATM/ATMPopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ATM/DataObject/ATMPopUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ATM/ATMPresenter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ATM/NominatimAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ATM/ATMMap/NominatimAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ATM/PixelConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ATM/ATMMap/PixelConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ATM/StaticMapAPI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Brokerage/BrokerageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Brokerage/BrokerageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Brokerage/BrokeragePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Brokerage/BrokeragePresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DataAccess/DataAccessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DataAccess/DataAccessController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/House/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/House/DataObject/HouseObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/House/HouseButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/House/DataObject/HouseButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/House/HousePopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/House/DataObject/HousePopUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/House/HousePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/House/HouseMap/HouseMapView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/House/HouseReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/House/house.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/House/Houses.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/House/map.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/House/HouseMap.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/LogIn/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/LogIn/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/LogIn/LogInView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/LogIn/LogInView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/LoggedIn/LoggedInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/LoggedIn/LoggedInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/LoggedIn/LoggedInView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/LoggedIn/LoggedInView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/SignUp/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/SignUp/SignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/SignUp/SignUpView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/SignUp/SignUpView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LogIn/Welcome/WelcomeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogIn/Welcome/WelcomeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Transaction/SeeTransactionHistory/SeeTransactionHistoryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Transaction/SeeTransactionHistory/SeeTransactionHistoryView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserDataObject/NewUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserDataObject/NewUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserDataObject/UserObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserDataObject/UserObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Views/ButtonMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Views/ButtonMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Views/LabelMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Views/LabelMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Views/PanelMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Views/PanelMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Views/ViewMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Views/ViewMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataAccess/DataAccessController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataAccess/DataAccessController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataObjects/UsersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataObjects/UsersController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Transaction/Transaction.class" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Jackzhengqaq&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DabYeet123/CSC207Project.git&quot;,
+    &quot;accountId&quot;: &quot;52a0db03-ac1e-4a5a-8a92-0f4811ad9340&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2p2kRfzUgoATYvv5vUGgBKtn1B3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.CardPresenter.executor": "Run",
+    "Application.CardView.executor": "Run",
+    "Application.CurrencyExchangePresenter.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MainLauncher.executor": "Run",
+    "Application.WelcomePresenter.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "git-widget-placeholder": "#38 on Merging mattea.busato",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/U of T/CSC207/CSC207Project/src/main/java/Loans/SeeLoansHistory",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\U of T\CSC207\CSC207Project\src\main\java\Loans\SeeLoansHistory" />
+      <recent name="D:\U of T\CSC207\CSC207Project\src\main\java\Loans" />
+    </key>
+    <key name="MoveMembersDialog.RECENTS_KEY">
+      <recent name="Card.View.CardView" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MainLauncher">
+    <configuration name="CardView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Card.Entity.CardView" />
+      <module name="homework-5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Card.Entity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="App.MainLauncher" />
+      <module name="homework-5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="App.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainLauncher" />
+        <item itemvalue="Application.CardView" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9b98df37-13f9-4d47-990e-6a1c0dfae90b" name="Changes" comment="1" />
+      <created>1731971551933</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1731971551933</updated>
+      <workItem from="1731971553162" duration="418000" />
+      <workItem from="1732142120786" duration="3555000" />
+      <workItem from="1732383087980" duration="5623000" />
+    </task>
+    <task id="LOCAL-00001" summary="1">
+      <option name="closed" value="true" />
+      <created>1731971694776</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1731971694776</updated>
+    </task>
+    <task id="LOCAL-00002" summary="1">
+      <option name="closed" value="true" />
+      <created>1732142146287</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1732142146288</updated>
+    </task>
+    <task id="LOCAL-00003" summary="1">
+      <option name="closed" value="true" />
+      <created>1732151551432</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1732151551432</updated>
+    </task>
+    <task id="LOCAL-00004" summary="1">
+      <option name="closed" value="true" />
+      <created>1732302926668</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1732302926668</updated>
+    </task>
+    <task id="LOCAL-00005" summary="1">
+      <option name="closed" value="true" />
+      <created>1732303253028</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1732303253028</updated>
+    </task>
+    <task id="LOCAL-00006" summary="1">
+      <option name="closed" value="true" />
+      <created>1732307017465</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1732307017465</updated>
+    </task>
+    <task id="LOCAL-00007" summary="seems the card part and exchange parts are already done. As for the Button in loggined part, there is no button of exchangeButton in the frame I have already created one button so just need to add it in frame.">
+      <option name="closed" value="true" />
+      <created>1732307399347</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1732307399347</updated>
+    </task>
+    <task id="LOCAL-00008" summary="11.23 change amount is double">
+      <option name="closed" value="true" />
+      <created>1732383276595</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1732383276595</updated>
+    </task>
+    <task id="LOCAL-00009" summary="11.23 change amount is double">
+      <option name="closed" value="true" />
+      <created>1732383310611</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1732383310611</updated>
+    </task>
+    <task id="LOCAL-00010" summary="11.23 change amount is double">
+      <option name="closed" value="true" />
+      <created>1732383685692</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1732383685692</updated>
+    </task>
+    <task id="LOCAL-00011" summary="11.23 change amount is">
+      <option name="closed" value="true" />
+      <created>1732387786548</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1732387786548</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1" />
+    <MESSAGE value="seems the card part and exchange parts are already done. As for the Button in loggined part, there is no button of exchangeButton in the frame I have already created one button so just need to add it in frame." />
+    <MESSAGE value="11.23 change amount is double" />
+    <option name="LAST_COMMIT_MESSAGE" value="11.23 change amount is double" />
+  </component>
+</project>

@@ -1,5 +1,21 @@
-# CSC207Project
+# Crazy Bank Application
+### A comprehensive software to have all your financial information and perform financial operations under one accessible interface.
+#### Authors: Mattea Busato, Zeyu Cai, Stefano Mauloni, Xing Xu, Yue Zheng
 
+## Project's Purpose
+Crazy Bank is an application that groups into one many financial functionalities. It operates as a normal bank where you can open 
+your own bank account, manage your cards and make transactions. Moreover, it incorporates many other services:
+asset managing, currency exchange, buying real estate, loans lending, ATM finding, and managing insurance policies.
+
+## Features of the Software
+Lorem Ipsum ...
+
+## Usage Instructions
+Version of Java - Swing - Packages
+
+Run MainLauncher.java to use the software!
+
+## User Stories
 
 Stefano’s Story: Alex wants to purchase a stock. First, he wants to check the price. 
 After considering the investment opportunity by looking at the data, decides to purchase 

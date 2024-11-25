@@ -1,4 +1,4 @@
-package DataObjects;
+package UserDataObject;
 
 public class UsersController {
     static int lastUserID;
@@ -22,5 +22,9 @@ public class UsersController {
 
     public void changeUser(int userID, UserObject user) {
         usersDBAccess.updateDataPoint(userID, user);
+    }
+
+    public boolean checkUserExistance(int userID) {
+        return usersDBAccess.readDataPoint(userID) != null;
     }
 }

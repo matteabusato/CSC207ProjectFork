@@ -1,4 +1,4 @@
-package Insurance.DataObject;
+package Insurance;
 
 public class InsuranceObject {
 }

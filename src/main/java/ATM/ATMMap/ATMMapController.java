@@ -1,10 +1,9 @@
 package ATM.ATMMap;
 
 import ATM.DataObject.ATMObject;
-import DataObjects.UserObject;
+import UserDataObject.UserObject;
 import Functionality.FunctionalityController;
 import LogIn.LoggedIn.LoggedInController;
-import LogIn.Welcome.WelcomeController;
 import Views.PanelMaker;
 
 import javax.swing.*;
