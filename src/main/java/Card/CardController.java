@@ -21,6 +21,7 @@ public class CardController {
         this.loggedInUser = user;
         this.cardPresenter = new CardPresenter(this);
         this.welcomeController = new WelcomeController();
+        loadFromFile();
     }
 
     public void launch() {
