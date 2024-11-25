@@ -5,7 +5,7 @@ public class BrokeragePresenter implements PresenterInterface<BrokerageControlle
     private final BrokerageView brokerageView;
 
     public BrokeragePresenter(BrokerageController controller) {
-        this.brokerageView = new BrokerageView(controller);
+        brokerageView = new BrokerageView(controller);
     }
 
     @Override

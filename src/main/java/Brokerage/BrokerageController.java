@@ -2,6 +2,7 @@ package Brokerage;
 
 import App.ControllerInterface;
 import UserDataObject.UserObject;
+import LogIn.LoggedIn.LoggedInController;
 import com.crazzyghost.alphavantage.timeseries.response.StockUnit;
 
 import java.util.List;
@@ -61,4 +62,9 @@ public class BrokerageController implements ControllerInterface {
         return quantity <= brokerageDBAccess.getQuantity(loggedInUser.getUserID(), stockID);
     }
 
+    public void goBackToBaseView() {
+        brokeragePresenter.disposeView();
+        LoggedInController controller = new LoggedInController(loggedInUser);
+        controller.launch();
+    }
 }

@@ -11,6 +11,8 @@ import org.jfree.data.time.TimeSeriesCollection;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -24,27 +26,27 @@ public class BrokerageView extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(700, 500);
         setLayout(new BorderLayout());
+        setLocationRelativeTo(null);
 
-        // Create Input Panel
+
         JPanel inputPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10)); // Use FlowLayout for horizontal layout
-
-        // Components for input
         JLabel nameLabel = new JLabel("Stock Symbol:");
         JTextField stockNameField = new JTextField(10); // Set preferred width for the text field
         JLabel priceLabel = new JLabel("Price $:");
         JLabel stockPriceLabel = new JLabel("N/A");
 
-        // Search Button
         JButton searchButton = new JButton("Search");
 
-        // Add components to the input panel
+        JButton backButton = new JButton("Back");
+        backButton.addActionListener(e -> controller.goBackToBaseView());
+
         inputPanel.add(nameLabel);
         inputPanel.add(stockNameField);
         inputPanel.add(searchButton);
         inputPanel.add(priceLabel);
         inputPanel.add(stockPriceLabel);
+        inputPanel.add(backButton);
 
-        // Buttons Panel
         JPanel buttonsPanel = new JPanel();
         JButton buyButton = new JButton("Buy Asset");
         JButton sellButton = new JButton("Sell Asset");
@@ -54,10 +56,11 @@ public class BrokerageView extends JFrame {
         buttonsPanel.add(buyButton);
         buttonsPanel.add(sellButton);
 
-        // Graph Panel
         JPanel graphPanel = new JPanel(new BorderLayout());
         graphPanel.setBorder(BorderFactory.createTitledBorder("Stock Price Trends"));
         this.graphPanel = graphPanel;
+
+
 
         // Add components to frame
         add(inputPanel, BorderLayout.NORTH);
