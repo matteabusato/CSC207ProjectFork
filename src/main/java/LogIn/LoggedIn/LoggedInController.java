@@ -11,7 +11,6 @@ import Loans.ApplyLoans.ApplyLoansController;
 import Loans.SeeLoansHistory.SeeLoansHistoryController;
 import LogIn.Welcome.WelcomeController;
 import Transaction.MakeTransaction.MakeTransactionController;
-import Transaction.PopUpTransaction.PopUpTransactionController;
 import Transaction.SeeTransactionHistory.SeeTransactionHistoryController;
 
 public class LoggedInController implements ControllerInterface {
@@ -27,7 +26,6 @@ public class LoggedInController implements ControllerInterface {
     private SeeLoansHistoryController seeLoansHistoryController;
     private HouseMapController houseMapController;
     private ATMMapController atmMapController;
-    private PopUpTransactionController popUpTransactionController;
 
     public LoggedInController(UserObject user) {
         this.loggedInUser = user;
@@ -36,7 +34,6 @@ public class LoggedInController implements ControllerInterface {
         this.seeTransactionHistoryController = new SeeTransactionHistoryController(loggedInUser);
         this.houseMapController = new HouseMapController(user, this);
         this.atmMapController = new ATMMapController(user, this);
-        this.popUpTransactionController = new PopUpTransactionController(user, this);
         this.applyLoansController = new ApplyLoansController(loggedInUser);
         this.seeLoansHistoryController = new SeeLoansHistoryController(loggedInUser);
         this.brokerageController = new BrokerageController(loggedInUser);
@@ -61,11 +58,6 @@ public class LoggedInController implements ControllerInterface {
     public void sendMoneyTriggered() {
         loggedInPresenter.disposeView();
         makeTransactionController.launch();
-    }
-    public void refreshTriggered() {
-        loggedInPresenter.disposeView();
-        seeLoansHistoryController.update();
-        loggedInPresenter.showView();
     }
 
     public void seeTransactionHistoryTriggered() {
@@ -106,11 +98,6 @@ public class LoggedInController implements ControllerInterface {
     public void houseMapTriggered() {
         loggedInPresenter.disposeView();
         houseMapController.launch();
-    }
-
-    public void popUpTransaction(double amount, String type) {
-        popUpTransactionController.launch();
-        popUpTransactionController.makeTransaction(amount, type);
     }
 
     public HouseMapController getHouseMapController() {

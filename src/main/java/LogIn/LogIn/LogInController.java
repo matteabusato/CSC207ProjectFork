@@ -5,13 +5,15 @@ import UserDataObject.UserObject;
 import UserDataObject.UsersController;
 import LogIn.LoggedIn.LoggedInController;
 import LogIn.Welcome.WelcomeController;
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
+
 public class LogInController implements ControllerInterface {
     private LogInPresenter logInPresenter = new LogInPresenter(this);
     private LoggedInController loggedInController;
     UsersController usersController = new UsersController();
+
+    public LogInController() {
+    }
 
     @Override
     public void launch(){

@@ -33,7 +33,7 @@ public class HouseMapController extends FunctionalityController {
     }
 
     public void buyHouse(HouseObject house, double amount) {
-        loggedInController.popUpTransaction(amount, "House");
+        //loggedInController.popUpTransaction(amount, "House");
         setHouse(house, amount);
     }
 

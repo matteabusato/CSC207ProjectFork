@@ -30,8 +30,10 @@ public class MakeTransactionView extends JFrame {
         JPanel transactionPanel = new JPanel();
         transactionPanel.setLayout(new GridLayout(4, 2, 10, 10));
 
-        JLabel cardLabel = new JLabel("Card Number:");
-        JTextField cardField = new JTextField();
+        JLabel cardLabel = new JLabel("Card:");
+        String[] cardOptions = {"1", "2", "3"};
+        JComboBox<String> cardDropdown = new JComboBox<>(cardOptions);
+
         JLabel receiverIDLabel = new JLabel("Receiver UserID:");
         JTextField receiverIDField = new JTextField();
         JLabel amountLabel = new JLabel("Amount:");
@@ -39,7 +41,7 @@ public class MakeTransactionView extends JFrame {
         JButton processButton = new JButton("Process Transaction");
 
         transactionPanel.add(cardLabel);
-        transactionPanel.add(cardField);
+        transactionPanel.add(cardDropdown);
         transactionPanel.add(receiverIDLabel);
         transactionPanel.add(receiverIDField);
         transactionPanel.add(amountLabel);
@@ -53,13 +55,13 @@ public class MakeTransactionView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    String cardNumber = cardField.getText();
+                    String selectedCard = (String) cardDropdown.getSelectedItem();
                     int receiverID = Integer.parseInt(receiverIDField.getText());
                     int amount = Integer.parseInt(amountField.getText());
 
-                    boolean success = controller.makeTransactionTriggered(cardNumber, receiverID, amount);
+                    boolean success = controller.makeTransactionTriggered(selectedCard, receiverID, amount);
                     if (success) {
-                        controller.onMakeTransactonSuccess(cardNumber, receiverID, amount);
+                        controller.onMakeTransactonSuccess(selectedCard, receiverID, amount);
                     } else {
                         displayMessage("Please fill all the fields.", false);
                     }

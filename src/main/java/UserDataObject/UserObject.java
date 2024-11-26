@@ -1,8 +1,5 @@
 package UserDataObject;
 
-import lombok.Data;
-
-@Data
 public class UserObject {
     int userID;
     String firstName;
@@ -41,5 +38,8 @@ public class UserObject {
     }
     public String getFileDirectory() {
         return fileDirectory;
+    }
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 }

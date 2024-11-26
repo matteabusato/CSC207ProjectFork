@@ -131,13 +131,6 @@ public class LoggedInView extends JFrame {
 
         add(buttonPanel, BorderLayout.CENTER);
 
-        refreshButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                controller.refreshTriggered();
-            }
-        });
-
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
