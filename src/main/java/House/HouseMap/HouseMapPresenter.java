@@ -1,11 +1,8 @@
 package House.HouseMap;
 
-import ATM.ATMMap.ATMMapController;
-import ATM.ATMMap.ATMMapView;
-import App.PresenterInterface;
-import DataObjects.UserObject;
+import app.PresenterInterface;
+import userdataobject.UserObject;
 import Functionality.FunctionalityView;
-import LogIn.LoggedIn.LoggedInController;
 
 import javax.swing.*;
 

@@ -1,6 +1,6 @@
 package House.DataObject;
 
-import UserDataObject.UserObject;
+import userdataobject.UserObject;
 import House.HouseMap.HouseMapController;
 
 import java.util.List;

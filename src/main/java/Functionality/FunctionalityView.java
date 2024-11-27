@@ -1,6 +1,5 @@
 package Functionality;
 
-import LogIn.LoggedIn.LoggedInController;
 import Views.ButtonMaker;
 import Views.PanelMaker;
 

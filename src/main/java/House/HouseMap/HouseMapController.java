@@ -1,10 +1,10 @@
 package House.HouseMap;
 
-import UserDataObject.UserObject;
+import userdataobject.UserObject;
 import Functionality.FunctionalityController;
 import House.DataObject.HouseDBAccess;
 import House.DataObject.HouseObject;
-import LogIn.LoggedIn.LoggedInController;
+import login.loggedin.LoggedInController;
 
 public class HouseMapController extends FunctionalityController {
 
@@ -33,7 +33,7 @@ public class HouseMapController extends FunctionalityController {
     }
 
     public void buyHouse(HouseObject house, double amount) {
-        loggedInController.popUpTransaction(amount, "House");
+        //loggedInController.popUpTransaction(amount, "House");
         setHouse(house, amount);
     }
 

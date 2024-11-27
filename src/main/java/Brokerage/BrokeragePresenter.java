@@ -1,5 +1,5 @@
 package Brokerage;
-import App.PresenterInterface;
+import app.PresenterInterface;
 
 public class BrokeragePresenter implements PresenterInterface<BrokerageController> {
     private final BrokerageView brokerageView;
