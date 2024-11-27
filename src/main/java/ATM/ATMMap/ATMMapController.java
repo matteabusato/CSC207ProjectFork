@@ -3,7 +3,7 @@ package ATM.ATMMap;
 import ATM.DataObject.ATMObject;
 import UserDataObject.UserObject;
 import Functionality.FunctionalityController;
-import LogIn.LoggedIn.LoggedInController;
+import login.loggedin.LoggedInController;
 import Views.PanelMaker;
 
 import javax.swing.*;

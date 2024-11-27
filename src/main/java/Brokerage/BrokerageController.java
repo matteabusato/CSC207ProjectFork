@@ -2,7 +2,7 @@ package Brokerage;
 
 import App.ControllerInterface;
 import UserDataObject.UserObject;
-import LogIn.LoggedIn.LoggedInController;
+import login.loggedin.LoggedInController;
 import com.crazzyghost.alphavantage.timeseries.response.StockUnit;
 
 import java.util.List;

@@ -1,8 +1,8 @@
 package Exchange;
 
 import UserDataObject.UserObject;
-import LogIn.LoggedIn.LoggedInController;
-import LogIn.Welcome.WelcomeController;
+import login.loggedin.LoggedInController;
+import login.welcome.WelcomeController;
 import com.crazzyghost.alphavantage.AlphaVantage;
 import com.crazzyghost.alphavantage.Config;
 import com.crazzyghost.alphavantage.exchangerate.ExchangeRateResponse;

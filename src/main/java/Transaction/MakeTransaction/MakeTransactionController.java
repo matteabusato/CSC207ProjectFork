@@ -2,31 +2,30 @@ package Transaction.MakeTransaction;
 
 import App.ControllerInterface;
 import UserDataObject.UserObject;
-import LogIn.LoggedIn.LoggedInController;
-import LogIn.Welcome.WelcomeController;
+import login.loggedin.LoggedInController;
 import Transaction.DataObject.TransactionController;
 
 public class MakeTransactionController implements ControllerInterface {
     UserObject loggedInUser;
     private MakeTransactionPresenter makeTransactionPresenter;
-    private WelcomeController welcomeController;
     private TransactionController transactionController;
 
     public MakeTransactionController(UserObject user){
         this.loggedInUser = user;
         this.transactionController = new TransactionController();
-        this.welcomeController = new WelcomeController();
         this.makeTransactionPresenter = new MakeTransactionPresenter(this);
     }
 
+    // TODO: add card field from database
     @Override
     public void launch(){
         makeTransactionPresenter.showView();
     }
 
-    public void logOutTriggered(){
+    public void backTriggered(){
         makeTransactionPresenter.disposeView();
-        welcomeController.launch();
+        LoggedInController loggedInController = new LoggedInController(loggedInUser);
+        loggedInController.launch();
     }
 
     public boolean makeTransactionTriggered(String cardUsed, int receiverID, int amount){

@@ -21,12 +21,6 @@ public class MakeTransactionView extends JFrame {
 
         setLayout(new BorderLayout());
 
-        JPanel logoutPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        JButton logoutButton = new JButton("Logout");
-        logoutButton.setPreferredSize(new Dimension(80, 25)); // Small size
-        logoutPanel.add(logoutButton);
-        add(logoutPanel, BorderLayout.NORTH);
-
         JPanel transactionPanel = new JPanel();
         transactionPanel.setLayout(new GridLayout(4, 2, 10, 10));
 
@@ -71,12 +65,17 @@ public class MakeTransactionView extends JFrame {
             }
         });
 
-        logoutButton.addActionListener(new ActionListener() {
+        JPanel logoutPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        JButton backButton = new JButton("Back");
+        backButton.setPreferredSize(new Dimension(80, 25));
+        backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.logOutTriggered();
+                controller.backTriggered();
             }
         });
+        logoutPanel.add(backButton);
+        add(logoutPanel, BorderLayout.SOUTH);
     }
 
     public void displayMessage(String message, boolean isSuccess) {

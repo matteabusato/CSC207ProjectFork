@@ -1,8 +1,8 @@
-package LogIn.Welcome;
+package login.welcome;
 
 import App.ControllerInterface;
-import LogIn.LogIn.LogInController;
-import LogIn.SignUp.SignUpController;
+import login.logIn.LogInController;
+import login.signUp.SignUpController;
 
 public class WelcomeController implements ControllerInterface {
     private WelcomePresenter welcomePresenter = new WelcomePresenter(this);

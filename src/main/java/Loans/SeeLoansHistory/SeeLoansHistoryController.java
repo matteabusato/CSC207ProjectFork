@@ -4,8 +4,8 @@ import App.ControllerInterface;
 import UserDataObject.UserObject;
 import Loans.DataObject.LoansController;
 import Loans.DataObject.LoansObject;
-import LogIn.LoggedIn.LoggedInController;
-import LogIn.Welcome.WelcomeController;
+import login.loggedin.LoggedInController;
+import login.welcome.WelcomeController;
 
 import java.util.List;
 

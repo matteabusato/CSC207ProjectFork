@@ -49,15 +49,15 @@ public class SeeTransactionHistoryView extends JFrame {
         add(scrollPane, BorderLayout.CENTER);
 
         JPanel logoutPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        JButton logoutButton = new JButton("Logout");
-        logoutButton.setPreferredSize(new Dimension(80, 25));
-        logoutButton.addActionListener(new ActionListener() {
+        JButton backButton = new JButton("Back");
+        backButton.setPreferredSize(new Dimension(80, 25));
+        backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.logOutTriggered();
+                controller.backTriggered();
             }
         });
-        logoutPanel.add(logoutButton);
+        logoutPanel.add(backButton);
         add(logoutPanel, BorderLayout.SOUTH);
     }
 }

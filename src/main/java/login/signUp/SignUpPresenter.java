@@ -1,4 +1,4 @@
-package LogIn.SignUp;
+package login.signUp;
 
 import App.PresenterInterface;
 

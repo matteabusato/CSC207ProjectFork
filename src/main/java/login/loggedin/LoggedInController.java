@@ -1,20 +1,23 @@
-package LogIn.LoggedIn;
+package login.loggedin;
 
 import ATM.ATMMap.ATMMapController;
-import Card.CardController;
-import Brokerage.BrokerageController;
 import App.ControllerInterface;
-import UserDataObject.UserObject;
+import Brokerage.BrokerageController;
+import Card.CardController;
 import Exchange.CurrencyExchangeController;
 import House.HouseMap.HouseMapController;
 import Loans.ApplyLoans.ApplyLoansController;
 import Loans.SeeLoansHistory.SeeLoansHistoryController;
-import LogIn.Welcome.WelcomeController;
 import Transaction.MakeTransaction.MakeTransactionController;
 import Transaction.SeeTransactionHistory.SeeTransactionHistoryController;
+import UserDataObject.UserObject;
+import login.welcome.WelcomeController;
 
+/**
+ * Controller responsible for managing user interactions after login.
+ */
 public class LoggedInController implements ControllerInterface {
-    UserObject loggedInUser;
+    private UserObject loggedInUser;
     private LoggedInPresenter loggedInPresenter;
     private WelcomeController welcomeController;
     private MakeTransactionController makeTransactionController;
@@ -45,63 +48,102 @@ public class LoggedInController implements ControllerInterface {
     }
 
     @Override
-    public void launch(){
+    public void launch() {
         seeLoansHistoryController.update();
         loggedInPresenter.showView();
     }
 
+    /**
+     * Logs the user out and navigates to the welcome screen.
+     */
     public void logOutTriggered() {
         loggedInPresenter.disposeView();
         welcomeController.launch();
     }
 
+    /**
+     * Navigates to the "Send Money" view.
+     */
     public void sendMoneyTriggered() {
         loggedInPresenter.disposeView();
         makeTransactionController.launch();
     }
 
+    /**
+     * Navigates to the transaction history view.
+     */
     public void seeTransactionHistoryTriggered() {
         loggedInPresenter.disposeView();
         seeTransactionHistoryController.launch();
     }
 
+    /**
+     * Navigates to the card management view.
+     */
     public void cardTriggered() {
         loggedInPresenter.disposeView();
         cardController.launch();
     }
 
+    /**
+     * Navigates to the currency exchange view.
+     */
     public void exchangeTriggered() {
         loggedInPresenter.disposeView();
         exchangeController.launch();
     }
 
+    /**
+     * Navigates to the asset purchasing view.
+     */
     public void buyAssetsTriggered() {
         loggedInPresenter.disposeView();
         brokerageController.launch();
     }
 
+    /**
+     * Navigates to the loan application view.
+     */
     public void applyLoansTriggered() {
         loggedInPresenter.disposeView();
         applyLoansController.launch();
     }
 
+    /**
+     * Navigates to the loan history view.
+     */
     public void seeLoansHistoryTriggered() {
         loggedInPresenter.disposeView();
         seeLoansHistoryController.launch();
     }
 
+    /**
+     * Navigates to the ATM map view.
+     */
     public void atmMapTriggered() {
         loggedInPresenter.disposeView();
         atmMapController.launch();
     }
 
+    /**
+     * Navigates to the house map view.
+     */
     public void houseMapTriggered() {
         loggedInPresenter.disposeView();
         houseMapController.launch();
     }
 
+    /**
+     * Gets the house map controller.
+     *
+     * @return the house map controller
+     */
     public HouseMapController getHouseMapController() {
         return houseMapController;
+    }
+
+    public UserObject getLoggedInUser() {
+        return loggedInUser;
     }
 }
 

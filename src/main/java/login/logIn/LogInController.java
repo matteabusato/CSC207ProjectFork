@@ -1,10 +1,10 @@
-package LogIn.LogIn;
+package login.logIn;
 
 import App.ControllerInterface;
 import UserDataObject.UserObject;
 import UserDataObject.UsersController;
-import LogIn.LoggedIn.LoggedInController;
-import LogIn.Welcome.WelcomeController;
+import login.loggedin.LoggedInController;
+import login.welcome.WelcomeController;
 
 
 public class LogInController implements ControllerInterface {

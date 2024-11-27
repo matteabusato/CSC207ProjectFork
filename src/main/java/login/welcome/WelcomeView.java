@@ -1,4 +1,4 @@
-package LogIn.Welcome;
+package login.welcome;
 
 import javax.swing.*;
 import java.awt.*;

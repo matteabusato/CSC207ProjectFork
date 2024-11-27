@@ -4,7 +4,7 @@ import UserDataObject.UserObject;
 import Functionality.FunctionalityController;
 import House.DataObject.HouseDBAccess;
 import House.DataObject.HouseObject;
-import LogIn.LoggedIn.LoggedInController;
+import login.loggedin.LoggedInController;
 
 public class HouseMapController extends FunctionalityController {
 

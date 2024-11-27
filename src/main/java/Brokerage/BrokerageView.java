@@ -37,30 +37,27 @@ public class BrokerageView extends JFrame {
 
         JButton searchButton = new JButton("Search");
 
-        JButton backButton = new JButton("Back");
-        backButton.addActionListener(e -> controller.goBackToBaseView());
-
         inputPanel.add(nameLabel);
         inputPanel.add(stockNameField);
         inputPanel.add(searchButton);
         inputPanel.add(priceLabel);
         inputPanel.add(stockPriceLabel);
-        inputPanel.add(backButton);
 
         JPanel buttonsPanel = new JPanel();
         JButton buyButton = new JButton("Buy Asset");
         JButton sellButton = new JButton("Sell Asset");
+        JButton backButton = new JButton("Back");
+        backButton.setPreferredSize(new Dimension(80, 25));
         buyButton.setEnabled(false);
         sellButton.setEnabled(false);
 
         buttonsPanel.add(buyButton);
         buttonsPanel.add(sellButton);
+        buttonsPanel.add(backButton);
 
         JPanel graphPanel = new JPanel(new BorderLayout());
         graphPanel.setBorder(BorderFactory.createTitledBorder("Stock Price Trends"));
         this.graphPanel = graphPanel;
-
-
 
         // Add components to frame
         add(inputPanel, BorderLayout.NORTH);
@@ -190,6 +187,13 @@ public class BrokerageView extends JFrame {
                             JOptionPane.ERROR_MESSAGE
                     );
                 }
+            }
+        });
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.goBackToBaseView();
             }
         });
     }

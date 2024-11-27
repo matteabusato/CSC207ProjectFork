@@ -1,17 +1,30 @@
-package LogIn.LoggedIn;
+package login.loggedin;
 
 import UserDataObject.UserObject;
 
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+
+
 
 public class LoggedInView extends JFrame {
     UserObject user;
 
     public LoggedInView(LoggedInController controller) {
-        this.user = controller.loggedInUser;
+        this.user = controller.getLoggedInUser();
 
         setTitle("Logged In View");
         setSize(400, 400);
@@ -23,9 +36,6 @@ public class LoggedInView extends JFrame {
         JPanel topPanel = new JPanel(new BorderLayout());
 
         JPanel refreshPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        JButton refreshButton = new JButton("Refresh");
-        refreshButton.setPreferredSize(new Dimension(80, 25));
-        refreshPanel.add(refreshButton);
         topPanel.add(refreshPanel, BorderLayout.CENTER);
 
         JPanel logoutPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -111,7 +121,6 @@ public class LoggedInView extends JFrame {
             }
         });
 
-        // Button of exchange button, find if we need that button in the main flame
         JButton exchangeButton = new JButton("Currency exchange");
         exchangeButton.addActionListener(new ActionListener() {
             @Override
@@ -126,6 +135,7 @@ public class LoggedInView extends JFrame {
         buttonPanel.add(atmsButton);
         buttonPanel.add(housesButton);
         buttonPanel.add(assetsButton);
+        buttonPanel.add(loansButton);
         buttonPanel.add(loansHistoryButton);
         buttonPanel.add(exchangeButton);
 

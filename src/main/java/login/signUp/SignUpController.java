@@ -1,10 +1,10 @@
-package LogIn.SignUp;
+package login.signUp;
 
 import App.ControllerInterface;
 import UserDataObject.UserObject;
 import UserDataObject.UsersController;
-import LogIn.LoggedIn.LoggedInController;
-import LogIn.Welcome.WelcomeController;
+import login.loggedin.LoggedInController;
+import login.welcome.WelcomeController;
 
 public class SignUpController implements ControllerInterface {
     private SignUpPresenter signUpPresenter = new SignUpPresenter(this);
