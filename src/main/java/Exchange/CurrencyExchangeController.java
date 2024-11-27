@@ -1,6 +1,6 @@
 package Exchange;
 
-import UserDataObject.UserObject;
+import userdataobject.UserObject;
 import login.loggedin.LoggedInController;
 import login.welcome.WelcomeController;
 import com.crazzyghost.alphavantage.AlphaVantage;

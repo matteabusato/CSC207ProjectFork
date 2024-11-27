@@ -1,6 +1,6 @@
 package House.HouseMap;
 
-import UserDataObject.UserObject;
+import userdataobject.UserObject;
 import Functionality.FunctionalityController;
 import House.DataObject.HouseDBAccess;
 import House.DataObject.HouseObject;

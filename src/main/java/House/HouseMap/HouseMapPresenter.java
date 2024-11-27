@@ -1,7 +1,7 @@
 package House.HouseMap;
 
-import App.PresenterInterface;
-import UserDataObject.UserObject;
+import app.PresenterInterface;
+import userdataobject.UserObject;
 import Functionality.FunctionalityView;
 
 import javax.swing.*;

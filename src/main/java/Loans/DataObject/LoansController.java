@@ -1,6 +1,6 @@
 package Loans.DataObject;
 
-import UserDataObject.UserObject;
+import userdataobject.UserObject;
 
 import java.util.List;
 

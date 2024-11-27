@@ -1,28 +1,38 @@
 package login.welcome;
 
-import App.ControllerInterface;
-import login.logIn.LogInController;
-import login.signUp.SignUpController;
+import app.ControllerInterface;
+import login.login.LogInController;
+import login.signup.SignUpController;
 
+/**
+ * Controller for managing the Welcome view. This class handles user actions
+ * related to logging in and signing up by delegating the logic to the respective controllers.
+ */
 public class WelcomeController implements ControllerInterface {
     private WelcomePresenter welcomePresenter = new WelcomePresenter(this);
     private LogInController logInController = new LogInController();
     private SignUpController signUpController = new SignUpController();
 
-    public WelcomeController(){
+    public WelcomeController() {
     }
 
     @Override
-    public void launch(){
+    public void launch() {
         welcomePresenter.showView();
     }
 
-    public void logInTriggered(){
+    /**
+     * Handles the log-in action by disposing of the current view and launching the LogInController.
+     */
+    public void logInTriggered() {
         welcomePresenter.disposeView();
         logInController.launch();
     }
 
-    public void signUpTriggered(){
+    /**
+     * Handles the sign-up action by disposing of the current view and launching the SignUpController.
+     */
+    public void signUpTriggered() {
         welcomePresenter.disposeView();
         signUpController.launch();
     }

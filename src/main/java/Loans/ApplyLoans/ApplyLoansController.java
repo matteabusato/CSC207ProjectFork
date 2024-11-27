@@ -1,8 +1,8 @@
 package Loans.ApplyLoans;
 
-import App.ControllerInterface;
+import app.ControllerInterface;
 import Card.CardController;
-import UserDataObject.UserObject;
+import userdataobject.UserObject;
 import Loans.DataObject.LoansController;
 import login.loggedin.LoggedInController;
 import login.welcome.WelcomeController;

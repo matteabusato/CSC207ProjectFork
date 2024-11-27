@@ -1,6 +1,6 @@
 package ATM.ATMMap;
 
-import App.PresenterInterface;
+import app.PresenterInterface;
 import Functionality.FunctionalityView;
 
 import javax.swing.*;

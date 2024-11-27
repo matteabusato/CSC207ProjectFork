@@ -1,16 +1,16 @@
 package login.loggedin;
 
 import ATM.ATMMap.ATMMapController;
-import App.ControllerInterface;
+import app.ControllerInterface;
 import Brokerage.BrokerageController;
 import Card.CardController;
 import Exchange.CurrencyExchangeController;
 import House.HouseMap.HouseMapController;
 import Loans.ApplyLoans.ApplyLoansController;
 import Loans.SeeLoansHistory.SeeLoansHistoryController;
-import Transaction.MakeTransaction.MakeTransactionController;
-import Transaction.SeeTransactionHistory.SeeTransactionHistoryController;
-import UserDataObject.UserObject;
+import transaction.makeTransaction.MakeTransactionController;
+import transaction.seeTransactionHistory.SeeTransactionHistoryController;
+import userdataobject.UserObject;
 import login.welcome.WelcomeController;
 
 /**

@@ -1,6 +1,6 @@
 package login.loggedin;
 
-import App.PresenterInterface;
+import app.PresenterInterface;
 
 /**
  * Presenter responsible for managing the logged-in view's visibility and interaction logic.

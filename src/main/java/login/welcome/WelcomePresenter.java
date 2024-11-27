@@ -1,7 +1,12 @@
 package login.welcome;
 
-import App.PresenterInterface;
+import app.PresenterInterface;
 
+/**
+ * Presenter for the Welcome view. This class is responsible for managing the interaction
+ * between the Welcome view and the WelcomeController, handling actions to display or dispose
+ * of the view.
+ */
 public class WelcomePresenter implements PresenterInterface<WelcomeController> {
     private final WelcomeView welcomeView;
 
@@ -10,12 +15,12 @@ public class WelcomePresenter implements PresenterInterface<WelcomeController> {
     }
 
     @Override
-    public void showView(){
+    public void showView() {
         welcomeView.setVisible(true);
     }
 
     @Override
-    public void disposeView(){
+    public void disposeView() {
         welcomeView.setVisible(false);
         welcomeView.dispose();
     }

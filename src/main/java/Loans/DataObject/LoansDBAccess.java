@@ -2,10 +2,10 @@ package Loans.DataObject;
 
 import Card.Card;
 import Card.CardController;
-import DataAccess.DataAccessController;
-import DataAccess.DataAccessInterface;
-import UserDataObject.UserObject;
-import UserDataObject.UsersController;
+import dataaccess.DataAccessController;
+import dataaccess.DataAccessInterface;
+import userdataobject.UserObject;
+import userdataobject.UsersController;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

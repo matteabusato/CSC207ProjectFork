@@ -1,6 +1,6 @@
 package ATM.ATMMap;
 
-import UserDataObject.UserObject;
+import userdataobject.UserObject;
 import Views.PanelMaker;
 
 import javax.swing.*;

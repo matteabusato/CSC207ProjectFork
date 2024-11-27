@@ -1,6 +1,6 @@
 package Card;
 
-import UserDataObject.UserObject;
+import userdataobject.UserObject;
 import login.loggedin.LoggedInController;
 import login.welcome.WelcomeController;
 import org.jetbrains.annotations.NotNull;
