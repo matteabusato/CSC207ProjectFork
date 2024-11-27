@@ -1,9 +1,13 @@
 package transaction.makeTransaction;
 
+import Card.Card;
+import Card.CardDBAccess;
 import app.ControllerInterface;
 import userdataobject.UserObject;
 import login.loggedin.LoggedInController;
 import transaction.dataObject.TransactionController;
+
+import java.util.List;
 
 /**
  * Controller for managing the make transaction functionality. This class handles the logic of creating
@@ -14,10 +18,12 @@ public class MakeTransactionController implements ControllerInterface {
     private UserObject loggedInUser;
     private MakeTransactionPresenter makeTransactionPresenter;
     private TransactionController transactionController;
+    private CardDBAccess cardDBAccess;
 
     public MakeTransactionController(UserObject user) {
         this.loggedInUser = user;
         this.transactionController = new TransactionController();
+        this.cardDBAccess = new CardDBAccess();
         this.makeTransactionPresenter = new MakeTransactionPresenter(this);
     }
 
@@ -25,7 +31,6 @@ public class MakeTransactionController implements ControllerInterface {
         return loggedInUser;
     }
 
-    // TODO: add card field from database
     @Override
     public void launch() {
         makeTransactionPresenter.showView();
@@ -65,8 +70,23 @@ public class MakeTransactionController implements ControllerInterface {
      */
     public void onMakeTransactonSuccess(String cardUsed, int receiverID, int amount) {
         loggedInUser = transactionController.addTransaction(loggedInUser.getUserID(), receiverID, cardUsed, amount);
+
         makeTransactionPresenter.disposeView();
         final LoggedInController controller = new LoggedInController(loggedInUser);
         controller.launch();
+    }
+
+    /**
+     * Retrieve cards from database.
+     *
+     * @return array of cards
+     */
+    public String[] getCards() {
+        final List<Card> cards = cardDBAccess.readData(loggedInUser.getUserID());
+        final String[] cardNames = new String[cards.size()];
+        for (int i = 0; i < cards.size(); i++) {
+            cardNames[i] = cards.get(i).getUsage();
+        }
+        return cardNames;
     }
 }

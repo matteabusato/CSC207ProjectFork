@@ -54,7 +54,7 @@ public class MakeTransactionView extends JFrame {
         transactionPanel.setLayout(new GridLayout(ROW_COUNT, COLUMN_COUNT, HORIZONTAL_GAP, VERTICAL_GAP));
 
         final JLabel cardLabel = new JLabel("Card:");
-        final String[] cardOptions = {"1", "2", "3"};
+        final String[] cardOptions = controller.getCards();
         final JComboBox<String> cardDropdown = new JComboBox<>(cardOptions);
 
         final JLabel receiverIDLabel = new JLabel("Receiver UserID:");
