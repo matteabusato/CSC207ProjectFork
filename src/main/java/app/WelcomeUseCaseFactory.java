@@ -1,41 +1,48 @@
 package app;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import entity.UserFactory;
+import interface_adapter.ViewManagerModel;
+import interface_adapter.login.LoginViewModel;
+import interface_adapter.signup.SignupViewModel;
+import interface_adapter.welcome.WelcomeViewModel;
+import view.WelcomeView;
 
+/**
+ * This class contains the static factory function for creating the WelcomeView.
+ */
 public class WelcomeUseCaseFactory {
-    final JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BorderLayout());
-    final JLabel titleLabel = new JLabel("Welcome to Crazy Bank!", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
-    final JButton loginButton = new JButton("Log In");
-    final JButton signUpButton = new JButton("Sign Up");
-        loginButton.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
-        signUpButton.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
-    final JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout());
-        buttonPanel.add(loginButton);
-        buttonPanel.add(signUpButton);
+    private WelcomeUseCaseFactory() {
 
-        mainPanel.add(titleLabel, BorderLayout.NORTH);
-        mainPanel.add(buttonPanel, BorderLayout.CENTER);
+    }
 
-    add(mainPanel);
+    public static WelcomeView create(
+            ViewManagerModel viewManagerModel, LoginViewModel loginViewModel,
+            SignupViewModel signupViewModel, WelcomeViewModel welcomeViewModel,
+            WelcomeUserDataAccessInterface welcomeUserDataAccessObject
+    ) {
 
-        loginButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            controller.logInTriggered();
-        }
-    });
+        final WelcomeController welcomeController = createUserWelcomeUseCase(viewManagerModel, loginViewModel,
+                                                                            signupViewModel, welcomeViewModel
+                                                                            welcomeUserDataAccessObject);
 
-        signUpButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            controller.signUpTriggered();
-        }
-    });
+        return new WelcomeView(welcomeController, welcomeViewModel);
+    }
+
+    private static WelcomeController createUserWelcomeUseCase(ViewManagerModel viewManagerModel,
+                                                              LoginViewModel loginViewModel,
+                                                              SignupViewModel signupViewModel,
+                                                              WelcomeViewModel welcomeViewModel,
+                                                              WelcomeUserDataAccessInterface welcomeUserDataAccessObject
+    ) {
+        final WelcomeOutputBoundary welcomeOutputBoundary = new WelcomePresenter(viewManagerModel, loginViewModel,
+                                                                            signupViewModel, welcomeViewModel);
+        final UserFactory userFactory = new UserFactory();
+
+        final WelcomeInputBoundary userWelcomeInteractor = new WelcomeInteractor(
+                welcomeUserDataAccessObject, welcomeOutputBoundary, userFactory);
+
+        return new WelcomeController(userWelcomeInteractor);
+
+    }
 
 }

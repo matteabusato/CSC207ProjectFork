@@ -1,4 +1,4 @@
 package interface_adapter.getloan;
 
-public class GetLoandViewModel {
+public class GetLoanViewModel {
 }
